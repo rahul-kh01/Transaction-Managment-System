@@ -836,12 +836,8 @@ public class DataInitializationComponent implements CommandLineRunner {
             return PaymentType.CARD; // 40%
         } else if (rand < 0.75) {
             return PaymentType.UPI; // 35%
-        } else if (rand < 0.90) {
-            return PaymentType.CASH; // 15%
         } else {
-            // 10% other methods
-            PaymentType[] others = {PaymentType.NET_BANKING, PaymentType.WALLET};
-            return others[random.nextInt(others.length)];
+            return PaymentType.CASH; // 25%
         }
     }
 
