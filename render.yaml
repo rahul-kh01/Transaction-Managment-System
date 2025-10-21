@@ -131,7 +131,7 @@ services:
       
       # ===== Application Configuration =====
       - key: VITE_APP_NAME
-        value: Zosh POS
+        value: Transaction Management System
       - key: VITE_APP_VERSION
         value: 1.0.0
       - key: VITE_ENABLE_ANALYTICS

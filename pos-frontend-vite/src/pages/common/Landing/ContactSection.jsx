@@ -57,7 +57,7 @@ const ContactSection = () => {
                       type="tel" 
                       id="phone" 
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-gray-900" 
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 8079035103"
                     />
                   </div>
                   <div>
@@ -115,7 +115,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-medium mb-1">Phone</p>
-                    <p className="opacity-90">+91 98765 43210</p>
+                    <p className="opacity-90">+91 8079035103</p>
                     <p className="opacity-90">+91 98765 43211</p>
                   </div>
                 </div>
@@ -126,8 +126,8 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-medium mb-1">Email</p>
-                    <p className="opacity-90">sales@pospro.com</p>
-                    <p className="opacity-90">support@pospro.com</p>
+                    <p className="opacity-90">rahulkhandelwal.tech19@gmail.com</p>
+                    <p className="opacity-90">rahulkhandelwal.tech19@gmail.com</p>
                   </div>
                 </div>
                 
