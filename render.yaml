@@ -33,15 +33,23 @@ services:
     # Environment variables for backend
     envVars:
       # ===== Database Configuration =====
-      # Render provides DATABASE_URL automatically for PostgreSQL
-      - key: DATABASE_URL
-        fromDatabase:
-          name: pos-database
-          property: connectionString
-      
-      # SSL mode for PostgreSQL (required for Render)
+      # Using external Neon database (set these in Render Dashboard)
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
       - key: DB_SSL_MODE
         value: require
+      - key: DB_POOL_SIZE
+        value: 10
+      - key: DB_MIN_IDLE
+        value: 5
       
       # ===== JPA/Hibernate Configuration =====
       - key: JPA_DDL_AUTO
@@ -51,7 +59,7 @@ services:
       
       # ===== Server Configuration =====
       - key: SERVER_PORT
-        value: 5000
+        value: 10000
       
       # ===== JWT Configuration =====
       # IMPORTANT: Set these in Render Dashboard after creation
@@ -96,11 +104,21 @@ services:
       - key: LOG_LEVEL_ROOT
         value: INFO
       - key: LOG_LEVEL_APP
-        value: INFO
+        value: DEBUG
       - key: LOG_LEVEL_SPRING
-        value: WARN
+        value: INFO
       - key: LOG_LEVEL_SECURITY
+        value: INFO
+      - key: LOG_LEVEL_SQL
         value: WARN
+      - key: LOG_LEVEL_SQL_TRACE
+        value: WARN
+      - key: LOG_FILE
+        value: logs/pos-system.log
+      
+      # ===== DevTools Configuration =====
+      - key: DEVTOOLS_ENABLED
+        value: false
 
   # ======================================================
   # FRONTEND STATIC SITE (React + Vite)
@@ -158,62 +176,120 @@ services:
         destination: /index.html
 
 # ======================================================
-# DATABASE (PostgreSQL)
+# DATABASE CONFIGURATION
 # ======================================================
-databases:
-  - name: pos-database
-    databaseName: pos_production
-    user: pos_user
-    plan: free  # Free tier: 256MB RAM, 1GB storage, expires in 90 days
-    region: oregon  # Match with services
-    ipAllowList: []  # Allow all (services can connect)
-    # For production, consider restricting IP access
+# Note: This configuration uses an external Neon database instead of
+# Render's built-in PostgreSQL service. All database credentials are
+# set via environment variables in the Render Dashboard.
+# 
+# Benefits of external Neon database:
+# - No 90-day expiration limit (unlike Render free PostgreSQL)
+# - Better performance and reliability
+# - More storage capacity
+# - Managed backups and point-in-time recovery
+#
+# Database environment variables (set in Render Dashboard):
+# - DB_HOST: Your Neon database host
+# - DB_NAME: Database name (e.g., neondb)
+# - DB_USERNAME: Database username
+# - DB_PASSWORD: Database password
+# - DB_PORT: 5432 (default PostgreSQL port)
+# - DB_SSL_MODE: require (for secure connection)
 
 # ======================================================
 # POST-DEPLOYMENT INSTRUCTIONS
 # ======================================================
 # 
-# After deploying this blueprint:
+# ✅ FIXES APPLIED:
+# - Fixed HQL subquery error in UserRepository
+# - Updated Dockerfile for Render (PORT 10000)
+# - Configured external Neon database support
+# - Added health check for faster startup
 #
-# 1. SET CRITICAL ENVIRONMENT VARIABLES (in Render Dashboard):
-#    Backend Service → Environment:
+# 📋 CHECKLIST AFTER DEPLOYMENT:
+#
+# 1. ✅ SET DATABASE CREDENTIALS (in Render Dashboard):
+#    Backend Service → Environment → Add:
+#    - DB_HOST: Your Neon database host
+#    - DB_NAME: Database name (e.g., neondb)
+#    - DB_USERNAME: Database username
+#    - DB_PASSWORD: Database password
+#    (These MUST be set for the app to start)
+#
+# 2. ✅ SET CRITICAL SECURITY VARIABLES:
 #    - JWT_SECRET: Run `openssl rand -base64 64` and paste result
+#    (This MUST be set for authentication to work)
+#
+# 3. ⚙️ SET EMAIL CONFIGURATION (optional but recommended):
+#    For Gmail:
+#    - MAIL_HOST: smtp.gmail.com
+#    - MAIL_PORT: 587
 #    - MAIL_USERNAME: Your Gmail address
-#    - MAIL_PASSWORD: Gmail App Password (from Google Account)
-#    - RAZORPAY_API_KEY (optional)
-#    - RAZORPAY_API_SECRET (optional)
-#    - STRIPE_API_KEY (optional)
-#
-# 2. UPDATE URLS AFTER DEPLOYMENT:
-#    a. Get your backend URL: https://pos-backend.onrender.com
-#    b. Get your frontend URL: https://pos-frontend.onrender.com
+#    - MAIL_PASSWORD: Gmail App Password (from Google Account Security)
 #    
-#    c. Update Frontend env var:
-#       VITE_API_URL=https://pos-backend.onrender.com
+#    For Mailtrap (testing):
+#    - MAIL_HOST: sandbox.smtp.mailtrap.io
+#    - MAIL_PORT: 2525
+#    - MAIL_USERNAME: Your Mailtrap username
+#    - MAIL_PASSWORD: Your Mailtrap password
+#
+# 4. 💳 SET PAYMENT GATEWAYS (optional):
+#    - RAZORPAY_API_KEY and RAZORPAY_API_SECRET
+#    - STRIPE_API_KEY
+#
+# 5. 🔗 UPDATE URLS AFTER DEPLOYMENT:
+#    a. Get your deployed URLs:
+#       - Backend: https://your-backend.onrender.com
+#       - Frontend: https://your-frontend.onrender.com
 #    
-#    d. Update Backend env vars:
-#       CORS_ALLOWED_ORIGINS=https://pos-frontend.onrender.com,http://localhost:5173
-#       FRONTEND_RESET_URL=https://pos-frontend.onrender.com/auth/reset-password?token=
+#    b. Update Frontend environment variable:
+#       - VITE_API_URL=https://your-backend.onrender.com
+#    
+#    c. Update Backend environment variables:
+#       - CORS_ALLOWED_ORIGINS=https://your-frontend.onrender.com,http://localhost:5173
+#       - FRONTEND_RESET_URL=https://your-frontend.onrender.com/auth/reset-password?token=
 #
-# 3. REDEPLOY SERVICES:
-#    - Redeploy frontend with new VITE_API_URL
-#    - Redeploy backend with new CORS settings
+# 6. 🔄 REDEPLOY BOTH SERVICES:
+#    - Frontend: To apply new VITE_API_URL
+#    - Backend: To apply new CORS settings
 #
-# 4. TEST THE DEPLOYMENT:
-#    - Backend health: https://pos-backend.onrender.com/actuator/health
-#    - Frontend: https://pos-frontend.onrender.com
-#    - Login with default admin credentials (see SAMPLE_DATA_CREDENTIALS.md)
+# 7. ✅ TEST THE DEPLOYMENT:
+#    Backend health check:
+#    curl https://your-backend.onrender.com/actuator/health
+#    
+#    Should return:
+#    {
+#      "status": "UP"
+#    }
+#    
+#    Frontend:
+#    - Open https://your-frontend.onrender.com
+#    - Login with default credentials (see SAMPLE_DATA_CREDENTIALS.md)
 #
-# 5. SECURITY:
-#    - Change default admin password immediately
-#    - Review and update CORS settings for production
-#    - Consider adding custom domain
-#    - Enable Render's DDoS protection
+# 8. 🔒 SECURITY CHECKLIST:
+#    - ✅ Change default admin password immediately
+#    - ✅ Review CORS settings for production
+#    - ✅ Rotate JWT_SECRET periodically
+#    - ✅ Use strong passwords for database
+#    - ✅ Enable HTTPS only (Render provides SSL automatically)
+#    - ⚠️ Never commit .env files with secrets
+#    - 📌 Consider adding custom domain
+#    - 📌 Set up Render's DDoS protection
 #
-# 6. MONITORING:
+# 9. 📊 MONITORING & MAINTENANCE:
 #    - Set up Render metrics and alerts
-#    - Monitor database usage
+#    - Monitor Neon database usage (free tier limits)
 #    - Check application logs regularly
+#    - Set up uptime monitoring (e.g., UptimeRobot)
+#    - Review error logs weekly
+#
+# 10. 🚨 TROUBLESHOOTING:
+#     If deployment fails, check:
+#     - All required environment variables are set
+#     - Database credentials are correct
+#     - Neon database is accessible
+#     - Check deployment logs for specific errors
+#     - See RENDER_DEPLOYMENT_FIX.md for detailed troubleshooting
 #
 # ======================================================
 # COST ESTIMATION (as of 2025)

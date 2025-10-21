@@ -20,15 +20,24 @@ services:
     
     # Environment variables
     envVars:
-      # Database - Render provides DATABASE_URL automatically for PostgreSQL
-      - key: DATABASE_URL
-        fromDatabase:
-          name: pos-database
-          property: connectionString
-      
-      # SSL mode for PostgreSQL (required for Render)
+      # Database Configuration (using external Neon database)
+      # Note: Set these manually in Render Dashboard
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
       - key: DB_SSL_MODE
         value: require
+      - key: DB_POOL_SIZE
+        value: 10
+      - key: DB_MIN_IDLE
+        value: 5
       
       # JPA Configuration
       - key: JPA_DDL_AUTO
@@ -38,7 +47,7 @@ services:
       
       # Server Configuration
       - key: SERVER_PORT
-        value: 5000
+        value: 10000
       
       # JWT Configuration (REQUIRED - Add in Render Dashboard)
       - key: JWT_SECRET
@@ -76,17 +85,18 @@ services:
       - key: LOG_LEVEL_ROOT
         value: INFO
       - key: LOG_LEVEL_APP
-        value: INFO
+        value: DEBUG
       - key: LOG_LEVEL_SPRING
-        value: WARN
+        value: INFO
       - key: LOG_LEVEL_SECURITY
+        value: INFO
+      - key: LOG_LEVEL_SQL
         value: WARN
+      - key: LOG_LEVEL_SQL_TRACE
+        value: WARN
+      - key: LOG_FILE
+        value: logs/pos-system.log
 
-# Database (PostgreSQL on Render)
-databases:
-  - name: pos-database
-    databaseName: pos_production
-    plan: free  # Free tier: 256MB RAM, 1GB storage, expires in 90 days
-    region: oregon
-    ipAllowList: []  # Empty means accessible from anywhere
+# Note: Using external Neon database instead of Render's PostgreSQL
+# No database service defined here - all DB credentials set via environment variables
 

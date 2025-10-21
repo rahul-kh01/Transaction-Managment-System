@@ -16,15 +16,19 @@ RUN --mount=type=cache,target=/root/.m2 mvn -q -e -DskipTests package
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# JVM tuning for containers
-ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+HeapDumpOnOutOfMemoryError"
+# JVM tuning for containers (optimized for Render free tier)
+ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC"
 
 # Copy fat jar
 COPY --from=build /app/target/*.jar /app/app.jar
 
-# Railway provides PORT. Fall back to 5000 locally.
-ENV PORT=5000
-EXPOSE 5000
+# Render provides PORT environment variable. Fall back to 10000 for Render's default.
+ENV PORT=10000
+EXPOSE 10000
+
+# Health check for faster startup detection
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:${PORT}/actuator/health || exit 1
 
 # Ensure Spring Boot binds to the provided PORT
-ENTRYPOINT ["sh","-c","java $JAVA_OPTS -Dserver.port=${PORT:-5000} -jar /app/app.jar"]
+ENTRYPOINT ["sh","-c","java $JAVA_OPTS -Dserver.port=${PORT:-10000} -jar /app/app.jar"]
