@@ -126,7 +126,7 @@ services:
   - type: web
     name: pos-frontend
     runtime: static
-    buildCommand: cd pos-frontend-vite && pnpm install && pnpm build
+    buildCommand: npm install -g pnpm && cd pos-frontend-vite && pnpm install --frozen-lockfile && pnpm build
     staticPublishPath: pos-frontend-vite/dist
     pullRequestPreviewsEnabled: true  # Enable PR previews
     plan: free  # Static sites are free on Render
@@ -141,6 +141,10 @@ services:
     
     # Frontend environment variables
     envVars:
+      # ===== Package Manager Configuration =====
+      - key: SKIP_INSTALL_DEPS
+        value: true
+      
       # ===== API Configuration =====
       # IMPORTANT: Update this after backend is deployed
       # Use the backend service URL from Render
