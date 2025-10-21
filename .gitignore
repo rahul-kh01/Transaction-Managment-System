@@ -14,15 +14,13 @@ Thumbs.db
 *.rej
 *.out
 *.pid
-*.cache
-*.lock
 .vscode/
 .idea/
 *.iml
 
-# Ignore documentation & scripts
-*.md
-*.sh
+# Keep documentation and important scripts
+# *.md - REMOVED - we need documentation files!
+# *.sh - REMOVED - we need build scripts!
 *.cursorignore
 
 ##########################################
@@ -85,13 +83,12 @@ pos-frontend-vite/pnpm-debug.log*
 pos-frontend-vite/.vite/deps/
 pos-frontend-vite/.vite-temp/
 
-# JS config variants for IDE use — safe to ignore
-pos-frontend-vite/jsconfig.*.json
-pos-frontend-vite/jsconfig.json
+# JS config variants for IDE use — but keep the main ones
+# pos-frontend-vite/jsconfig.json - KEEP THIS! Part of project config
 
-# ESLint / Configs that are regenerated or local
-pos-frontend-vite/eslint.config.js
-pos-frontend-vite/components.json
+# Keep ESLint and component configs - they're part of the project
+# pos-frontend-vite/eslint.config.js - KEEP THIS!
+# pos-frontend-vite/components.json - KEEP THIS!
 
 # SVG & build assets from dist/public — generated at runtime
 pos-frontend-vite/dist/**/*.svg
@@ -118,10 +115,10 @@ coverage/
 *.lcov
 reports/
 
-# Node / package lockfiles (optional; keep only one)
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Node / package lockfiles
+package-lock.json  # We use pnpm, not npm
+yarn.lock         # We use pnpm, not yarn
+# pnpm-lock.yaml - KEEP THIS! Required for Render deployment
 
 # Deployment artifacts
 deploy/
@@ -135,21 +132,8 @@ tmp/
 # 🧰 Custom Additions from Project Scan
 ##########################################
 
-# Markdown docs that exist in repo root & src (based on your scan)
-pos-frontend-vite/DATACLONE_ERROR_FIX.md
-pos-frontend-vite/FIXES_SUMMARY.md
-pos-frontend-vite/FORM_WARNINGS_FIXED.md
-pos-frontend-vite/QUICK_FIX_GUIDE.md
-pos-frontend-vite/RENDER_DEPLOYMENT.md
-pos-frontend-vite/UNLOAD_WARNING_EXPLAINED.md
-pos-frontend-vite/README.md
-pos-frontend-vite/src/**/README.md
+# Keep all documentation - they're important!
+# Removed all *.md ignores - documentation should be committed
 
-# Onboarding docs and internal READMEs
-pos-frontend-vite/src/pages/onboarding/README.md
-pos-frontend-vite/src/pages/cashier/README.md
-pos-frontend-vite/src/pages/SuperAdminDashboard/README.md
-
-# Misc root files to ignore
-pos-frontend-vite/vite.svg
-pos-frontend-vite/vite.config.js  # if dynamically generated at build time
+# Only ignore generated/temporary files
+pos-frontend-vite/.vite-temp/
