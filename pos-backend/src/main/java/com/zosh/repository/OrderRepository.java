@@ -51,7 +51,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
         SELECT COUNT(o)
         FROM Order o
         WHERE o.branch.id = :branchId
-        AND DATE(o.createdAt) = :date
+        AND CAST(o.createdAt AS DATE) = :date
     """)
     int countOrdersByBranchAndDate(@Param("branchId") Long branchId,
                                    @Param("date") LocalDate date);
@@ -60,7 +60,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
         SELECT COUNT(DISTINCT o.cashier.id)
         FROM Order o
         WHERE o.branch.id = :branchId
-        AND DATE(o.createdAt) = :date
+        AND CAST(o.createdAt AS DATE) = :date
     """)
     int countDistinctCashiersByBranchAndDate(@Param("branchId") Long branchId,
                                              @Param("date") LocalDate date);
@@ -69,7 +69,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     SELECT o.paymentType, SUM(o.totalAmount), COUNT(o)
     FROM Order o
     WHERE o.branch.id = :branchId
-    AND DATE(o.createdAt) = :date
+    AND CAST(o.createdAt AS DATE) = :date
     GROUP BY o.paymentType
 """)
     List<Object[]> getPaymentBreakdownByMethod(

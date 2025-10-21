@@ -20,7 +20,7 @@
     <g transform="translate(70, 90)">
       <rect width="40" height="40" rx="8" fill="#15803d" />
       <path d="M20 15 L15 15 L15 25 L25 25 L25 15 L20 15 Z M15 15 L15 10 L25 10 L25 15 Z" fill="white" />
-      <text x="50" y="25" font-family="Arial" font-size="18" font-weight="bold" fill="#1f2937">POS Pro</text>
+      <text x="50" y="25" font-family="Arial" font-size="18" font-weight="bold" fill="#1f2937">Transaction Management System</text>
     </g>
     
     <!-- Navigation -->
@@ -63,7 +63,7 @@
     <g transform="translate(70, 90)">
       <rect width="40" height="40" rx="8" fill="#15803d" filter="drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))" />
       <path d="M20 15 L15 15 L15 25 L25 25 L25 15 L20 15 Z M15 15 L15 10 L25 10 L25 15 Z" fill="white" />
-      <text x="50" y="25" font-family="Arial" font-size="18" font-weight="bold" fill="#1f2937">POS Pro</text>
+      <text x="50" y="25" font-family="Arial" font-size="18" font-weight="bold" fill="#1f2937">Transaction Management System</text>
     </g>
     
     <!-- Navigation -->

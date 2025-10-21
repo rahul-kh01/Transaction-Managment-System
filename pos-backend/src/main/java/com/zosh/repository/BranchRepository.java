@@ -46,7 +46,7 @@ public interface BranchRepository extends JpaRepository<Branch, Long> {
         AND b.id NOT IN (
             SELECT DISTINCT o.branch.id
             FROM Order o
-            WHERE DATE(o.createdAt) = CURRENT_DATE
+            WHERE CAST(o.createdAt AS DATE) = CURRENT_DATE
         )
     """)
     List<BranchDTO> findBranchesWithNoSalesToday(@Param("storeAdminId") Long storeAdminId);

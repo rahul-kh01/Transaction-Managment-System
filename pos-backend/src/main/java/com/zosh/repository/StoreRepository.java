@@ -22,7 +22,7 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
     @Query("""
         SELECT COUNT(s)
         FROM Store s
-        WHERE DATE(s.createdAt) = :date
+        WHERE CAST(s.createdAt AS DATE) = :date
     """)
     Long countByDate(LocalDate date);
 
