@@ -1,0 +1,134 @@
+<svg width="800" height="1200" viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="1200" fill="#f8fafc" />
+  
+  <!-- Header Section (Simplified) -->
+  <rect y="0" width="800" height="80" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+  <circle cx="50" cy="40" r="20" fill="#6366f1" />
+  <text x="80" y="45" font-family="Arial" font-size="18" font-weight="bold" fill="#1e293b">POSPro</text>
+  <text x="500" y="45" font-family="Arial" font-size="14" fill="#64748b">Features</text>
+  <text x="580" y="45" font-family="Arial" font-size="14" fill="#64748b">Pricing</text>
+  <text x="650" y="45" font-family="Arial" font-size="14" fill="#64748b">Resources</text>
+  <rect x="720" y="25" width="60" height="30" rx="15" fill="#6366f1" />
+  <text x="750" y="45" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Sign In</text>
+  
+  <!-- Hero Section (Simplified) -->
+  <rect y="80" width="800" height="300" fill="#f1f5f9" />
+  <text x="400" y="150" font-family="Arial" font-size="28" font-weight="bold" fill="#1e293b" text-anchor="middle">Modern POS System for Retailers</text>
+  <text x="400" y="180" font-family="Arial" font-size="16" fill="#64748b" text-anchor="middle">Streamline operations, boost sales, and enhance customer experiences</text>
+  <rect x="320" y="200" width="160" height="40" rx="20" fill="#6366f1" />
+  <text x="400" y="225" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Get Started</text>
+  <rect x="250" y="260" width="300" height="100" rx="10" fill="#cbd5e1" />
+  <text x="400" y="315" font-family="Arial" font-size="12" fill="#475569" text-anchor="middle">POS System Demo Video</text>
+  
+  <!-- Trusted Logos Section (Simplified) -->
+  <rect y="380" width="800" height="100" fill="#ffffff" />
+  <text x="400" y="410" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">Trusted by Leading Retailers</text>
+  <rect x="150" y="430" width="500" height="30" fill="#f1f5f9" rx="5" />
+  <text x="400" y="450" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Brand Logos</text>
+  
+  <!-- Features Section (Simplified) -->
+  <rect y="480" width="800" height="100" fill="#f1f5f9" />
+  <text x="400" y="520" font-family="Arial" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle">Key Features</text>
+  <text x="400" y="550" font-family="Arial" font-size="14" fill="#64748b" text-anchor="middle">(Features Grid)</text>
+  
+  <!-- Contact Section (Detailed) -->
+  <rect y="580" width="800" height="300" fill="#6366f1" />
+  <rect x="50" y="610" width="340" height="240" rx="10" fill="#ffffff" />
+  
+  <!-- Contact Form -->
+  <text x="220" y="630" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">Contact Form</text>
+  
+  <!-- Form Fields -->
+  <rect x="70" y="645" width="140" height="30" rx="5" fill="#f1f5f9" />
+  <text x="80" y="665" font-family="Arial" font-size="10" fill="#64748b">Full Name</text>
+  
+  <rect x="230" y="645" width="140" height="30" rx="5" fill="#f1f5f9" />
+  <text x="240" y="665" font-family="Arial" font-size="10" fill="#64748b">Email Address</text>
+  
+  <rect x="70" y="685" width="140" height="30" rx="5" fill="#f1f5f9" />
+  <text x="80" y="705" font-family="Arial" font-size="10" fill="#64748b">Phone Number</text>
+  
+  <rect x="230" y="685" width="140" height="30" rx="5" fill="#f1f5f9" />
+  <text x="240" y="705" font-family="Arial" font-size="10" fill="#64748b">Business Name</text>
+  
+  <rect x="70" y="725" width="300" height="30" rx="5" fill="#f1f5f9" />
+  <text x="80" y="745" font-family="Arial" font-size="10" fill="#64748b">I'm interested in</text>
+  
+  <rect x="70" y="765" width="300" height="60" rx="5" fill="#f1f5f9" />
+  <text x="80" y="785" font-family="Arial" font-size="10" fill="#64748b">Message</text>
+  
+  <rect x="70" y="835" width="300" height="35" rx="5" fill="#6366f1" />
+  <text x="220" y="857" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Send Message</text>
+  
+  <!-- Contact Info -->
+  <rect x="410" y="610" width="340" height="140" rx="10" fill="rgba(255,255,255,0.1)" />
+  <text x="430" y="635" font-family="Arial" font-size="16" font-weight="bold" fill="white">Contact Information</text>
+  
+  <!-- Phone -->
+  <circle cx="430" cy="660" r="10" fill="rgba(255,255,255,0.2)" />
+  <text x="450" y="665" font-family="Arial" font-size="12" fill="white" font-weight="bold">Phone</text>
+  <text x="450" y="685" font-family="Arial" font-size="12" fill="rgba(255,255,255,0.8)">+91 98765 43210</text>
+  
+  <!-- Email -->
+  <circle cx="430" cy="710" r="10" fill="rgba(255,255,255,0.2)" />
+  <text x="450" y="715" font-family="Arial" font-size="12" fill="white" font-weight="bold">Email</text>
+  <text x="450" y="735" font-family="Arial" font-size="12" fill="rgba(255,255,255,0.8)">sales@pospro.com</text>
+  
+  <!-- Benefits -->
+  <circle cx="430" cy="770" r="8" fill="white" />
+  <text x="450" y="775" font-family="Arial" font-size="12" fill="white">Free personalized demo</text>
+  
+  <circle cx="430" cy="800" r="8" fill="white" />
+  <text x="450" y="805" font-family="Arial" font-size="12" fill="white">14-day free trial</text>
+  
+  <circle cx="430" cy="830" r="8" fill="white" />
+  <text x="450" y="835" font-family="Arial" font-size="12" fill="white">24/7 customer support</text>
+  
+  <!-- Footer (Detailed) -->
+  <rect y="880" width="800" height="320" fill="#1e293b" />
+  
+  <!-- Company Info -->
+  <circle cx="70" cy="920" r="15" fill="#6366f1" />
+  <text x="95" y="925" font-family="Arial" font-size="16" font-weight="bold" fill="white">POSPro</text>
+  <text x="70" y="950" font-family="Arial" font-size="12" fill="#94a3b8" width="250">Empowering retailers with smart point-of-sale solutions</text>
+  
+  <!-- Social Icons -->
+  <circle cx="70" cy="980" r="8" fill="#64748b" />
+  <circle cx="95" cy="980" r="8" fill="#64748b" />
+  <circle cx="120" cy="980" r="8" fill="#64748b" />
+  <circle cx="145" cy="980" r="8" fill="#64748b" />
+  
+  <!-- Newsletter -->
+  <text x="70" y="1010" font-family="Arial" font-size="14" font-weight="bold" fill="white">Subscribe to our newsletter</text>
+  <rect x="70" y="1020" width="200" height="30" rx="5" fill="#334155" />
+  <rect x="270" y="1020" width="30" height="30" rx="5" fill="#6366f1" />
+  
+  <!-- Quick Links -->
+  <text x="400" y="920" font-family="Arial" font-size="14" font-weight="bold" fill="white">Quick Links</text>
+  <text x="400" y="950" font-family="Arial" font-size="12" fill="#94a3b8">Home</text>
+  <text x="400" y="975" font-family="Arial" font-size="12" fill="#94a3b8">Features</text>
+  <text x="400" y="1000" font-family="Arial" font-size="12" fill="#94a3b8">Pricing</text>
+  <text x="400" y="1025" font-family="Arial" font-size="12" fill="#94a3b8">Contact</text>
+  
+  <!-- Resources -->
+  <text x="500" y="920" font-family="Arial" font-size="14" font-weight="bold" fill="white">Resources</text>
+  <text x="500" y="950" font-family="Arial" font-size="12" fill="#94a3b8">Blog</text>
+  <text x="500" y="975" font-family="Arial" font-size="12" fill="#94a3b8">Help Center</text>
+  <text x="500" y="1000" font-family="Arial" font-size="12" fill="#94a3b8">Documentation</text>
+  <text x="500" y="1025" font-family="Arial" font-size="12" fill="#94a3b8">API Reference</text>
+  
+  <!-- Contact -->
+  <text x="600" y="920" font-family="Arial" font-size="14" font-weight="bold" fill="white">Contact</text>
+  <text x="600" y="950" font-family="Arial" font-size="12" fill="#94a3b8">support@pospro.com</text>
+  <text x="600" y="975" font-family="Arial" font-size="12" fill="#94a3b8">123 Tech Park, Whitefield</text>
+  <text x="600" y="1000" font-family="Arial" font-size="12" fill="#94a3b8">Bangalore, Karnataka 560066</text>
+  
+  <!-- Bottom Footer -->
+  <line x1="50" y1="1150" x2="750" y2="1150" stroke="#334155" stroke-width="1" />
+  <text x="70" y="1180" font-family="Arial" font-size="12" fill="#94a3b8">© 2024 POSPro. All rights reserved.</text>
+  <text x="500" y="1180" font-family="Arial" font-size="12" fill="#94a3b8">Terms</text>
+  <text x="550" y="1180" font-family="Arial" font-size="12" fill="#94a3b8">Privacy</text>
+  <text x="610" y="1180" font-family="Arial" font-size="12" fill="#94a3b8">Cookies</text>
+  <text x="670" y="1180" font-family="Arial" font-size="12" fill="#94a3b8">Sitemap</text>
+</svg>

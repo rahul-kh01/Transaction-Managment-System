@@ -1,0 +1,254 @@
+# ======================================================
+# Render Blueprint for Complete POS System Deployment
+# ======================================================
+# This file defines infrastructure for deploying the complete
+# POS system (backend + frontend + database) on Render
+# 
+# Usage:
+# 1. Push this file to your repository root
+# 2. Go to Render Dashboard → New → Blueprint
+# 3. Connect your repository
+# 4. Render will create all services automatically
+#
+# Documentation: https://render.com/docs/blueprint-spec
+# ======================================================
+
+services:
+  # ======================================================
+  # BACKEND API SERVICE (Spring Boot + Docker)
+  # ======================================================
+  - type: web
+    name: pos-backend
+    runtime: docker
+    dockerfilePath: ./pos-backend/Dockerfile
+    dockerContext: ./pos-backend
+    plan: free  # Free tier with limitations (sleeps after inactivity)
+    region: oregon  # Choose: oregon, frankfurt, singapore
+    branch: main
+    autoDeploy: true  # Auto-deploy on git push
+    
+    # Health check configuration
+    healthCheckPath: /actuator/health
+    
+    # Environment variables for backend
+    envVars:
+      # ===== Database Configuration =====
+      # These will be auto-populated from the database service
+      - key: DB_HOST
+        fromDatabase:
+          name: pos-database
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: pos-database
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: pos-database
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: pos-database
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: pos-database
+          property: password
+      
+      # ===== JPA/Hibernate Configuration =====
+      - key: JPA_DDL_AUTO
+        value: update
+      - key: JPA_SHOW_SQL
+        value: false
+      
+      # ===== Server Configuration =====
+      - key: SERVER_PORT
+        value: 5000
+      
+      # ===== JWT Configuration =====
+      # IMPORTANT: Set these in Render Dashboard after creation
+      # Generate with: openssl rand -base64 64
+      - key: JWT_SECRET
+        sync: false  # Must be set manually in Render dashboard
+      - key: JWT_EXPIRATION
+        value: 86400000  # 24 hours in milliseconds
+      
+      # ===== Email Configuration (Gmail) =====
+      # IMPORTANT: Set these in Render Dashboard
+      # Get Gmail App Password from Google Account Security
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USERNAME
+        sync: false  # Set your Gmail address
+      - key: MAIL_PASSWORD
+        sync: false  # Set Gmail App Password
+      
+      # ===== Payment Gateway Configuration =====
+      # Optional: Add in Render Dashboard if using payment features
+      - key: RAZORPAY_API_KEY
+        sync: false
+      - key: RAZORPAY_API_SECRET
+        sync: false
+      - key: STRIPE_API_KEY
+        sync: false
+      
+      # ===== CORS Configuration =====
+      # Will be updated after frontend deployment
+      - key: CORS_ALLOWED_ORIGINS
+        value: http://localhost:5173
+      
+      # ===== Frontend URL for Password Reset =====
+      # Will be updated after frontend deployment
+      - key: FRONTEND_RESET_URL
+        value: http://localhost:5173/auth/reset-password?token=
+      
+      # ===== Logging Configuration =====
+      - key: LOG_LEVEL_ROOT
+        value: INFO
+      - key: LOG_LEVEL_APP
+        value: INFO
+      - key: LOG_LEVEL_SPRING
+        value: WARN
+      - key: LOG_LEVEL_SECURITY
+        value: WARN
+
+  # ======================================================
+  # FRONTEND STATIC SITE (React + Vite)
+  # ======================================================
+  - type: web
+    name: pos-frontend
+    runtime: static
+    buildCommand: cd pos-frontend-vite && pnpm install && pnpm build
+    staticPublishPath: pos-frontend-vite/dist
+    pullRequestPreviewsEnabled: true  # Enable PR previews
+    plan: free  # Static sites are free on Render
+    region: oregon  # Same as backend for better performance
+    branch: main
+    autoDeploy: true
+    
+    # Custom build settings
+    buildFilter:
+      paths:
+        - pos-frontend-vite/**
+    
+    # Frontend environment variables
+    envVars:
+      # ===== API Configuration =====
+      # IMPORTANT: Update this after backend is deployed
+      # Use the backend service URL from Render
+      - key: VITE_API_URL
+        value: http://localhost:5000
+      
+      # ===== Application Configuration =====
+      - key: VITE_APP_NAME
+        value: Zosh POS
+      - key: VITE_APP_VERSION
+        value: 1.0.0
+      - key: VITE_ENABLE_ANALYTICS
+        value: false
+      - key: VITE_ENABLE_DEBUG
+        value: false
+    
+    # Headers for security and SPA routing
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
+    
+    # Routes for SPA (React Router)
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+# ======================================================
+# DATABASE (PostgreSQL)
+# ======================================================
+databases:
+  - name: pos-database
+    databaseName: pos_production
+    user: pos_user
+    plan: free  # Free tier: 256MB RAM, 1GB storage, expires in 90 days
+    region: oregon  # Match with services
+    ipAllowList: []  # Allow all (services can connect)
+    # For production, consider restricting IP access
+
+# ======================================================
+# POST-DEPLOYMENT INSTRUCTIONS
+# ======================================================
+# 
+# After deploying this blueprint:
+#
+# 1. SET CRITICAL ENVIRONMENT VARIABLES (in Render Dashboard):
+#    Backend Service → Environment:
+#    - JWT_SECRET: Run `openssl rand -base64 64` and paste result
+#    - MAIL_USERNAME: Your Gmail address
+#    - MAIL_PASSWORD: Gmail App Password (from Google Account)
+#    - RAZORPAY_API_KEY (optional)
+#    - RAZORPAY_API_SECRET (optional)
+#    - STRIPE_API_KEY (optional)
+#
+# 2. UPDATE URLS AFTER DEPLOYMENT:
+#    a. Get your backend URL: https://pos-backend.onrender.com
+#    b. Get your frontend URL: https://pos-frontend.onrender.com
+#    
+#    c. Update Frontend env var:
+#       VITE_API_URL=https://pos-backend.onrender.com
+#    
+#    d. Update Backend env vars:
+#       CORS_ALLOWED_ORIGINS=https://pos-frontend.onrender.com,http://localhost:5173
+#       FRONTEND_RESET_URL=https://pos-frontend.onrender.com/auth/reset-password?token=
+#
+# 3. REDEPLOY SERVICES:
+#    - Redeploy frontend with new VITE_API_URL
+#    - Redeploy backend with new CORS settings
+#
+# 4. TEST THE DEPLOYMENT:
+#    - Backend health: https://pos-backend.onrender.com/actuator/health
+#    - Frontend: https://pos-frontend.onrender.com
+#    - Login with default admin credentials (see SAMPLE_DATA_CREDENTIALS.md)
+#
+# 5. SECURITY:
+#    - Change default admin password immediately
+#    - Review and update CORS settings for production
+#    - Consider adding custom domain
+#    - Enable Render's DDoS protection
+#
+# 6. MONITORING:
+#    - Set up Render metrics and alerts
+#    - Monitor database usage
+#    - Check application logs regularly
+#
+# ======================================================
+# COST ESTIMATION (as of 2025)
+# ======================================================
+# 
+# FREE TIER (This Configuration):
+# - Backend Web Service: $0 (750 hours/month, sleeps after 15 min inactivity)
+# - Frontend Static Site: $0 (100GB bandwidth/month)
+# - PostgreSQL Database: $0 (256MB RAM, 1GB storage, expires in 90 days)
+# Total: $0/month
+#
+# FREE TIER LIMITATIONS:
+# - Backend spins down after 15 minutes of inactivity (30-60s to wake up)
+# - Database expires after 90 days (will need to migrate or upgrade)
+# - 750 hours/month limit on backend (enough for testing/development)
+# - Limited resources (may be slow under load)
+#
+# PAID TIER (Production Recommended):
+# - Backend (Starter): $7/month OR Standard: $25/month
+# - Frontend (Static): $0 (always free)
+# - Database (Starter): $7/month (1GB RAM, 10GB storage, no expiration)
+# Total: $7-32/month depending on tier
+#
+# To Upgrade: Change plan from "free" to "starter" or "standard"
+#
+# ======================================================

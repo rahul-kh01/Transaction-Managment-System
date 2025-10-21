@@ -1,0 +1,157 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" rx="12" />
+  
+  <!-- POS Interface -->
+  <g>
+    <!-- Left Sidebar -->
+    <rect x="0" y="0" width="200" height="500" fill="#1e293b" rx="12" ry="12" />
+    
+    <!-- Logo Area -->
+    <rect x="20" y="20" width="160" height="50" rx="8" fill="#15803d" />
+    <text x="100" y="50" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="white">POS Pro</text>
+    
+    <!-- Navigation Menu -->
+    <g transform="translate(20, 100)">
+      <!-- Dashboard -->
+      <rect width="160" height="40" rx="6" fill="#334155" />
+      <text x="50" y="25" font-family="Arial" font-size="14" fill="white">Dashboard</text>
+      
+      <!-- Products -->
+      <rect y="50" width="160" height="40" rx="6" fill="#1e293b" />
+      <text x="50" y="75" font-family="Arial" font-size="14" fill="#94a3b8">Products</text>
+      
+      <!-- Customers -->
+      <rect y="100" width="160" height="40" rx="6" fill="#1e293b" />
+      <text x="50" y="125" font-family="Arial" font-size="14" fill="#94a3b8">Customers</text>
+      
+      <!-- Sales -->
+      <rect y="150" width="160" height="40" rx="6" fill="#1e293b" />
+      <text x="50" y="175" font-family="Arial" font-size="14" fill="#94a3b8">Sales</text>
+      
+      <!-- Reports -->
+      <rect y="200" width="160" height="40" rx="6" fill="#1e293b" />
+      <text x="50" y="225" font-family="Arial" font-size="14" fill="#94a3b8">Reports</text>
+      
+      <!-- Settings -->
+      <rect y="250" width="160" height="40" rx="6" fill="#1e293b" />
+      <text x="50" y="275" font-family="Arial" font-size="14" fill="#94a3b8">Settings</text>
+    </g>
+    
+    <!-- Main Content Area -->
+    <g transform="translate(220, 20)">
+      <!-- Header -->
+      <rect width="560" height="60" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+      <text x="20" y="35" font-family="Arial" font-size="18" font-weight="bold" fill="#1e293b">Dashboard</text>
+      
+      <!-- Search Bar -->
+      <rect x="350" y="15" width="180" height="30" rx="15" fill="#f1f5f9" />
+      <text x="370" y="35" font-family="Arial" font-size="12" fill="#94a3b8">Search...</text>
+      
+      <!-- User Profile -->
+      <circle cx="550" cy="30" r="15" fill="#15803d" />
+      <text x="550" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="white">JD</text>
+      
+      <!-- KPI Cards -->
+      <g transform="translate(0, 80)">
+        <!-- Sales Today -->
+        <rect width="175" height="100" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+        <text x="20" y="30" font-family="Arial" font-size="14" fill="#64748b">Sales Today</text>
+        <text x="20" y="60" font-family="Arial" font-size="24" font-weight="bold" fill="#1e293b">₹24,500</text>
+        <text x="20" y="80" font-family="Arial" font-size="12" fill="#10b981">+15% from yesterday</text>
+        
+        <!-- Orders -->
+        <rect x="190" width="175" height="100" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+        <text x="210" y="30" font-family="Arial" font-size="14" fill="#64748b">Orders</text>
+        <text x="210" y="60" font-family="Arial" font-size="24" font-weight="bold" fill="#1e293b">156</text>
+        <text x="210" y="80" font-family="Arial" font-size="12" fill="#10b981">+8% from yesterday</text>
+        
+        <!-- Customers -->
+        <rect x="380" width="175" height="100" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+        <text x="400" y="30" font-family="Arial" font-size="14" fill="#64748b">Customers</text>
+        <text x="400" y="60" font-family="Arial" font-size="24" font-weight="bold" fill="#1e293b">64</text>
+        <text x="400" y="80" font-family="Arial" font-size="12" fill="#10b981">+12% from yesterday</text>
+      </g>
+      
+      <!-- Sales Chart -->
+      <g transform="translate(0, 200)">
+        <rect width="560" height="200" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+        <text x="20" y="30" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b">Sales Overview</text>
+        
+        <!-- Chart Axes -->
+        <line x1="50" y1="160" x2="530" y2="160" stroke="#e2e8f0" stroke-width="1" />
+        <line x1="50" y1="60" x2="50" y2="160" stroke="#e2e8f0" stroke-width="1" />
+        
+        <!-- Chart Bars -->
+        <rect x="80" y="100" width="30" height="60" fill="#15803d" rx="4" />
+        <rect x="130" y="80" width="30" height="80" fill="#15803d" rx="4" />
+        <rect x="180" y="110" width="30" height="50" fill="#15803d" rx="4" />
+        <rect x="230" y="70" width="30" height="90" fill="#15803d" rx="4" />
+        <rect x="280" y="90" width="30" height="70" fill="#15803d" rx="4" />
+        <rect x="330" y="60" width="30" height="100" fill="#15803d" rx="4" />
+        <rect x="380" y="120" width="30" height="40" fill="#15803d" rx="4" />
+        <rect x="430" y="90" width="30" height="70" fill="#15803d" rx="4" />
+        <rect x="480" y="70" width="30" height="90" fill="#15803d" rx="4" />
+        
+        <!-- X-Axis Labels -->
+        <text x="95" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">Jan</text>
+        <text x="145" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">Feb</text>
+        <text x="195" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">Mar</text>
+        <text x="245" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">Apr</text>
+        <text x="295" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">May</text>
+        <text x="345" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">Jun</text>
+        <text x="395" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">Jul</text>
+        <text x="445" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">Aug</text>
+        <text x="495" y="180" font-family="Arial" font-size="10" text-anchor="middle" fill="#64748b">Sep</text>
+      </g>
+      
+      <!-- Recent Orders Table -->
+      <g transform="translate(0, 420)">
+        <text x="0" y="0" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b">Recent Orders</text>
+        
+        <!-- Table Header -->
+        <rect y="10" width="560" height="30" rx="4" fill="#f8fafc" />
+        <text x="20" y="30" font-family="Arial" font-size="12" font-weight="bold" fill="#64748b">Order ID</text>
+        <text x="120" y="30" font-family="Arial" font-size="12" font-weight="bold" fill="#64748b">Customer</text>
+        <text x="250" y="30" font-family="Arial" font-size="12" font-weight="bold" fill="#64748b">Date</text>
+        <text x="350" y="30" font-family="Arial" font-size="12" font-weight="bold" fill="#64748b">Amount</text>
+        <text x="450" y="30" font-family="Arial" font-size="12" font-weight="bold" fill="#64748b">Status</text>
+        
+        <!-- Table Row 1 -->
+        <line x1="0" y1="40" x2="560" y2="40" stroke="#e2e8f0" stroke-width="1" />
+        <text x="20" y="55" font-family="Arial" font-size="12" fill="#1e293b">#ORD-5289</text>
+        <text x="120" y="55" font-family="Arial" font-size="12" fill="#1e293b">Rajesh Kumar</text>
+        <text x="250" y="55" font-family="Arial" font-size="12" fill="#64748b">Today, 2:30 PM</text>
+        <text x="350" y="55" font-family="Arial" font-size="12" fill="#1e293b">₹1,200</text>
+        <rect x="450" y="45" width="60" height="20" rx="10" fill="#dcfce7" />
+        <text x="480" y="58" font-family="Arial" font-size="10" text-anchor="middle" fill="#15803d">Completed</text>
+        
+        <!-- Table Row 2 -->
+        <line x1="0" y1="70" x2="560" y2="70" stroke="#e2e8f0" stroke-width="1" />
+        <text x="20" y="85" font-family="Arial" font-size="12" fill="#1e293b">#ORD-5288</text>
+        <text x="120" y="85" font-family="Arial" font-size="12" fill="#1e293b">Priya Sharma</text>
+        <text x="250" y="85" font-family="Arial" font-size="12" fill="#64748b">Today, 1:45 PM</text>
+        <text x="350" y="85" font-family="Arial" font-size="12" fill="#1e293b">₹3,400</text>
+        <rect x="450" y="75" width="60" height="20" rx="10" fill="#dcfce7" />
+        <text x="480" y="88" font-family="Arial" font-size="10" text-anchor="middle" fill="#15803d">Completed</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Reflection/Glare Effect -->
+  <rect x="0" y="0" width="800" height="100" fill="url(#glare)" rx="12" opacity="0.1" />
+  
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="glare" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="white" stop-opacity="0" />
+    </linearGradient>
+    <filter id="shadow" x="-2" y="-2" width="104%" height="104%">
+      <feOffset dx="2" dy="2"/>
+      <feGaussianBlur stdDeviation="2"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0"/>
+      <feBlend in="SourceGraphic" />
+    </filter>
+  </defs>
+</svg>

@@ -1,0 +1,40 @@
+# Development Profile Configuration
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+# Development Logging
+logging:
+  level:
+    root: INFO
+    com.zosh: DEBUG
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql: TRACE
+
+# CORS for local development
+cors:
+  allowed-origins: http://localhost:5173,http://localhost:3000,http://localhost:4200
+
+server:
+  error:
+    include-stacktrace: always
+

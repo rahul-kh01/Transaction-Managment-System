@@ -1,0 +1,54 @@
+# Production Profile Configuration
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate  # NEVER use 'update' or 'create-drop' in production
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      enabled: false
+
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+
+# Production Logging - Minimal for performance
+logging:
+  level:
+    root: WARN
+    com.zosh: INFO
+    org:
+      springframework:
+        web: WARN
+        security: WARN
+      hibernate:
+        SQL: WARN
+        type:
+          descriptor:
+            sql: WARN
+
+server:
+  error:
+    include-stacktrace: never
+    include-message: always
+  compression:
+    enabled: true
+
+# Security headers and production optimizations
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+

@@ -1,0 +1,106 @@
+===========================================
+POS System Environment Configuration
+===========================================
+IMPORTANT: Copy this file to .env and fill in your actual values
+NEVER commit .env file to version control
+===========================================
+
+===========================================
+Application Environment
+===========================================
+SPRING_PROFILES_ACTIVE=dev
+# Options: dev, prod
+
+===========================================
+Server Configuration
+===========================================
+SERVER_PORT=5000
+
+===========================================
+Database Configuration
+===========================================
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=pos
+DB_USERNAME=root
+DB_PASSWORD=your_database_password_here
+DB_USE_SSL=false
+DB_POOL_SIZE=10
+DB_MIN_IDLE=5
+
+===========================================
+JPA/Hibernate Configuration
+===========================================
+JPA_DDL_AUTO=update
+# Options: validate, update, create, create-drop
+# PRODUCTION: Always use 'validate'
+# DEVELOPMENT: Use 'update'
+
+JPA_SHOW_SQL=false
+# Set to true only in development
+
+===========================================
+JWT Configuration
+===========================================
+# CRITICAL: Generate a secure random string (at least 64 characters)
+# Use: openssl rand -base64 64
+JWT_SECRET=your_super_secure_jwt_secret_key_at_least_64_characters_long_never_share_this
+JWT_EXPIRATION=86400000
+# 86400000 ms = 24 hours
+
+===========================================
+CORS Configuration
+===========================================
+CORS_ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
+# Production: Add your production frontend URLs
+# Example: https://yourdomain.com,https://www.yourdomain.com
+
+===========================================
+Email Configuration (Gmail SMTP)
+===========================================
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your-email@gmail.com
+MAIL_PASSWORD=your_gmail_app_password
+# Generate app password: https://myaccount.google.com/apppasswords
+
+===========================================
+Payment Gateway - Razorpay
+===========================================
+RAZORPAY_API_KEY=your_razorpay_api_key
+RAZORPAY_API_SECRET=your_razorpay_api_secret
+# Get from: https://dashboard.razorpay.com/app/keys
+
+===========================================
+Payment Gateway - Stripe
+===========================================
+STRIPE_API_KEY=your_stripe_api_key
+# Get from: https://dashboard.stripe.com/apikeys
+
+===========================================
+Frontend Configuration
+===========================================
+FRONTEND_RESET_URL=http://localhost:5173/auth/reset-password?token=
+# Production: https://yourdomain.com/auth/reset-password?token=
+
+===========================================
+Logging Configuration
+===========================================
+LOG_LEVEL_ROOT=INFO
+LOG_LEVEL_APP=INFO
+LOG_LEVEL_SPRING=INFO
+LOG_LEVEL_SECURITY=INFO
+LOG_LEVEL_SQL=WARN
+LOG_LEVEL_SQL_TRACE=WARN
+LOG_FILE=logs/pos-system.log
+
+# Development logging (set to DEBUG for detailed logs):
+# LOG_LEVEL_APP=DEBUG
+# LOG_LEVEL_SQL=DEBUG
+
+===========================================
+DevTools (Development Only)
+===========================================
+DEVTOOLS_ENABLED=true
+# Production: Set to false
+

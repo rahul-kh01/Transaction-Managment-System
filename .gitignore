@@ -1,0 +1,155 @@
+##########################################
+# 🌍 Global Rules for Entire Project
+##########################################
+
+# OS / IDE / Temp files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+*.rej
+*.out
+*.pid
+*.cache
+*.lock
+.vscode/
+.idea/
+*.iml
+
+# Ignore documentation & scripts
+*.md
+*.sh
+*.cursorignore
+
+##########################################
+# ⚙️ Backend (Spring Boot / Maven)
+##########################################
+
+# Maven build directories
+pos-backend/target/
+pos-backend/logs/
+pos-backend/.mvn/
+!pos-backend/.mvn/wrapper/maven-wrapper.jar
+
+# Spring Boot binaries
+*.jar
+*.war
+*.ear
+
+# IDE metadata / compiled output
+pos-backend/.classpath
+pos-backend/.project
+pos-backend/.settings/
+pos-backend/bin/
+pos-backend/out/
+
+# Maven plugin outputs
+pos-backend/target/generated-sources/
+pos-backend/target/generated-test-sources/
+pos-backend/target/maven-status/
+pos-backend/target/test-classes/
+pos-backend/target/classes/
+
+##########################################
+# 💻 Frontend (Vite + React)
+##########################################
+
+# Dependency directories
+pos-frontend-vite/node_modules/
+pos-frontend-vite/.pnpm/
+pos-frontend-vite/.turbo/
+pos-frontend-vite/.cache/
+pos-frontend-vite/.vite/
+pos-frontend-vite/.eslintcache
+
+# Build outputs
+pos-frontend-vite/dist/
+pos-frontend-vite/build/
+
+# Local environment files
+pos-frontend-vite/.env
+pos-frontend-vite/.env.*
+!pos-frontend-vite/env.example  # Keep sample env file
+
+# Log files
+pos-frontend-vite/npm-debug.log*
+pos-frontend-vite/yarn-debug.log*
+pos-frontend-vite/yarn-error.log*
+pos-frontend-vite/pnpm-debug.log*
+
+# Vite cache / metadata
+pos-frontend-vite/.vite/deps/
+pos-frontend-vite/.vite-temp/
+
+# JS config variants for IDE use — safe to ignore
+pos-frontend-vite/jsconfig.*.json
+pos-frontend-vite/jsconfig.json
+
+# ESLint / Configs that are regenerated or local
+pos-frontend-vite/eslint.config.js
+pos-frontend-vite/components.json
+
+# SVG & build assets from dist/public — generated at runtime
+pos-frontend-vite/dist/**/*.svg
+
+##########################################
+# 🔒 System & Deployment Extras
+##########################################
+
+# Environment & credentials
+.env
+.env.*
+*.crt
+*.key
+*.pem
+
+# Backup or dump files
+*.sql
+*.dump
+*.gz
+*.zip
+
+# Coverage reports
+coverage/
+*.lcov
+reports/
+
+# Node / package lockfiles (optional; keep only one)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Deployment artifacts
+deploy/
+scripts/
+tmp/
+.cache/
+*.tar
+*.tgz
+
+##########################################
+# 🧰 Custom Additions from Project Scan
+##########################################
+
+# Markdown docs that exist in repo root & src (based on your scan)
+pos-frontend-vite/DATACLONE_ERROR_FIX.md
+pos-frontend-vite/FIXES_SUMMARY.md
+pos-frontend-vite/FORM_WARNINGS_FIXED.md
+pos-frontend-vite/QUICK_FIX_GUIDE.md
+pos-frontend-vite/RENDER_DEPLOYMENT.md
+pos-frontend-vite/UNLOAD_WARNING_EXPLAINED.md
+pos-frontend-vite/README.md
+pos-frontend-vite/src/**/README.md
+
+# Onboarding docs and internal READMEs
+pos-frontend-vite/src/pages/onboarding/README.md
+pos-frontend-vite/src/pages/cashier/README.md
+pos-frontend-vite/src/pages/SuperAdminDashboard/README.md
+
+# Misc root files to ignore
+pos-frontend-vite/vite.svg
+pos-frontend-vite/vite.config.js  # if dynamically generated at build time

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <title>Zosh POS</title>
+    <script>
+      // Patch DevTools hook BEFORE React loads to prevent errors
+      (function() {
+        // Override performance.measure to prevent DataCloneError
+        if (window.performance && window.performance.measure) {
+          const originalMeasure = window.performance.measure;
+          window.performance.measure = function(...args) {
+            try {
+              return originalMeasure.apply(this, args);
+            } catch (err) {
+              if (err?.name === 'DataCloneError') {
+                return undefined;
+              }
+              throw err;
+            }
+          };
+        }
+
+        // Suppress DevTools-related console messages
+        const originalError = console.error;
+        console.error = function(...args) {
+          const message = String(args[0] || '');
+          if (
+            message.includes('React DevTools') ||
+            message.includes('DataCloneError') ||
+            message.includes('injectIntoGlobalHook') ||
+            message.includes('@vitejs/plugin-react')
+          ) {
+            return;
+          }
+          originalError.apply(console, args);
+        };
+
+        // Handle global errors
+        window.addEventListener('error', function(event) {
+          if (
+            event.error?.name === 'DataCloneError' ||
+            event.message?.includes('React DevTools') ||
+            event.message?.includes('injectIntoGlobalHook') ||
+            event.message?.includes('@vitejs/plugin-react')
+          ) {
+            event.preventDefault();
+            return false;
+          }
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
