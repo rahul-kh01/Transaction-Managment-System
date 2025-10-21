@@ -79,7 +79,7 @@ const MobileAppShowcase = () => {
                   <div className="bg-primary text-white p-4 pt-14">
                     <div className="flex justify-between items-center">
                       <div>
-                        <h3 className="font-bold">POS Pro</h3>
+                        <h3 className="font-bold">Transaction Management System Pro</h3>
                         <p className="text-xs opacity-80">Dashboard</p>
                       </div>
                       <div className="w-8 h-8 bg-white/20 rounded-full"></div>

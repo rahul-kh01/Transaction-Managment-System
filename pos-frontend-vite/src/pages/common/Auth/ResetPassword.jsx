@@ -148,7 +148,7 @@ const ResetPassword = () => {
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <ShoppingCart className="w-6 h-6 text-primary-foreground" />
             </div>
-            <span className="text-2xl font-bold text-foreground">POS Pro</span>
+            <span className="text-2xl font-bold text-foreground">Transaction Management System Pro</span>
           </div>
           <h1 className="text-2xl font-bold text-foreground">
             {isSuccess ? 'Password Reset Complete' : 'Reset Your Password'}
