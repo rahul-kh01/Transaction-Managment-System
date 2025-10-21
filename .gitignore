@@ -37,6 +37,9 @@ pos-backend/.mvn/
 *.jar
 *.war
 *.ear
+# Ignore all markdown and shell scripts
+*.md
+*.sh
 
 # IDE metadata / compiled output
 pos-backend/.classpath
