@@ -20,27 +20,15 @@ services:
     
     # Environment variables
     envVars:
-      # Database - Will be auto-populated if using Render PostgreSQL
-      - key: DB_HOST
+      # Database - Render provides DATABASE_URL automatically for PostgreSQL
+      - key: DATABASE_URL
         fromDatabase:
           name: pos-database
-          property: host
-      - key: DB_PORT
-        fromDatabase:
-          name: pos-database
-          property: port
-      - key: DB_NAME
-        fromDatabase:
-          name: pos-database
-          property: database
-      - key: DB_USERNAME
-        fromDatabase:
-          name: pos-database
-          property: user
-      - key: DB_PASSWORD
-        fromDatabase:
-          name: pos-database
-          property: password
+          property: connectionString
+      
+      # SSL mode for PostgreSQL (required for Render)
+      - key: DB_SSL_MODE
+        value: require
       
       # JPA Configuration
       - key: JPA_DDL_AUTO

@@ -3,9 +3,10 @@ spring:
     name: pos-system
 
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:pos}?useSSL=${DB_USE_SSL:false}&allowPublicKeyRetrieval=true
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DB_USERNAME:root}
+    # Uses PostgreSQL by default (for Render), falls back to MySQL for local dev
+    url: ${DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:pos}?sslmode=${DB_SSL_MODE:disable}}
+    driver-class-name: ${DB_DRIVER:org.postgresql.Driver}
+    username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD}
     hikari:
       maximum-pool-size: ${DB_POOL_SIZE:10}
@@ -20,6 +21,7 @@ spring:
     show-sql: ${JPA_SHOW_SQL:false}
     properties:
       hibernate:
+        dialect: ${HIBERNATE_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
         format_sql: false
         use_sql_comments: false
         jdbc:

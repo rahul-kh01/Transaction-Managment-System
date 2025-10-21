@@ -118,7 +118,7 @@ const Header = () => {
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center space-x-2">
               <a 
-                href="https://github.com" 
+                href="https://github.com/rahul-kh01/Transaction-Managment-System" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-accent transition-colors"
