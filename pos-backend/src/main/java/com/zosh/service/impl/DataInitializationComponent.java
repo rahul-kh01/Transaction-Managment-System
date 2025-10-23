@@ -17,7 +17,7 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-@Component
+// @Component  // DISABLED - Using OptimizedDataInitializationComponent instead
 @RequiredArgsConstructor
 @Slf4j
 public class DataInitializationComponent implements CommandLineRunner {

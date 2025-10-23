@@ -15,7 +15,7 @@
 
 services:
   # ======================================================
-  # BACKEND API SERVICE (Spring Boot + Docker)
+  # BACKEND API SERVICE (Spring Boot + Docker + Memory Optimized)
   # ======================================================
   - type: web
     name: pos-backend
@@ -29,6 +29,10 @@ services:
     
     # Health check configuration
     healthCheckPath: /actuator/health
+    
+    # Memory optimization settings
+    dockerfilePath: ./pos-backend/Dockerfile
+    dockerContext: ./pos-backend
     
     # Environment variables for backend
     envVars:
@@ -119,6 +123,20 @@ services:
       # ===== DevTools Configuration =====
       - key: DEVTOOLS_ENABLED
         value: false
+      
+      # ===== Memory Optimization =====
+      - key: JAVA_OPTS
+        value: "-Xmx256m -Xms128m -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      - key: SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE
+        value: 25
+      - key: SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_INSERTS
+        value: true
+      - key: SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_UPDATES
+        value: true
+      - key: SPRING_JPA_PROPERTIES_HIBERNATE_BATCH_VERSIONED_DATA
+        value: true
 
   # ======================================================
   # FRONTEND STATIC SITE (React + Vite + pnpm)

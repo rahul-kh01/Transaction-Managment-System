@@ -16,8 +16,8 @@ RUN --mount=type=cache,target=/root/.m2 mvn -q -e -DskipTests package
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# JVM tuning for containers (optimized for Render free tier)
-ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC"
+# JVM tuning for containers (optimized for Render free tier - 512MB limit)
+ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=60.0 -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseStringDeduplication -XX:+OptimizeStringConcat"
 
 # Copy fat jar
 COPY --from=build /app/target/*.jar /app/app.jar
