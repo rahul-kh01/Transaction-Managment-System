@@ -1,11 +1,11 @@
-# Railway Production Configuration
-# Optimized for Railway free tier deployment
+# GCP Cloud Run Production Configuration
+# Optimized for Google Cloud Platform deployment
 
 spring:
   profiles:
-    active: railway
+    active: gcp
   
-  # Database Configuration (Railway PostgreSQL)
+  # Database Configuration (Cloud SQL PostgreSQL)
   datasource:
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/posdb}
     username: ${DB_USERNAME:postgres}
@@ -38,7 +38,7 @@ spring:
   
   # Server Configuration
   server:
-    port: ${PORT:10000}
+    port: ${PORT:8080}
     servlet:
       context-path: /
     compression:
@@ -46,7 +46,7 @@ spring:
       mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
       min-response-size: 1024
   
-  # Mail Configuration (Optional)
+  # Mail Configuration (Gmail SMTP)
   mail:
     host: ${MAIL_HOST:smtp.gmail.com}
     port: ${MAIL_PORT:587}
@@ -118,13 +118,11 @@ app:
   frontend:
     reset-url: ${FRONTEND_RESET_URL:http://localhost:3000/auth/reset-password?token=}
   
-  # Railway-specific optimizations
-  railway:
-    memory-limit: 512MB
-    optimization:
-      enabled: true
-      batch-size: 25
-      max-connections: 10
+  # GCP-specific optimizations
+  gcp:
+    project-id: ${GOOGLE_CLOUD_PROJECT:}
+    region: ${GOOGLE_CLOUD_REGION:us-central1}
+    service: ${GOOGLE_CLOUD_SERVICE:pos-backend}
 
 # Management Configuration
 management:
@@ -143,8 +141,9 @@ management:
     build:
       enabled: true
 
-# Railway Environment Detection
-railway:
+# GCP Environment Detection
+gcp:
   environment: production
-  region: ${RAILWAY_REGION:us-west1}
-  service: ${RAILWAY_SERVICE:pos-backend}
+  project: ${GOOGLE_CLOUD_PROJECT:}
+  region: ${GOOGLE_CLOUD_REGION:us-central1}
+  service: ${GOOGLE_CLOUD_SERVICE:pos-backend}

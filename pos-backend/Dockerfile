@@ -1,34 +1,39 @@
-# syntax=docker/dockerfile:1
-
-# ---- Build stage ----
+# Multi-stage build for GCP Cloud Run
 FROM maven:3.9-eclipse-temurin-17 AS build
+
 WORKDIR /app
 
-# Leverage build cache for dependencies
+# Copy pom.xml first for better caching
 COPY pom.xml .
-RUN --mount=type=cache,target=/root/.m2 mvn -q -e -DskipTests dependency:go-offline
+RUN mvn dependency:go-offline -B
 
-# Copy sources and build
+# Copy source code
 COPY src ./src
-RUN --mount=type=cache,target=/root/.m2 mvn -q -e -DskipTests package
 
-# ---- Runtime stage ----
-FROM eclipse-temurin:17-jre
+# Build the application
+RUN mvn clean package -DskipTests
+
+# Runtime stage
+FROM eclipse-temurin:17-jre-alpine
+
 WORKDIR /app
 
-# JVM tuning for containers (optimized for Render free tier - 512MB limit)
-ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=60.0 -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseStringDeduplication -XX:+OptimizeStringConcat"
+# Install curl for health checks
+RUN apk add --no-cache curl
 
-# Copy fat jar
-COPY --from=build /app/target/*.jar /app/app.jar
+# Copy the built jar
+COPY --from=build /app/target/*.jar app.jar
 
-# Render provides PORT environment variable. Fall back to 10000 for Render's default.
-ENV PORT=10000
-EXPOSE 10000
+# GCP Cloud Run configuration
+ENV PORT=8080
+EXPOSE 8080
 
-# Health check for faster startup detection
+# Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
   CMD curl -f http://localhost:${PORT}/actuator/health || exit 1
 
-# Ensure Spring Boot binds to the provided PORT
-ENTRYPOINT ["sh","-c","java $JAVA_OPTS -Dserver.port=${PORT:-10000} -jar /app/app.jar"]
+# JVM optimization for Cloud Run
+ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+
+# Start the application
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]

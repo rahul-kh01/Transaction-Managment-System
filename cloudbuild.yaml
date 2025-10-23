@@ -1,0 +1,84 @@
+# Google Cloud Build configuration for POS System
+# This file defines the build process for both frontend and backend
+
+steps:
+  # Build Backend
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/pos-backend:$COMMIT_SHA', './pos-backend']
+    dir: '.'
+
+  # Build Frontend
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/pos-frontend:$COMMIT_SHA', './pos-frontend-vite']
+    dir: '.'
+
+  # Push Backend to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/pos-backend:$COMMIT_SHA']
+
+  # Push Frontend to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/pos-frontend:$COMMIT_SHA']
+
+  # Deploy Backend to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'pos-backend'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/pos-backend:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '512Mi'
+      - '--cpu'
+      - '1'
+      - '--max-instances'
+      - '10'
+      - '--port'
+      - '8080'
+      - '--set-env-vars'
+      - 'SPRING_PROFILES_ACTIVE=gcp'
+
+  # Deploy Frontend to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'pos-frontend'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/pos-frontend:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '256Mi'
+      - '--cpu'
+      - '1'
+      - '--max-instances'
+      - '10'
+      - '--port'
+      - '8080'
+
+# Build options
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 100
+  logging: CLOUD_LOGGING_ONLY
+
+# Substitutions
+substitutions:
+  _SERVICE_REGION: 'us-central1'
+  _BACKEND_SERVICE: 'pos-backend'
+  _FRONTEND_SERVICE: 'pos-frontend'
+
+# Timeout
+timeout: '1200s'
