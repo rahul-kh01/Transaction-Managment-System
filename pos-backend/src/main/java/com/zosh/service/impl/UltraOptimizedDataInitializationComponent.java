@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class OptimizedDataInitializationComponent implements CommandLineRunner {
+public class UltraOptimizedDataInitializationComponent implements CommandLineRunner {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -38,16 +38,18 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
     private final SubscriptionRepository subscriptionRepository;
 
     private final Random random = new Random();
-    private static final int BATCH_SIZE = 50; // Process data in smaller batches
-    private static final int MAX_ORDERS_PER_DAY = 20; // Reduced from 30
-    private static final int MAX_DAYS = 30; // Reduced from 90 days
+    private static final int BATCH_SIZE = 25; // Smaller batches
+    private static final int MAX_ORDERS_PER_DAY = 10; // Much reduced
+    private static final int MAX_DAYS = 7; // Only 7 days of data
+    private static final int MAX_PRODUCTS = 5; // Only 5 products per store
+    private static final int MAX_CUSTOMERS = 10; // Only 10 customers per store
 
     @Override
     @Transactional
     public void run(String... args) {
         try {
             log.info("==============================================");
-            log.info("Starting OPTIMIZED data initialization...");
+            log.info("Starting ULTRA-OPTIMIZED data initialization...");
             log.info("Memory optimization: Batch size={}, Max orders/day={}, Max days={}", 
                     BATCH_SIZE, MAX_ORDERS_PER_DAY, MAX_DAYS);
             log.info("==============================================");
@@ -62,14 +64,14 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
                 return;
             }
 
-            log.info("Database is empty. Proceeding with OPTIMIZED data initialization...");
+            log.info("Database is empty. Proceeding with ULTRA-OPTIMIZED data initialization...");
             
             // Initialize core data first
             initializeAdminUser();
             initializeSubscriptionPlans();
             
-            // Initialize sample data with memory optimization
-            initializeOptimizedSampleData();
+            // Initialize minimal sample data
+            initializeUltraOptimizedSampleData();
             
             // Verify data was created
             long finalUserCount = userRepository.count();
@@ -77,7 +79,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             long productCount = productRepository.count();
             
             log.info("==============================================");
-            log.info("OPTIMIZED data initialization completed successfully!");
+            log.info("ULTRA-OPTIMIZED data initialization completed successfully!");
             log.info("Created {} users", finalUserCount);
             log.info("Created {} stores", storeCount);
             log.info("Created {} products", productCount);
@@ -150,25 +152,6 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
                 .prioritySupport(false)
                 .enableMultiLocation(true)
                 .extraFeatures(Arrays.asList("Advanced analytics", "Priority email support", "API access"))
-                .build(),
-                
-            SubscriptionPlan.builder()
-                .name("Enterprise")
-                .description("Complete solution for large-scale operations")
-                .price(199.99)
-                .billingCycle(BillingCycle.MONTHLY)
-                .maxBranches(999)
-                .maxUsers(999)
-                .maxProducts(99999)
-                .enableAdvancedReports(true)
-                .enableInventory(true)
-                .enableIntegrations(true)
-                .enableEcommerce(true)
-                .enableInvoiceBranding(true)
-                .prioritySupport(true)
-                .enableMultiLocation(true)
-                .extraFeatures(Arrays.asList("Dedicated account manager", "24/7 phone support", 
-                    "Custom integrations", "White-label options", "Advanced security"))
                 .build()
         );
 
@@ -176,28 +159,25 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         log.info("Subscription plans created: {}", plans.size());
     }
 
-    private void initializeOptimizedSampleData() {
-        log.info("Creating OPTIMIZED sample stores with reduced data...");
-        log.info("Features: 30-day historical data, reduced orders, memory-optimized processing");
+    private void initializeUltraOptimizedSampleData() {
+        log.info("Creating ULTRA-OPTIMIZED sample stores with minimal data...");
+        log.info("Features: 7-day historical data, minimal orders, ultra-memory-optimized processing");
         
         // Get subscription plans
         List<SubscriptionPlan> plans = subscriptionPlanRepository.findAll();
         
-        // Create fewer stores with less data
-        createOptimizedStore("TechMart Electronics", "Electronics and gadgets retail chain", 
-            "Electronics", StoreStatus.ACTIVE, plans.get(1), 2); // Reduced branches
+        // Create only 2 stores with minimal data
+        createUltraOptimizedStore("TechMart Electronics", "Electronics and gadgets retail chain", 
+            "Electronics", StoreStatus.ACTIVE, plans.get(1), 1); // Single branch
         
-        createOptimizedStore("Fresh Grocery Store", "Your neighborhood grocery store", 
-            "Grocery", StoreStatus.ACTIVE, plans.get(2), 2); // Reduced branches
-        
-        createOptimizedStore("Fashion Hub", "Trendy clothing and accessories", 
-            "Fashion", StoreStatus.ACTIVE, plans.get(1), 1); // Single branch
+        createUltraOptimizedStore("Fresh Grocery Store", "Your neighborhood grocery store", 
+            "Grocery", StoreStatus.ACTIVE, plans.get(0), 1); // Single branch
     }
 
-    private void createOptimizedStore(String brandName, String description, String storeType, 
+    private void createUltraOptimizedStore(String brandName, String description, String storeType, 
                             StoreStatus status, SubscriptionPlan plan, int numBranches) {
         
-        log.info("Creating OPTIMIZED store: {}", brandName);
+        log.info("Creating ULTRA-OPTIMIZED store: {}", brandName);
         
         // Create Store Admin
         User storeAdmin = new User();
@@ -229,7 +209,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         userRepository.save(storeAdmin);
         
         // Create Subscription
-        LocalDate startDate = LocalDate.now().minusMonths(1);
+        LocalDate startDate = LocalDate.now().minusDays(7);
         LocalDate endDate = plan.getBillingCycle() == BillingCycle.MONTHLY 
             ? startDate.plusMonths(1) : startDate.plusYears(1);
             
@@ -248,35 +228,35 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         // Only create detailed data for ACTIVE stores
         if (status == StoreStatus.ACTIVE) {
             // Create branches
-            List<Branch> branches = createOptimizedBranches(store, numBranches);
+            List<Branch> branches = createUltraOptimizedBranches(store, numBranches);
             
             // Create categories and products
-            List<Category> categories = createOptimizedCategories(store, storeType);
-            List<Product> products = createOptimizedProducts(store, categories, storeType);
+            List<Category> categories = createUltraOptimizedCategories(store, storeType);
+            List<Product> products = createUltraOptimizedProducts(store, categories, storeType);
             
             // Create inventory for all branches
-            createOptimizedInventory(branches, products);
+            createUltraOptimizedInventory(branches, products);
             
             // Create customers
-            List<Customer> customers = createOptimizedCustomers(store, 20); // Reduced from 50
+            List<Customer> customers = createUltraOptimizedCustomers(store, MAX_CUSTOMERS);
             
             // Create cashiers for each branch
             Map<Branch, List<User>> branchCashiers = new HashMap<>();
             for (Branch branch : branches) {
-                List<User> cashiers = createOptimizedCashiers(store, branch, 2); // Reduced from 3
+                List<User> cashiers = createUltraOptimizedCashiers(store, branch, 1); // Only 1 cashier
                 branchCashiers.put(branch, cashiers);
             }
             
-            // Create orders, shift reports, and refunds for the past 30 days
-            createOptimizedTransactionData(branches, branchCashiers, products, customers);
+            // Create orders, shift reports, and refunds for the past 7 days
+            createUltraOptimizedTransactionData(branches, branchCashiers, products, customers);
         }
         
-        log.info("OPTIMIZED store '{}' created with status: {}", brandName, status);
+        log.info("ULTRA-OPTIMIZED store '{}' created with status: {}", brandName, status);
     }
 
-    private List<Branch> createOptimizedBranches(Store store, int count) {
+    private List<Branch> createUltraOptimizedBranches(Store store, int count) {
         List<Branch> branches = new ArrayList<>();
-        String[] locations = {"Downtown", "Mall", "Airport", "Westside", "Eastside"};
+        String[] locations = {"Downtown", "Mall"};
         
         for (int i = 0; i < count; i++) {
             // Create Branch Manager
@@ -313,20 +293,19 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             branches.add(branch);
         }
         
-        log.info("Created {} OPTIMIZED branches for store: {}", count, store.getBrand());
+        log.info("Created {} ULTRA-OPTIMIZED branches for store: {}", count, store.getBrand());
         return branches;
     }
 
-    private List<Category> createOptimizedCategories(Store store, String storeType) {
+    private List<Category> createUltraOptimizedCategories(Store store, String storeType) {
         List<Category> categories = new ArrayList<>();
         Map<String, List<String>> categoryMap = new HashMap<>();
         
-        categoryMap.put("Electronics", Arrays.asList("Smartphones", "Laptops", "Accessories"));
-        categoryMap.put("Grocery", Arrays.asList("Fruits & Vegetables", "Dairy Products", "Beverages"));
-        categoryMap.put("Fashion", Arrays.asList("Men's Clothing", "Women's Clothing", "Accessories"));
+        categoryMap.put("Electronics", Arrays.asList("Smartphones", "Laptops"));
+        categoryMap.put("Grocery", Arrays.asList("Fruits & Vegetables", "Dairy Products"));
         
         List<String> categoryNames = categoryMap.getOrDefault(storeType, 
-            Arrays.asList("General", "Electronics", "Accessories"));
+            Arrays.asList("General", "Electronics"));
         
         for (String categoryName : categoryNames) {
             Category category = Category.builder()
@@ -336,16 +315,16 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             categories.add(categoryRepository.save(category));
         }
         
-        log.info("Created {} OPTIMIZED categories for store: {}", categories.size(), store.getBrand());
+        log.info("Created {} ULTRA-OPTIMIZED categories for store: {}", categories.size(), store.getBrand());
         return categories;
     }
 
-    private List<Product> createOptimizedProducts(Store store, List<Category> categories, String storeType) {
+    private List<Product> createUltraOptimizedProducts(Store store, List<Category> categories, String storeType) {
         List<Product> products = new ArrayList<>();
         
         Map<String, List<ProductData>> productDataMap = new HashMap<>();
         
-        // Reduced product sets
+        // Ultra-minimal product sets
         productDataMap.put("Electronics", Arrays.asList(
             new ProductData("iPhone 15 Pro", "Latest Apple smartphone", "Apple", 999.99, 949.99),
             new ProductData("Samsung Galaxy S24", "Flagship Android smartphone", "Samsung", 899.99, 849.99),
@@ -362,18 +341,13 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             new ProductData("Potato Chips", "Classic flavor", "Lay's", 4.99, 3.99)
         ));
         
-        productDataMap.put("Fashion", Arrays.asList(
-            new ProductData("Men's T-Shirt", "Cotton crew neck t-shirt", "Nike", 29.99, 24.99),
-            new ProductData("Women's Dress", "Summer floral dress", "Zara", 79.99, 69.99),
-            new ProductData("Running Shoes", "Athletic running shoes", "Adidas", 89.99, 79.99),
-            new ProductData("Leather Belt", "Genuine leather belt", "Fossil", 49.99, 39.99),
-            new ProductData("Backpack", "Water-resistant backpack", "North Face", 99.99, 89.99)
-        ));
-        
         List<ProductData> productDataList = productDataMap.getOrDefault(storeType, 
             productDataMap.get("Electronics"));
         
-        for (int i = 0; i < productDataList.size(); i++) {
+        // Limit to MAX_PRODUCTS
+        int productCount = Math.min(productDataList.size(), MAX_PRODUCTS);
+        
+        for (int i = 0; i < productCount; i++) {
             ProductData pd = productDataList.get(i);
             Category category = categories.get(i % categories.size());
             
@@ -390,16 +364,16 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             products.add(productRepository.save(product));
         }
         
-        log.info("Created {} OPTIMIZED products for store: {}", products.size(), store.getBrand());
+        log.info("Created {} ULTRA-OPTIMIZED products for store: {}", products.size(), store.getBrand());
         return products;
     }
 
-    private void createOptimizedInventory(List<Branch> branches, List<Product> products) {
+    private void createUltraOptimizedInventory(List<Branch> branches, List<Product> products) {
         List<Inventory> inventories = new ArrayList<>();
         
         for (Branch branch : branches) {
             for (Product product : products) {
-                int quantity = random.nextInt(100) + 25; // Reduced from 200+50
+                int quantity = random.nextInt(50) + 10; // Reduced from 100+25
                 
                 Inventory inventory = Inventory.builder()
                     .branch(branch)
@@ -411,10 +385,10 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         }
         
         inventoryRepository.saveAll(inventories);
-        log.info("Created OPTIMIZED inventory for {} branches", branches.size());
+        log.info("Created ULTRA-OPTIMIZED inventory for {} branches", branches.size());
     }
 
-    private List<Customer> createOptimizedCustomers(Store store, int count) {
+    private List<Customer> createUltraOptimizedCustomers(Store store, int count) {
         List<Customer> customers = new ArrayList<>();
         String[] firstNames = {"John", "Jane", "Michael", "Emily", "David", "Sarah", "Robert", "Lisa"};
         String[] lastNames = {"Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis"};
@@ -432,11 +406,11 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             customers.add(customerRepository.save(customer));
         }
         
-        log.info("Created {} OPTIMIZED customers for store: {}", count, store.getBrand());
+        log.info("Created {} ULTRA-OPTIMIZED customers for store: {}", count, store.getBrand());
         return customers;
     }
 
-    private List<User> createOptimizedCashiers(Store store, Branch branch, int count) {
+    private List<User> createUltraOptimizedCashiers(Store store, Branch branch, int count) {
         List<User> cashiers = new ArrayList<>();
         String[] names = {"Alex", "Jordan", "Taylor", "Morgan", "Casey"};
         
@@ -455,11 +429,11 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             cashiers.add(userRepository.save(cashier));
         }
         
-        log.info("Created {} OPTIMIZED cashiers for branch: {}", count, branch.getName());
+        log.info("Created {} ULTRA-OPTIMIZED cashiers for branch: {}", count, branch.getName());
         return cashiers;
     }
 
-    private void createOptimizedTransactionData(List<Branch> branches, 
+    private void createUltraOptimizedTransactionData(List<Branch> branches, 
                                              Map<Branch, List<User>> branchCashiers,
                                              List<Product> products,
                                              List<Customer> customers) {
@@ -467,7 +441,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         LocalDateTime endDate = LocalDateTime.now();
         LocalDateTime startDate = endDate.minusDays(MAX_DAYS);
         
-        log.info("Creating OPTIMIZED transaction data from {} to {} ({} days)", 
+        log.info("Creating ULTRA-OPTIMIZED transaction data from {} to {} ({} days)", 
                 startDate, endDate, MAX_DAYS);
         
         for (Branch branch : branches) {
@@ -480,30 +454,29 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             while (currentDate.isBefore(endDate)) {
                 
                 // Calculate growth factor (simulate business growth over time)
-                double growthFactor = 1.0 + (dayIndex / (double) MAX_DAYS) * 0.2; // 20% growth
+                double growthFactor = 1.0 + (dayIndex / (double) MAX_DAYS) * 0.1; // 10% growth
                 
                 // Weekend boost
-                double weekendMultiplier = (currentDate.getDayOfWeek().getValue() >= 6) ? 1.3 : 1.0;
+                double weekendMultiplier = (currentDate.getDayOfWeek().getValue() >= 6) ? 1.2 : 1.0;
                 
                 // Combine factors
                 double totalMultiplier = growthFactor * weekendMultiplier;
                 
-                // Create 1-2 shifts per day (reduced)
-                int shiftsPerDay = random.nextInt(2) + 1;
+                // Create 1 shift per day (reduced)
+                int shiftsPerDay = 1;
                 
                 for (int shiftNum = 0; shiftNum < shiftsPerDay; shiftNum++) {
                     User cashier = cashiers.get(random.nextInt(cashiers.size()));
                     
-                    LocalDateTime shiftStart = currentDate.withHour(shiftNum == 0 ? 9 : 14)
-                                                          .withMinute(0);
-                    LocalDateTime shiftEnd = shiftStart.plusHours(6);
+                    LocalDateTime shiftStart = currentDate.withHour(9).withMinute(0);
+                    LocalDateTime shiftEnd = shiftStart.plusHours(8);
                     
                     // Create orders during this shift with reduced count
-                    List<Order> shiftOrders = createOptimizedShiftOrders(branch, cashier, products, 
+                    List<Order> shiftOrders = createUltraOptimizedShiftOrders(branch, cashier, products, 
                                                                        customers, shiftStart, shiftEnd, totalMultiplier);
                     
                     // Create shift report
-                    createOptimizedShiftReport(branch, cashier, shiftOrders, shiftStart, shiftEnd);
+                    createUltraOptimizedShiftReport(branch, cashier, shiftOrders, shiftStart, shiftEnd);
                 }
                 
                 currentDate = currentDate.plusDays(1);
@@ -511,18 +484,18 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             }
         }
         
-        log.info("Created {} days of OPTIMIZED transaction data for all branches", MAX_DAYS);
+        log.info("Created {} days of ULTRA-OPTIMIZED transaction data for all branches", MAX_DAYS);
     }
 
-    private List<Order> createOptimizedShiftOrders(Branch branch, User cashier, List<Product> products,
+    private List<Order> createUltraOptimizedShiftOrders(Branch branch, User cashier, List<Product> products,
                                          List<Customer> customers, LocalDateTime shiftStart, 
                                          LocalDateTime shiftEnd, double multiplier) {
         
         List<Order> orders = new ArrayList<>();
         PaymentType[] paymentTypes = PaymentType.values();
         
-        // Create 5-15 orders per shift (reduced from 10-30)
-        int baseOrderCount = random.nextInt(11) + 5;
+        // Create 3-8 orders per shift (much reduced)
+        int baseOrderCount = random.nextInt(6) + 3;
         int orderCount = (int) Math.round(baseOrderCount * multiplier);
         orderCount = Math.min(orderCount, MAX_ORDERS_PER_DAY); // Cap at max
         
@@ -548,8 +521,8 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
                 .createdAt(orderTime)
                 .build();
             
-            // Create 1-3 items per order (reduced)
-            int itemCount = random.nextDouble() < 0.8 ? random.nextInt(2) + 1 : random.nextInt(3) + 1;
+            // Create 1-2 items per order (reduced)
+            int itemCount = random.nextDouble() < 0.9 ? 1 : 2;
             List<OrderItem> orderItems = new ArrayList<>();
             double totalAmount = 0.0;
             
@@ -561,7 +534,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             }
             
             for (Product product : selectedProducts) {
-                int quantity = random.nextInt(2) + 1; // 1-2 items
+                int quantity = 1; // Always 1 item
                 double price = product.getSellingPrice();
                 double itemTotal = price * quantity;
                 totalAmount += itemTotal;
@@ -586,7 +559,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         return orders;
     }
 
-    private void createOptimizedShiftReport(Branch branch, User cashier, List<Order> orders, 
+    private void createUltraOptimizedShiftReport(Branch branch, User cashier, List<Order> orders, 
                                   LocalDateTime shiftStart, LocalDateTime shiftEnd) {
         
         double totalSales = orders.stream()
@@ -594,13 +567,13 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             .sum();
         
         // Create 0-1 refunds per shift (reduced)
-        int refundCount = random.nextDouble() < 0.3 ? 0 : 1;
+        int refundCount = random.nextDouble() < 0.2 ? 0 : 1;
         List<Refund> refunds = new ArrayList<>();
         double totalRefunds = 0.0;
         
         if (refundCount > 0 && !orders.isEmpty()) {
             Order order = orders.get(random.nextInt(orders.size()));
-            double refundAmount = order.getTotalAmount() * (random.nextDouble() * 0.3 + 0.5); // 50-80%
+            double refundAmount = order.getTotalAmount() * 0.8; // 80% refund
             
             Refund refund = new Refund();
             refund.setOrder(order);
@@ -615,7 +588,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
             totalRefunds += refundAmount;
         }
         
-        // Get top 3 selling products (reduced from 5)
+        // Get top 2 selling products (reduced from 3)
         Map<Product, Integer> productQuantities = new HashMap<>();
         for (Order order : orders) {
             for (OrderItem item : order.getItems()) {
@@ -625,7 +598,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         
         List<Product> topProducts = productQuantities.entrySet().stream()
             .sorted(Map.Entry.<Product, Integer>comparingByValue().reversed())
-            .limit(3)
+            .limit(2)
             .map(Map.Entry::getKey)
             .collect(Collectors.toList());
         
@@ -639,7 +612,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         shiftReport.setCashier(cashier);
         shiftReport.setBranch(branch);
         shiftReport.setTopSellingProducts(topProducts);
-        shiftReport.setRecentOrders(orders.stream().limit(5).collect(Collectors.toList())); // Reduced from 10
+        shiftReport.setRecentOrders(orders.stream().limit(3).collect(Collectors.toList())); // Reduced from 5
         shiftReport.setRefunds(refunds);
         
         shiftReportRepository.save(shiftReport);
@@ -660,9 +633,9 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
     }
 
     private String generateAddress() {
-        String[] streets = {"Main St", "Oak Ave", "Maple Dr", "Park Blvd", "Washington St"};
-        String[] cities = {"New York", "Los Angeles", "Chicago", "Houston", "Phoenix"};
-        String[] states = {"NY", "CA", "IL", "TX", "AZ"};
+        String[] streets = {"Main St", "Oak Ave", "Maple Dr"};
+        String[] cities = {"New York", "Los Angeles", "Chicago"};
+        String[] states = {"NY", "CA", "IL"};
         
         int streetNumber = random.nextInt(9000) + 1000;
         String street = streets[random.nextInt(streets.length)];
@@ -683,8 +656,7 @@ public class OptimizedDataInitializationComponent implements CommandLineRunner {
         String[] reasons = {
             "Defective product",
             "Wrong item received",
-            "Customer changed mind",
-            "Product not as described"
+            "Customer changed mind"
         };
         return reasons[random.nextInt(reasons.length)];
     }
