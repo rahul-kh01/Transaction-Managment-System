@@ -39,12 +39,12 @@ public class GCPOptimizedDataInitializationComponent implements CommandLineRunne
 
     private final Random random = new Random();
     
-    // GCP Free Tier Optimizations
-    private static final int BATCH_SIZE = 50; // Larger batches for better performance
-    private static final int MAX_ORDERS_PER_DAY = 15; // Balanced for free tier
-    private static final int MAX_DAYS = 30; // 30 days of data
-    private static final int MAX_PRODUCTS_PER_STORE = 30; // More products for better demo
-    private static final int MAX_CUSTOMERS = 40; // More customers for realistic demo
+    // GCP Free Tier Optimizations - Ultra Minimal for Fast Startup
+    private static final int BATCH_SIZE = 100; // Larger batches for better performance
+    private static final int MAX_ORDERS_PER_DAY = 1; // Ultra minimal for fast startup
+    private static final int MAX_DAYS = 1; // Only 1 day of data for fast startup
+    private static final int MAX_PRODUCTS_PER_STORE = 3; // Ultra minimal products for fast startup
+    private static final int MAX_CUSTOMERS = 3; // Ultra minimal customers for fast startup
 
     @Override
     @Transactional
@@ -184,15 +184,9 @@ public class GCPOptimizedDataInitializationComponent implements CommandLineRunne
         // Get subscription plans
         List<SubscriptionPlan> plans = subscriptionPlanRepository.findAll();
         
-        // Create 3 stores for better demo
+        // Create 1 store for ultra-fast startup
         createOptimizedStore("TechMart Electronics", "Electronics retail chain", 
-            "Electronics", StoreStatus.ACTIVE, plans.get(1), 2);
-        
-        createOptimizedStore("Fresh Grocery Store", "Neighborhood grocery store", 
-            "Grocery", StoreStatus.ACTIVE, plans.get(0), 1);
-        
-        createOptimizedStore("Fashion Hub", "Trendy clothing and accessories", 
-            "Fashion", StoreStatus.ACTIVE, plans.get(1), 2);
+            "Electronics", StoreStatus.ACTIVE, plans.get(1), 1);
     }
 
     private void createOptimizedStore(String brandName, String description, String storeType, 

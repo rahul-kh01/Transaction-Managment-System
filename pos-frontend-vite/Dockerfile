@@ -5,17 +5,19 @@ WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
-COPY pnpm-lock.yaml ./
 
-# Install pnpm and dependencies
-RUN npm install -g pnpm@9.0.0
-RUN pnpm install --frozen-lockfile
+# Install dependencies
+RUN npm install
 
-# Copy source code
-COPY . .
+# Copy source code (excluding node_modules)
+COPY src/ ./src/
+COPY public/ ./public/
+COPY index.html ./
+COPY vite.config.js ./
+COPY jsconfig.json ./
 
 # Build the application
-RUN pnpm run build
+RUN npm run build
 
 # Production stage
 FROM nginx:alpine
