@@ -32,8 +32,8 @@ EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
   CMD curl -f http://localhost:${PORT}/actuator/health || exit 1
 
-# JVM optimization for Cloud Run
-ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+# JVM optimization for Cloud Run (Memory constrained)
+ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=50.0 -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xmx400m -Xms256m -XX:+UseStringDeduplication -XX:+OptimizeStringConcat"
 
 # Start the application
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
