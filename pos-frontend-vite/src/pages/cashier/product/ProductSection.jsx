@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, Barcode, Loader2, X } from "lucide-react";
+import { FiSearch, FiGrid, FiLoader, FiX } from "react-icons/fi";
 import { useToast } from "@/components/ui/use-toast";
 import ProductCard from "./ProductCard";
 import { useDispatch } from "react-redux";
@@ -87,34 +87,29 @@ const ProductSection = ({searchInputRef}) => {
   }, [dispatch, branch, userProfile, toast]);
 
   // Debounced search function
-  const debouncedSearch = useCallback(
-    (() => {
-      let timeoutId;
-      return (query) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-          if (query.trim() && branch?.storeId && localStorage.getItem("jwt")) {
-            dispatch(
-              searchProducts({
-                query: query.trim(),
-                storeId: branch.storeId,
-              })
-            )
-              .unwrap()
-              .catch((error) => {
-                console.error("Search failed:", error);
-                toast({
-                  title: "Search Error",
-                  description: error || "Failed to search products",
-                  variant: "destructive",
-                });
-              });
-          }
-        }, 500); // 300ms debounce
-      };
-    })(),
-    [dispatch, branch, toast]
-  );
+  const debouncedSearch = useCallback((query) => {
+    const timeoutId = setTimeout(() => {
+      if (query.trim() && branch?.storeId && localStorage.getItem("jwt")) {
+        dispatch(
+          searchProducts({
+            query: query.trim(),
+            storeId: branch.storeId,
+          })
+        )
+          .unwrap()
+          .catch((error) => {
+            console.error("Search failed:", error);
+            toast({
+              title: "Search Error",
+              description: error || "Failed to search products",
+              variant: "destructive",
+            });
+          });
+      }
+    }, 500); // 500ms debounce
+    
+    return () => clearTimeout(timeoutId);
+  }, [dispatch, branch, toast]);
 
   // Handle search term changes
   const handleSearchChange = (e) => {
@@ -143,7 +138,7 @@ const ProductSection = ({searchInputRef}) => {
       {/* Search Section */}
       <div className="p-4 border-b bg-muted">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+          <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input
             ref={searchInputRef}
             type="text"
@@ -171,7 +166,7 @@ const ProductSection = ({searchInputRef}) => {
                 onClick={() => setSearchTerm("")}
                 disabled={loading}
               >
-                <X className="w-4 h-4 mr-1" />
+                <FiX className="w-4 h-4 mr-1" />
                 Clear
               </Button>
             )}
@@ -181,7 +176,7 @@ const ProductSection = ({searchInputRef}) => {
               className="text-xs"
               disabled={loading}
             >
-              <Barcode className="w-4 h-4 mr-1" />
+              <FiGrid className="w-4 h-4 mr-1" />
               Scan
             </Button>
           </div>
@@ -193,14 +188,14 @@ const ProductSection = ({searchInputRef}) => {
         {loading ? (
           <div className="flex items-center justify-center h-64">
             <div className="flex flex-col items-center space-y-4">
-              <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+              <FiLoader className="w-8 h-8 animate-spin text-muted-foreground" />
               <p className="text-muted-foreground">Loading products...</p>
             </div>
           </div>
         ) : getDisplayProducts().length === 0 ? (
           <div className="flex items-center justify-center h-64">
             <div className="text-center">
-              <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+              <FiSearch className="w-12 h-12 text-gray-300 mx-auto mb-4" />
               <p className="text-gray-500">
                 {searchTerm
                   ? "No products found matching your search"

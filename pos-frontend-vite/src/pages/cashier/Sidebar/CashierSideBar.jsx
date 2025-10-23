@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getBranchById } from "../../../Redux Toolkit/features/branch/branchThunks";
 import { Button } from "../../../components/ui/button";
-import { LogOutIcon } from "lucide-react";
+import { FiLogOut } from "react-icons/fi";
 import { Separator } from "@/components/ui/separator";
 import { logout } from "../../../Redux Toolkit/features/user/userThunks";
 import { ThemeToggle } from "../../../components/theme-toggle";
@@ -12,7 +12,7 @@ import BranchInfo from "./BranchInfo";
 const CashierSideBar = ({ navItems, onClose }) => {
   const dispatch = useDispatch();
   const { userProfile } = useSelector((state) => state.user);
-  const { branch, loading, error } = useSelector((state) => state.branch);
+  const { branch } = useSelector((state) => state.branch);
   const navigate=useNavigate();
 
   useEffect(() => {
@@ -93,7 +93,7 @@ const CashierSideBar = ({ navItems, onClose }) => {
           className="w-full justify-start text-destructive hover:text-destructive"
           onClick={handleLogout}
         >
-          <LogOutIcon className="mr-2 h-4 w-4" />
+          <FiLogOut className="mr-2 h-4 w-4" />
           End Shift & Logout
         </Button>
       </div>

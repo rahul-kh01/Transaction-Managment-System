@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { getPaymentIcon } from '../../../../utils/getPaymentIcon';
-import { getPaymentMethodLabel } from '../../../../utils/paymentMethodLable';
+// import { getPaymentMethodLabel } from '../../../../utils/paymentMethodLable';
 
 const PaymentSummaryCard = ({ shiftData }) => {
   return (

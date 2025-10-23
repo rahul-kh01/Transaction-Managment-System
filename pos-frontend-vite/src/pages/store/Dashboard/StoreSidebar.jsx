@@ -3,76 +3,75 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../Redux Toolkit/features/user/userThunks";
 import {
-  LayoutDashboard,
-  Store,
-  Users,
-  ShoppingCart,
-  BarChart2,
-  Settings,
-  FileText,
-  Tag,
-  Truck,
-  CreditCard,
-} from "lucide-react";
+  FiGrid,
+  FiHome,
+  FiUsers,
+  FiShoppingCart,
+  FiBarChart2,
+  FiSettings,
+  FiFileText,
+  FiTag,
+  FiTruck,
+  FiCreditCard,
+} from "react-icons/fi";
 import { Button } from "../../../components/ui/button";
-import { BadgeDollarSign } from "lucide-react";
 
 const navLinks = [
   {
     name: "Dashboard",
     path: "/store/dashboard",
-    icon: <LayoutDashboard className="w-5 h-5" />,
+    icon: <FiGrid className="w-5 h-5" />,
   },
   {
     name: "Stores",
     path: "/store/stores",
-    icon: <Store className="w-5 h-5" />,
+    icon: <FiHome className="w-5 h-5" />,
   },
   {
     name: "Branches",
     path: "/store/branches",
-    icon: <Store className="w-5 h-5" />,
+    icon: <FiHome className="w-5 h-5" />,
   },
   {
     name: "Products",
     path: "/store/products",
-    icon: <ShoppingCart className="w-5 h-5" />,
+    icon: <FiShoppingCart className="w-5 h-5" />,
   },
   {
     name: "Categories",
     path: "/store/categories",
-    icon: <Tag className="w-5 h-5" />,
+    icon: <FiTag className="w-5 h-5" />,
   },
   {
     name: "Employees",
     path: "/store/employees",
-    icon: <Users className="w-5 h-5" />,
+    icon: <FiUsers className="w-5 h-5" />,
   },
   {
     name: "Alerts",
     path: "/store/alerts",
-    icon: <Truck className="w-5 h-5" />,
+    icon: <FiTruck className="w-5 h-5" />,
   },
   {
     name: "Sales",
     path: "/store/sales",
-    icon: <BarChart2 className="w-5 h-5" />,
+    icon: <FiBarChart2 className="w-5 h-5" />,
   },
 
   {
     name: "Reports",
     path: "/store/reports",
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FiFileText className="w-5 h-5" />,
   },
   {
     name: "Upgrade Plan",
     path: "/store/upgrade",
-    icon: <BadgeDollarSign className="w-5 h-5" />,
+    icon: <FiCreditCard className="w-5 h-5" />,
   },
   {
     name: "Settings",
     path: "/store/settings",
-    icon: <Settings className="w-5 h-5" />,
+    icon: <FiSettings className="w-5 h-5" />,
   },
 ];
 
@@ -89,7 +88,7 @@ export default function StoreSidebar() {
   return (
     <aside className="h-screen w-64 bg-sidebar border-r border-sidebar-border flex flex-col py-6 px-4 shadow-lg">
       <div className="mb-8 text-2xl font-extrabold text-primary tracking-tight flex items-center gap-2">
-        <Store className="w-7 h-7 text-primary" />
+        <FiHome className="w-7 h-7 text-primary" />
         POS Admin
       </div>
       <nav className="flex-1 overflow-y-auto">

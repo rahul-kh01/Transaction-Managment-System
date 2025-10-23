@@ -4,13 +4,14 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { createBranch, updateBranch } from "@/Redux Toolkit/features/branch/branchThunks";
 
 const BranchForm = ({ initialValues, onSubmit, onCancel, isEditing }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.branch);
   const { store } = useSelector((state) => state.store);
+  const { toast } = useToast();
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Branch Name is required"),

@@ -1,9 +1,7 @@
 import { Card, CardContent } from "../../../components/ui/card";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
-import { Minus } from "lucide-react";
-import { Plus } from "lucide-react";
-import { Trash2 } from "lucide-react";
+import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
 
 const CartItem = ({item,updateCartItemQuantity,removeFromCart}) => {
   return (
@@ -22,7 +20,7 @@ const CartItem = ({item,updateCartItemQuantity,removeFromCart}) => {
                           className="h-8 w-8 p-0"
                           onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}
                         >
-                          <Minus className="w-4 h-4" />
+                          <FiMinus className="w-4 h-4" />
                         </Button>
                         <span className="px-3 py-1 text-sm font-medium min-w-[3rem] text-center">
                           {item.quantity}
@@ -33,7 +31,7 @@ const CartItem = ({item,updateCartItemQuantity,removeFromCart}) => {
                           className="h-8 w-8 p-0"
                           onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}
                         >
-                          <Plus className="w-4 h-4" />
+                          <FiPlus className="w-4 h-4" />
                         </Button>
                       </div>
                       <div className="text-right">
@@ -48,7 +46,7 @@ const CartItem = ({item,updateCartItemQuantity,removeFromCart}) => {
                         className="h-8 w-8 p-0 text-red-500 hover:text-red-700"
                         onClick={() => removeFromCart(item.id)}
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <FiTrash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>

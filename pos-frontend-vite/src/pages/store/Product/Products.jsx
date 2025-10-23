@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Plus, RefreshCw } from "lucide-react";
+import { FiPlus, FiRefreshCw } from "react-icons/fi";
 import {
   Dialog,
   DialogContent,
@@ -37,7 +37,7 @@ export default function Products() {
     if (store?.id) {
       fetchProducts();
     }
-  }, [dispatch, store]);
+  }, [dispatch, store, fetchProducts]);
 
   // Update displayed products when products or search results change
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Products() {
     );
   }, [products, searchResults, isSearchActive]);
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       // const token = localStorage.getItem("jwt");
       await dispatch(getProductsByStore(store.id)).unwrap();
@@ -57,7 +57,7 @@ export default function Products() {
         variant: "destructive",
       });
     }
-  };
+  }, [dispatch, store.id]);
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -104,7 +104,7 @@ export default function Products() {
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger asChild>
             <Button className="bg-emerald-600 hover:bg-emerald-700">
-              <Plus className="mr-2 h-4 w-4" /> Add Product
+              <FiPlus className="mr-2 h-4 w-4" /> Add Product
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto p-10">
@@ -128,7 +128,7 @@ export default function Products() {
           disabled={refreshing}
           className="ml-auto"
         >
-          <RefreshCw
+          <FiRefreshCw
             className={`mr-2 h-4 w-4 ${refreshing ? "animate-spin" : ""}`}
           />
           {refreshing ? "Refreshing..." : "Refresh"}

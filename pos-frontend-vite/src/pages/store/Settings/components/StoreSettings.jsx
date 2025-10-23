@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Store } from "lucide-react";
+import { FiHome } from "react-icons/fi";
 import { toast } from "@/components/ui/use-toast";
 import { updateStore } from "@/Redux Toolkit/features/store/storeThunks";
 import StoreSettingsForm from "./StoreSettingsForm";
@@ -9,7 +9,7 @@ import { getInitialValues } from "./formUtils";
 
 const StoreSettings = ({ settings, onChange }) => {
   const dispatch = useDispatch();
-  const { store, loading, error } = useSelector((state) => state.store);
+  const { store, loading } = useSelector((state) => state.store);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleFormSubmit = async (apiData, { setSubmitting, resetForm }) => {
@@ -56,7 +56,7 @@ const StoreSettings = ({ settings, onChange }) => {
     <Card id="store-settings">
       <CardHeader>
         <CardTitle className="flex items-center">
-          <Store className="mr-2 h-5 w-5 text-emerald-500" />
+          <FiHome className="mr-2 h-5 w-5 text-emerald-500" />
           Store Settings
         </CardTitle>
         <CardDescription>

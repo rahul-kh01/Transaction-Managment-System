@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, BarChart3, Users, Package, Calendar, Settings, ChevronRight, Play, Pause } from 'lucide-react';
+import {FiShoppingCart, FiBarChart2, FiUsers, FiUser, FiPackage, FiCalendar, FiSettings, FiChevronRight, FiPlay, FiPause} from 'react-icons/fi';
 
 const LiveDemoSection = () => {
   const [activeTab, setActiveTab] = useState('pos');
   const [isPlaying, setIsPlaying] = useState(false);
   
   const tabs = [
-    { id: 'pos', label: 'POS Terminal', icon: <ShoppingCart className="w-5 h-5" /> },
-    { id: 'analytics', label: 'Analytics', icon: <BarChart3 className="w-5 h-5" /> },
-    { id: 'inventory', label: 'Inventory', icon: <Package className="w-5 h-5" /> },
-    { id: 'customers', label: 'Customers', icon: <Users className="w-5 h-5" /> },
+    { id: 'pos', label: 'POS Terminal', icon: <FiShoppingCart  className="w-5 h-5" /> },
+    { id: 'analytics', label: 'Analytics', icon: <FiBarChart2  className="w-5 h-5" /> },
+    { id: 'inventory', label: 'Inventory', icon: <FiPackage  className="w-5 h-5" /> },
+    { id: 'customers', label: 'Customers', icon: <FiUser className="w-5 h-5" /> },
   ];
 
   const features = {
@@ -91,7 +91,7 @@ const LiveDemoSection = () => {
                     </div>
                     <span className="font-medium">{tab.label}</span>
                   </div>
-                  {activeTab === tab.id && <ChevronRight className="w-5 h-5" />}
+                  {activeTab === tab.id && <FiChevronRight  className="w-5 h-5" />}
                 </button>
               ))}
             </div>
@@ -113,7 +113,7 @@ const LiveDemoSection = () => {
             <div className="mt-8">
               <Button className="w-full group">
                 Request Full Demo
-                <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <FiChevronRight  className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </div>
@@ -141,7 +141,7 @@ const LiveDemoSection = () => {
                     onClick={togglePlayback}
                     className="w-8 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-primary-dark transition-colors"
                   >
-                    {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                    {isPlaying ? <FiPause  className="w-4 h-4" /> : <FiPlay  className="w-4 h-4" />}
                   </button>
                   <div className="text-xs text-gray-300">{isPlaying ? 'Demo Playing' : 'Click to Play'}</div>
                 </div>
@@ -366,10 +366,10 @@ const LiveDemoSection = () => {
                           </div>
                           <div className="flex space-x-2">
                             <button className="p-1 text-blue-600 hover:text-blue-800">
-                              <Settings className="w-4 h-4" />
+                              <FiSettings  className="w-4 h-4" />
                             </button>
                             <button className="p-1 text-primary hover:text-primary-dark">
-                              <Package className="w-4 h-4" />
+                              <FiPackage  className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
@@ -427,10 +427,10 @@ const LiveDemoSection = () => {
                           <div className="text-sm text-gray-600">{['Today', '2 days ago', '1 week ago', '2 weeks ago', '1 month ago'][i]}</div>
                           <div className="flex space-x-2">
                             <button className="p-1 text-blue-600 hover:text-blue-800">
-                              <Users className="w-4 h-4" />
+                              <FiUser className="w-4 h-4" />
                             </button>
                             <button className="p-1 text-primary hover:text-primary-dark">
-                              <Calendar className="w-4 h-4" />
+                              <FiCalendar  className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
@@ -447,7 +447,7 @@ const LiveDemoSection = () => {
                         onClick={togglePlayback}
                         className="w-16 h-16 rounded-full bg-primary flex items-center justify-center hover:bg-primary-dark transition-colors mb-4 mx-auto"
                       >
-                        <Play className="w-6 h-6 text-white" />
+                        <FiPlay  className="w-6 h-6 text-white" />
                       </button>
                       <p className="text-white text-lg font-medium">Click to Play Interactive Demo</p>
                     </div>

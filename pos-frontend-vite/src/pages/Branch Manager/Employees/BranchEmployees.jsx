@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Plus } from "lucide-react";
+import { FiSearch, FiPlus } from "react-icons/fi";
 import { branchAdminRole } from "../../../utils/userRole";
 
 import EmployeeStats from "./EmployeeStats";
@@ -33,7 +33,7 @@ const getStatusColor = (status) => {
 
 const BranchEmployees = () => {
   // const [employees, setEmployees] = useState([]); // Initialize with empty array
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm] = useState("");
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isResetPasswordDialogOpen, setIsResetPasswordDialogOpen] =
@@ -49,9 +49,9 @@ const BranchEmployees = () => {
 
   console.log("branch employees", employees);
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  // const handleSearch = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
 
   const handleAddEmployee = (newEmployeeData) => {
     if (branch?.id && userProfile.branchId) {
@@ -108,16 +108,16 @@ const BranchEmployees = () => {
   //   setIsEditDialogOpen(false);
   // };
 
-  const handleToggleAccess = (employee) => {
-    const updatedEmployees = employees.map((emp) =>
-      emp.id === employee.id
-        ? {
-            ...emp,
-            loginAccess: !emp.loginAccess,
-            status: !emp.loginAccess ? "Inactive" : "Active",
-          }
-        : emp
-    );
+  const handleToggleAccess = () => {
+    // const updatedEmployees = employees.map((emp) =>
+    //   emp.id === employee.id
+    //     ? {
+    //         ...emp,
+    //         loginAccess: !emp.loginAccess,
+    //         status: !emp.loginAccess ? "Inactive" : "Active",
+    //       }
+    //     : emp
+    // );
     // setEmployees(updatedEmployees);
   };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Smartphone, Download, CheckCircle, ArrowRight } from 'lucide-react';
+import {FiSmartphone, FiDownload, FiCheckCircle, FiArrowRight} from 'react-icons/fi';
 
 const MobileAppShowcase = () => {
   const appFeatures = [
@@ -28,7 +28,7 @@ const MobileAppShowcase = () => {
           {/* Left Content */}
           <div>
             <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary rounded-full px-4 py-1 text-sm font-medium mb-6">
-              <Smartphone className="w-4 h-4" />
+              <FiSmartphone  className="w-4 h-4" />
               <span>Mobile App</span>
             </div>
             
@@ -44,7 +44,7 @@ const MobileAppShowcase = () => {
             <div className="space-y-4 mb-8">
               {appFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <FiCheckCircle  className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                   <span className="text-gray-700">{feature}</span>
                 </div>
               ))}
@@ -53,11 +53,11 @@ const MobileAppShowcase = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="group">
                 Download for iOS
-                <Download className="ml-2 w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+                <FiDownload  className="ml-2 w-5 h-5 group-hover:-translate-y-1 transition-transform" />
               </Button>
               <Button size="lg" variant="outline" className="group">
                 Download for Android
-                <Download className="ml-2 w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+                <FiDownload  className="ml-2 w-5 h-5 group-hover:-translate-y-1 transition-transform" />
               </Button>
             </div>
           </div>

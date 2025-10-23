@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { CheckCircleIcon } from 'lucide-react';
+import { FiCheckCircle } from 'react-icons/fi';
 
 const RefundsCard = ({ shiftData }) => {
   return (
@@ -31,7 +31,7 @@ const RefundsCard = ({ shiftData }) => {
           </Table>
         ) : (
           <div className="flex flex-col items-center justify-center py-8 text-center text-muted-foreground">
-            <CheckCircleIcon size={48} strokeWidth={1} />
+            <FiCheckCircle size={48} strokeWidth={1} />
             <p className="mt-4">No refunds processed during this shift</p>
           </div>
         )}

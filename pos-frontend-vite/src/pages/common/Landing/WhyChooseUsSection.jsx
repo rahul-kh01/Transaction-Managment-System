@@ -1,5 +1,4 @@
-import { CheckCircle } from 'lucide-react'
-import { BarChart3 } from 'lucide-react'
+import {FiCheckCircle, FiBarChart2} from 'react-icons/fi'
 import React from 'react'
 
 const WhyChooseUsSection = () => {
@@ -24,7 +23,7 @@ const WhyChooseUsSection = () => {
                   "24x7 Support"
                 ].map((benefit, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                    <FiCheckCircle  className="w-6 h-6 text-green-500 flex-shrink-0" />
                     <span className="text-foreground">{benefit}</span>
                   </div>
                 ))}
@@ -33,7 +32,7 @@ const WhyChooseUsSection = () => {
             <div className="bg-muted rounded-2xl p-8">
               <div className="bg-card rounded-lg h-80 flex items-center justify-center border">
                 <div className="text-center">
-                  <BarChart3 className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+                  <FiBarChart2  className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
                   <p className="text-muted-foreground">Benefits Illustration</p>
                 </div>
               </div>

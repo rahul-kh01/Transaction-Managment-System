@@ -2,13 +2,13 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { StarIcon, PlusIcon, Loader2, UserIcon } from 'lucide-react';
+import {FiStar, FiPlus, FiLoader, FiUser} from 'react-icons/fi';
 
 const CustomerDetails = ({ customer, onAddPoints, loading = false }) => {
   if (!customer) {
     return (
       <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground p-4">
-        <UserIcon size={48} strokeWidth={1} />
+        <FiUser size={48} strokeWidth={1} />
         <p className="mt-4">Select a customer to view details</p>
       </div>
     );
@@ -17,7 +17,7 @@ const CustomerDetails = ({ customer, onAddPoints, loading = false }) => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground p-4">
-        <Loader2 className="animate-spin h-8 w-8 mb-4" />
+        <FiLoader  className="animate-spin h-8 w-8 mb-4" />
         <p>Loading customer details...</p>
       </div>
     );
@@ -32,7 +32,7 @@ const CustomerDetails = ({ customer, onAddPoints, loading = false }) => {
           <p className="text-muted-foreground">{customer.email || 'N/A'}</p>
         </div>
         <Button onClick={onAddPoints} className="flex items-center gap-2">
-          <PlusIcon className="h-4 w-4" />
+          <FiPlus  className="h-4 w-4" />
           Add Points
         </Button>
       </div>
@@ -46,7 +46,7 @@ const CustomerDetails = ({ customer, onAddPoints, loading = false }) => {
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <StarIcon className="h-5 w-5 text-yellow-500" />
+              <FiStar className="h-5 w-5 text-yellow-500" />
               <span className="text-2xl font-bold">{customer.loyaltyPoints || 0}</span>
             </div>
           </CardContent>

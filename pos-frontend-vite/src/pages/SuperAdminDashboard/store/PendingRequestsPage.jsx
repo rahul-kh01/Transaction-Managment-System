@@ -20,7 +20,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle, XCircle, Eye, Clock } from "lucide-react";
+import { FiCheckCircle, FiXCircle, FiEye, FiClock } from "react-icons/fi";
 
 import { useToast } from "@/components/ui/use-toast";
 import { getAllStores, moderateStore } from "@/Redux Toolkit/features/store/storeThunks";
@@ -109,7 +109,7 @@ export default function PendingRequestsPage() {
           </p>
         </div>
         <Badge variant="secondary" className="flex items-center gap-1">
-          <Clock className="w-3 h-3" />
+          <FiClock className="w-3 h-3" />
           {stores.length} Pending
         </Badge>
       </div>
@@ -161,7 +161,7 @@ export default function PendingRequestsPage() {
                             className="text-green-600 border-green-200 hover:bg-green-50"
                             disabled={updatingId === store.id}
                           >
-                            <CheckCircle className="w-4 h-4 mr-1" />
+                            <FiCheckCircle className="w-4 h-4 mr-1" />
                             {updatingId === store.id ? "Approving..." : "Approve"}
                           </Button>
                           <Button
@@ -171,7 +171,7 @@ export default function PendingRequestsPage() {
                             className="text-red-600 border-red-200 hover:bg-red-50"
                             disabled={updatingId === store.id}
                           >
-                            <XCircle className="w-4 h-4 mr-1" />
+                            <FiXCircle className="w-4 h-4 mr-1" />
                             {updatingId === store.id ? "Rejecting..." : "Reject"}
                           </Button>
                         </div>
@@ -205,7 +205,7 @@ export default function PendingRequestsPage() {
               Cancel
             </Button>
             <Button onClick={confirmApprove} className="bg-green-600 hover:bg-green-700">
-              <CheckCircle className="w-4 h-4 mr-2" />
+              <FiCheckCircle className="w-4 h-4 mr-2" />
               Approve Store
             </Button>
           </DialogFooter>
@@ -238,7 +238,7 @@ export default function PendingRequestsPage() {
               className="bg-red-600 hover:bg-red-700"
               disabled={!rejectionReason.trim()}
             >
-              <XCircle className="w-4 h-4 mr-2" />
+              <FiXCircle className="w-4 h-4 mr-2" />
               Reject Store
             </Button>
           </DialogFooter>

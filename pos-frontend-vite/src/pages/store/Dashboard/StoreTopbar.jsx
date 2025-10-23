@@ -1,5 +1,5 @@
 
-import { Bell, UserCircle, Search } from "lucide-react";
+import { FiBell, FiUser, FiSearch } from "react-icons/fi";
 import { ThemeToggle } from "../../../components/theme-toggle";
 
 
@@ -23,14 +23,14 @@ export default function StoreTopbar() {
         
         {/* Notifications */}
         <button className="relative">
-          <Bell className="text-muted-foreground w-6 h-6" />
+          <FiBell className="text-muted-foreground w-6 h-6" />
           <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full px-1">3</span>
         </button>
         
         {/* Profile Dropdown */}
         <div className="flex items-center gap-2 cursor-pointer">
           <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center font-bold text-primary">
-            <UserCircle className="w-6 h-6" />
+            <FiUser className="w-6 h-6" />
           </span>
           <span className="font-medium text-foreground">Store Admin</span>
         </div>

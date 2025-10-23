@@ -1,16 +1,15 @@
 
 import { useSelector } from "react-redux";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
-import { Tag } from "lucide-react";
-import { Package } from "lucide-react";
+import { FiTag, FiPackage } from "react-icons/fi";
 import { formatDateTime } from "../../../utils/formateDate";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
 
 const InactiveCashierTable = () => {
   const {storeAlerts} = useSelector((state) => state.storeAnalytics);
 
-  const dispatch=useDispatch()
+  // const dispatch=useDispatch()
 
   // useEffect(()=>{
   //   dispatch()
@@ -32,7 +31,7 @@ const InactiveCashierTable = () => {
           <TableRow key={cashier.id}>
                     <TableCell>
               <div className="flex items-center gap-1">
-                <Package className="h-4 w-4 text-gray-400" />
+                <FiPackage className="h-4 w-4 text-gray-400" />
                 {cashier.id}
               </div>
             </TableCell>

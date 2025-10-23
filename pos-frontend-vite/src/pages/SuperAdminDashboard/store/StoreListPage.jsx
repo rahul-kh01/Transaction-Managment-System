@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Plus, Download, Filter } from "lucide-react";
+import { FiPlus, FiDownload, FiFilter } from "react-icons/fi";
 import StoreTable from "./StoreTable";
 import StoreDetailDrawer from "./StoreDetailDrawer";
 import { useToast } from "@/components/ui/use-toast";

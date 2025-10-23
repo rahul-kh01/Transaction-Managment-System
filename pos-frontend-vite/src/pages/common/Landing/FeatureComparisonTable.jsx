@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, X, HelpCircle } from 'lucide-react';
+import {FiCheckCircle, FiX, FiHelpCircle} from 'react-icons/fi';
 
 const FeatureComparisonTable = () => {
   // Feature categories and their features
@@ -39,11 +39,11 @@ const FeatureComparisonTable = () => {
   // Helper function to render feature availability indicator
   const renderAvailability = (available) => {
     if (available === true) {
-      return <CheckCircle className="w-5 h-5 text-green-500 mx-auto" />;
+      return <FiCheckCircle  className="w-5 h-5 text-green-500 mx-auto" />;
     } else if (available === false) {
-      return <X className="w-5 h-5 text-gray-300 mx-auto" />;
+      return <FiX  className="w-5 h-5 text-gray-300 mx-auto" />;
     } else {
-      return <HelpCircle className="w-5 h-5 text-gray-400 mx-auto" />;
+      return <FiHelpCircle  className="w-5 h-5 text-gray-400 mx-auto" />;
     }
   };
 
@@ -121,7 +121,7 @@ const FeatureComparisonTable = () => {
           <tr className="hover:bg-gray-50">
             <td className="py-4 px-6 text-left text-gray-700 border-b border-gray-100">Phone Support</td>
             <td className="py-4 px-6 text-center border-b border-gray-100">
-              <X className="w-5 h-5 text-gray-300 mx-auto" />
+              <FiX  className="w-5 h-5 text-gray-300 mx-auto" />
             </td>
             <td className="py-4 px-6 text-center border-b border-gray-100 bg-primary/5">Business Hours</td>
             <td className="py-4 px-6 text-center border-b border-gray-100">24/7</td>

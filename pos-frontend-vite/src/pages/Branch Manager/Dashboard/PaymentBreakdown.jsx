@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useSelector } from 'react-redux';
-import { CreditCard } from 'lucide-react';
+import {FiCreditCard} from 'react-icons/fi';
 import { getPaymentIcon } from '../../../utils/getPaymentIcon';
 
 
@@ -19,7 +19,7 @@ const PaymentBreakdown = () => {
               <div key={index} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     {getPaymentIcon(payment.type)}
-                  {/* <CreditCard className="w-5 h-5 text-primary" /> */}
+                  {/* <FiCreditCard  className="w-5 h-5 text-primary" /> */}
                   <span>{payment.type}</span>
                 </div>
                 <div className="flex items-center gap-4">

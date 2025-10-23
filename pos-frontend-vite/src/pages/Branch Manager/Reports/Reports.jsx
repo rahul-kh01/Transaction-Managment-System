@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, Download, FileText, BarChart2, TrendingUp, Users } from "lucide-react";
+import { FiCalendar, FiDownload, FiFileText, FiBarChart2, FiTrendingUp, FiUsers } from "react-icons/fi";
 import { BarChart, Bar, XAxis, YAxis, PieChart as RPieChart, Pie, Cell } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } from "@/components/ui/chart";
 import {
@@ -106,13 +106,13 @@ const Reports = () => {
         <h1 className="text-3xl font-bold tracking-tight">Reports & Analytics</h1>
         <div className="flex gap-2">
           <Button variant="outline" size="sm">
-            <Calendar className="h-4 w-4 mr-1" />
+            <FiCalendar className="h-4 w-4 mr-1" />
             {/* Date range selection can be added here */}
             {/* {dateRange.startDate} - {dateRange.endDate} */}
             Today
           </Button>
           <Button variant="outline" size="sm">
-            <Download className="h-4 w-4 mr-1" />
+            <FiDownload className="h-4 w-4 mr-1" />
             Export All
           </Button>
         </div>
@@ -121,19 +121,19 @@ const Reports = () => {
       <Tabs defaultValue="overview" className="space-y-6">
         <TabsList>
           <TabsTrigger value="overview" className="flex items-center gap-2">
-            <BarChart2 className="h-4 w-4" />
+            <FiBarChart2 className="h-4 w-4" />
             Overview
           </TabsTrigger>
           <TabsTrigger value="sales" className="flex items-center gap-2">
-            <TrendingUp className="h-4 w-4" />
+            <FiTrendingUp className="h-4 w-4" />
             Sales
           </TabsTrigger>
           <TabsTrigger value="products" className="flex items-center gap-2">
-            <FileText className="h-4 w-4" />
+            <FiFileText className="h-4 w-4" />
             Products
           </TabsTrigger>
           <TabsTrigger value="cashier" className="flex items-center gap-2">
-            <Users className="h-4 w-4" />
+            <FiUsers className="h-4 w-4" />
             Cashier Performance
           </TabsTrigger>
         </TabsList>
@@ -146,7 +146,7 @@ const Reports = () => {
                 <div className="flex justify-between items-center">
                   <CardTitle>Daily Sales Trend</CardTitle>
                   <Button variant="outline" size="sm" className="gap-2" onClick={() => handleExport('sales', 'excel')}>
-                    <Download className="h-4 w-4" />
+                    <FiDownload className="h-4 w-4" />
                     Export
                   </Button>
                 </div>
@@ -193,7 +193,7 @@ const Reports = () => {
                 <div className="flex justify-between items-center">
                   <CardTitle>Payment Methods</CardTitle>
                   <Button variant="outline" size="sm" className="gap-2" onClick={() => handleExport('payments', 'excel')}>
-                    <Download className="h-4 w-4" />
+                    <FiDownload className="h-4 w-4" />
                     Export
                   </Button>
                 </div>
@@ -243,7 +243,7 @@ const Reports = () => {
               <div className="flex justify-between items-center">
                 <CardTitle>Sales Performance</CardTitle>
                 <Button variant="outline" size="sm" className="gap-2" onClick={() => handleExport('sales', 'excel')}>
-                  <Download className="h-4 w-4" />
+                  <FiDownload className="h-4 w-4" />
                   Export
                 </Button>
               </div>
@@ -293,7 +293,7 @@ const Reports = () => {
               <div className="flex justify-between items-center">
                 <CardTitle>Product Category Performance</CardTitle>
                 <Button variant="outline" size="sm" className="gap-2" onClick={() => handleExport('products', 'excel')}>
-                  <Download className="h-4 w-4" />
+                  <FiDownload className="h-4 w-4" />
                   Export
                 </Button>
               </div>
@@ -361,7 +361,7 @@ const Reports = () => {
               <div className="flex justify-between items-center">
                 <CardTitle>Cashier Performance</CardTitle>
                 <Button variant="outline" size="sm" className="gap-2" onClick={() => handleExport('cashier', 'excel')}>
-                  <Download className="h-4 w-4" />
+                  <FiDownload className="h-4 w-4" />
                   Export
                 </Button>
               </div>

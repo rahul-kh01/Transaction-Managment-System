@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
-import { StarIcon, UserIcon, Loader2 } from "lucide-react";
+import { FiStar, FiUser, FiLoader } from "react-icons/fi";
 import CustomerCard from "./CustomerCard";
 
 const CustomerList = ({

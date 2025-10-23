@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2, Tag, DollarSign, Package, Eye } from "lucide-react";
+import { FiEdit, FiTrash2, FiTag, FiDollarSign, FiPackage, FiEye } from "react-icons/fi";
 import { useDispatch } from 'react-redux';
 import { deleteProduct } from '@/Redux Toolkit/features/product/productThunks';
 import { toast } from '@/components/ui/use-toast';
@@ -106,13 +106,13 @@ const ProductTable = ({ products, loading, onEdit, onView }) => {
             </TableCell>
             <TableCell>
               <div className="flex items-center gap-1">
-                <Tag className="h-4 w-4 text-gray-400" />
+                <FiTag className="h-4 w-4 text-gray-400" />
                 {product.category}
               </div>
             </TableCell>
             <TableCell>
               <div className="flex items-center gap-1">
-                <DollarSign className="h-4 w-4 text-gray-400" />
+                <FiDollarSign className="h-4 w-4 text-gray-400" />
                 {product.price?.toFixed ? product.price.toFixed(2) : product.sellingPrice}
               </div>
             </TableCell>
@@ -126,7 +126,7 @@ const ProductTable = ({ products, loading, onEdit, onView }) => {
                     className="text-blue-500 border-blue-200 hover:bg-blue-50 hover:text-blue-600"
                     onClick={() => onView(product)}
                   >
-                    <Eye className="h-4 w-4" />
+                    <FiEye className="h-4 w-4" />
                   </Button>
                 )}
                 <Button
@@ -134,7 +134,7 @@ const ProductTable = ({ products, loading, onEdit, onView }) => {
                   size="sm"
                   onClick={() => onEdit(product)}
                 >
-                  <Edit className="h-4 w-4" />
+                  <FiEdit className="h-4 w-4" />
                 </Button>
                 <Button
                   variant="outline"
@@ -142,7 +142,7 @@ const ProductTable = ({ products, loading, onEdit, onView }) => {
                   className="text-red-500 border-red-200 hover:bg-red-50 hover:text-red-600"
                   onClick={() => handleDeleteProduct(product.id)}
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <FiTrash2 className="h-4 w-4" />
                 </Button>
               </div>
             </TableCell>

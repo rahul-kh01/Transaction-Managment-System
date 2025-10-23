@@ -1,74 +1,265 @@
 import path from "path";
+import { fileURLToPath } from "url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig(({ mode }) => ({
   plugins: [
     react({
-      // React 19 support with automatic JSX runtime
-      jsxRuntime: 'automatic',
+      jsxRuntime: "automatic",
       fastRefresh: true,
-    }), 
-    tailwindcss()
+      babel: {
+        plugins: [
+          ["@babel/plugin-transform-react-jsx", { runtime: "automatic" }],
+        ],
+      },
+    }),
+    tailwindcss(),
   ],
-  // Optimize dependencies for React 19
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
-    esbuildOptions: {
-      jsx: 'automatic',
-    }
-  },
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      // Remove explicit React aliases to prevent conflicts
     },
   },
+
+  define: {
+    "process.env.NODE_ENV": JSON.stringify(mode),
+    global: "globalThis",
+  },
+
+  optimizeDeps: {
+    include: [
+      "react",
+      "react-dom",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+      "react-router",
+      "react-redux",
+      "@reduxjs/toolkit",
+      "recharts",
+      "react-icons",
+      "react-icons/fi",
+      "react-icons/ai",
+      "react-icons/bi",
+      "react-icons/bs",
+      "react-icons/cg",
+      "react-icons/ci",
+      "react-icons/di",
+      "react-icons/fc",
+      "react-icons/fa",
+      "react-icons/gi",
+      "react-icons/go",
+      "react-icons/gr",
+      "react-icons/hi",
+      "react-icons/hi2",
+      "react-icons/im",
+      "react-icons/io",
+      "react-icons/io5",
+      "react-icons/lia",
+      "react-icons/lu",
+      "react-icons/md",
+      "react-icons/pi",
+      "react-icons/ri",
+      "react-icons/rx",
+      "react-icons/si",
+      "react-icons/sl",
+      "react-icons/tb",
+      "react-icons/tfi",
+      "react-icons/ti",
+      "react-icons/vsc",
+      "react-icons/wi",
+      "axios",
+      "clsx",
+      "tailwind-merge",
+      "class-variance-authority",
+      "sonner",
+      "next-themes",
+      "date-fns",
+      "formik",
+      "yup",
+      "zod",
+      "@hookform/resolvers",
+      "react-hook-form",
+      "react-day-picker",
+      "embla-carousel-react",
+      "cmdk",
+      "vaul",
+      "input-otp",
+      "@react-pdf/renderer",
+      "react-resizable-panels",
+    ],
+    exclude: [
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-alert-dialog",
+      "@radix-ui/react-aspect-ratio",
+      "@radix-ui/react-avatar",
+      "@radix-ui/react-checkbox",
+      "@radix-ui/react-collapsible",
+      "@radix-ui/react-context-menu",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-hover-card",
+      "@radix-ui/react-label",
+      "@radix-ui/react-menubar",
+      "@radix-ui/react-navigation-menu",
+      "@radix-ui/react-popover",
+      "@radix-ui/react-progress",
+      "@radix-ui/react-radio-group",
+      "@radix-ui/react-scroll-area",
+      "@radix-ui/react-select",
+      "@radix-ui/react-separator",
+      "@radix-ui/react-slider",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-switch",
+      "@radix-ui/react-tabs",
+      "@radix-ui/react-toast",
+      "@radix-ui/react-toggle",
+      "@radix-ui/react-toggle-group",
+      "@radix-ui/react-tooltip",
+    ],
+    esbuildOptions: {
+      jsx: "automatic",
+      target: "es2020",
+      define: {
+        global: "globalThis",
+      },
+    },
+  },
+
   build: {
     outDir: "dist",
-    sourcemap: mode !== 'production', // Only generate sourcemaps in development
-    // Optimize build to reduce memory issues
-    chunkSizeWarningLimit: 1500, // Increased to accommodate large UI library bundles
+    sourcemap: true,
+    minify: "esbuild",
+    target: "es2020",
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Core React libraries
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router')) {
-            return 'react-vendor';
-          }
-          // Redux state management
-          if (id.includes('node_modules/@reduxjs/toolkit') || id.includes('node_modules/react-redux')) {
-            return 'redux-vendor';
-          }
-          // Radix UI components (split into separate chunk due to size)
-          if (id.includes('node_modules/@radix-ui')) {
-            return 'radix-vendor';
-          }
-          // Chart and visualization libraries
-          if (id.includes('node_modules/recharts') || id.includes('node_modules/d3-')) {
-            return 'chart-vendor';
-          }
-          // Form handling
-          if (id.includes('node_modules/react-hook-form') || 
-              id.includes('node_modules/formik') || 
-              id.includes('node_modules/yup') || 
-              id.includes('node_modules/zod')) {
-            return 'form-vendor';
-          }
-          // Icons and utilities
-          if (id.includes('node_modules/lucide-react')) {
-            return 'icon-vendor';
-          }
-          // Date utilities
-          if (id.includes('node_modules/date-fns') || id.includes('node_modules/react-day-picker')) {
-            return 'date-vendor';
-          }
-          // Other node_modules
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
-        }
-      }
-    }
+        manualChunks: {
+          // React core - keep React and React-DOM together
+          "react-core": ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
+          
+          // Router
+          "router": ["react-router"],
+          
+          // Redux
+          "redux-vendor": ["@reduxjs/toolkit", "react-redux"],
+          
+          // Charts
+          "charts-vendor": ["recharts"],
+          
+          // Icons
+          "icons-vendor": ["react-icons"],
+          
+          // Radix UI - group all Radix components
+          "radix-vendor": [
+            "@radix-ui/react-accordion",
+            "@radix-ui/react-alert-dialog",
+            "@radix-ui/react-aspect-ratio",
+            "@radix-ui/react-avatar",
+            "@radix-ui/react-checkbox",
+            "@radix-ui/react-collapsible",
+            "@radix-ui/react-context-menu",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-hover-card",
+            "@radix-ui/react-label",
+            "@radix-ui/react-menubar",
+            "@radix-ui/react-navigation-menu",
+            "@radix-ui/react-popover",
+            "@radix-ui/react-progress",
+            "@radix-ui/react-radio-group",
+            "@radix-ui/react-scroll-area",
+            "@radix-ui/react-select",
+            "@radix-ui/react-separator",
+            "@radix-ui/react-slider",
+            "@radix-ui/react-slot",
+            "@radix-ui/react-switch",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-toast",
+            "@radix-ui/react-toggle",
+            "@radix-ui/react-toggle-group",
+            "@radix-ui/react-tooltip",
+          ],
+          
+          // Forms
+          "forms-vendor": [
+            "formik",
+            "react-hook-form",
+            "@hookform/resolvers",
+            "yup",
+            "zod",
+            "input-otp",
+          ],
+          
+          // Utilities
+          "utils-vendor": [
+            "axios",
+            "clsx",
+            "tailwind-merge",
+            "class-variance-authority",
+            "date-fns",
+            "sonner",
+            "next-themes",
+            "vaul",
+            "cmdk",
+            "embla-carousel-react",
+            "react-day-picker",
+            "react-resizable-panels",
+            "@react-pdf/renderer",
+          ],
+        },
+      },
+    },
+  },
+
+  ssr: {
+    noExternal: [
+      "recharts",
+      "react-icons",
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-alert-dialog",
+      "@radix-ui/react-aspect-ratio",
+      "@radix-ui/react-avatar",
+      "@radix-ui/react-checkbox",
+      "@radix-ui/react-collapsible",
+      "@radix-ui/react-context-menu",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-hover-card",
+      "@radix-ui/react-label",
+      "@radix-ui/react-menubar",
+      "@radix-ui/react-navigation-menu",
+      "@radix-ui/react-popover",
+      "@radix-ui/react-progress",
+      "@radix-ui/react-radio-group",
+      "@radix-ui/react-scroll-area",
+      "@radix-ui/react-select",
+      "@radix-ui/react-separator",
+      "@radix-ui/react-slider",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-switch",
+      "@radix-ui/react-tabs",
+      "@radix-ui/react-toast",
+      "@radix-ui/react-toggle",
+      "@radix-ui/react-toggle-group",
+      "@radix-ui/react-tooltip",
+    ],
+  },
+
+  server: {
+    port: 3000,
+    host: true,
+    open: true,
+  },
+
+  preview: {
+    port: 4173,
+    host: true,
+    open: true,
   },
 }));

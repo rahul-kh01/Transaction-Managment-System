@@ -1,13 +1,14 @@
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2, Tag, Layers } from "lucide-react";
+import { FiEdit, FiTrash2, FiTag, FiLayers } from "react-icons/fi";
 import { useDispatch } from 'react-redux';
 import { deleteCategory } from '@/Redux Toolkit/features/category/categoryThunks';
-import { toast } from '@/components/ui/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 
 const CategoryTable = ({ categories, loading, onEdit }) => {
   const dispatch = useDispatch();
+  const { toast } = useToast();
 
   const handleDeleteCategory = async (id) => {
     try {
@@ -81,7 +82,7 @@ const CategoryTable = ({ categories, loading, onEdit }) => {
           <TableRow key={category.id}>
             <TableCell>
               <div className="flex items-center gap-2">
-                <Tag className="h-5 w-5 text-emerald-500" />
+                <FiTag className="h-5 w-5 text-emerald-500" />
                 <span className="font-medium">{category.name}</span>
               </div>
             </TableCell>
@@ -93,7 +94,7 @@ const CategoryTable = ({ categories, loading, onEdit }) => {
                   size="sm"
                   onClick={() => onEdit(category)}
                 >
-                  <Edit className="h-4 w-4" />
+                  <FiEdit className="h-4 w-4" />
                 </Button>
                 <Button
                   variant="outline"
@@ -101,7 +102,7 @@ const CategoryTable = ({ categories, loading, onEdit }) => {
                   className="text-red-500 border-red-200 hover:bg-red-50 hover:text-red-600"
                   onClick={() => handleDeleteCategory(category.id)}
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <FiTrash2 className="h-4 w-4" />
                 </Button>
               </div>
             </TableCell>

@@ -1,5 +1,5 @@
 import React from "react";
-import { formatDate, getPaymentModeLabel, getStatusBadgeVariant } from "./data";
+import { formatDate, getStatusBadgeVariant } from "./data";
 import {
   Table,
   TableBody,
@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
-import { EyeIcon } from "lucide-react";
-import { PrinterIcon } from "lucide-react";
-import { RotateCcwIcon } from "lucide-react";
+import { FiEye } from "react-icons/fi";
+import { FiPrinter } from "react-icons/fi";
+import { FiRotateCcw } from "react-icons/fi";
 
 const OrderTable = ({
   orders,
@@ -58,21 +58,21 @@ const OrderTable = ({
                   size="icon"
                   onClick={() => handleViewOrder(order)}
                 >
-                  <EyeIcon className="h-4 w-4" />
+                  <FiEye className="h-4 w-4" />
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => handlePrintInvoice(order)}
                 >
-                  <PrinterIcon className="h-4 w-4" />
+                  <FiPrinter className="h-4 w-4" />
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => handleInitiateReturn(order)}
                 >
-                  <RotateCcwIcon className="h-4 w-4" />
+                  <FiRotateCcw className="h-4 w-4" />
                 </Button>
               </div>
             </TableCell>

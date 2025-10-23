@@ -70,7 +70,7 @@ const EmployeeForm = ({ initialData, onSubmit, roles }) => {
     } else {
       formik.resetForm();
     }
-  }, [initialData]);
+  }, [initialData, formik]);
 
   return (
     <form onSubmit={formik.handleSubmit} className="space-y-4 py-2 pr-2">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Pause, Play } from 'lucide-react';
+import {FiPause, FiPlay} from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import { resumeOrder, selectHeldOrders } from '../../../Redux Toolkit/features/cart/cartSlice';
 import { useDispatch } from 'react-redux';
@@ -35,7 +35,7 @@ const HeldOrdersDialog = ({
         <div className="max-h-96 overflow-y-auto">
           {heldOrders.length === 0 ? (
             <div className="text-center py-8 text-gray-500">
-              <Pause className="w-16 h-16 mx-auto mb-4 opacity-50" />
+              <FiPause  className="w-16 h-16 mx-auto mb-4 opacity-50" />
               <p>No held orders</p>
             </div>
           ) : (
@@ -54,7 +54,7 @@ const HeldOrdersDialog = ({
                         size="sm"
                         onClick={() => handleResumeOrder(order)}
                       >
-                        <Play className="w-4 h-4 mr-1" />
+                        <FiPlay  className="w-4 h-4 mr-1" />
                         Resume
                       </Button>
                     </div>

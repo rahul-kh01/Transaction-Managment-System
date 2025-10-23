@@ -72,7 +72,7 @@ const authSlice = createSlice({
         state.forgotPasswordError = null;
         state.forgotPasswordSuccess = false;
       })
-      .addCase(forgotPassword.fulfilled, (state, action) => {
+      .addCase(forgotPassword.fulfilled, (state) => {
         state.loading = false;
         state.forgotPasswordLoading = false;
         state.forgotPasswordSuccess = true;
@@ -94,7 +94,7 @@ const authSlice = createSlice({
         state.resetPasswordError = null;
         state.resetPasswordSuccess = false;
       })
-      .addCase(resetPassword.fulfilled, (state, action) => {
+      .addCase(resetPassword.fulfilled, (state) => {
         state.loading = false;
         state.resetPasswordLoading = false;
         state.resetPasswordSuccess = true;

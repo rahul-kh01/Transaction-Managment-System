@@ -140,3 +140,9 @@ tmp/
 
 # Only ignore generated/temporary files
 pos-frontend-vite/.vite-temp/
+node_modules
+*.sh
+*.md
+!README.md
+*.py
+

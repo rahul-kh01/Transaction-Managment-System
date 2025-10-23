@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Bell, User, Search } from "lucide-react";
+import { FiBell, FiUser, FiSearch } from "react-icons/fi";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 
@@ -17,7 +17,7 @@ export default function SuperAdminTopbar() {
         <div className="flex items-center gap-4">
           {/* Search */}
           <div className="relative hidden md:block">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
               placeholder="Search stores, users..."
               className="pl-10 w-64"
@@ -26,7 +26,7 @@ export default function SuperAdminTopbar() {
           
           {/* Notifications */}
           <Button variant="ghost" size="icon" className="relative">
-            <Bell className="w-5 h-5" />
+            <FiBell className="w-5 h-5" />
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
               3
             </span>
@@ -43,7 +43,7 @@ export default function SuperAdminTopbar() {
               </p>
             </div>
             <Button variant="ghost" size="icon" className="rounded-full">
-              <User className="w-5 h-5" />
+              <FiUser className="w-5 h-5" />
             </Button>
           </div>
         </div>

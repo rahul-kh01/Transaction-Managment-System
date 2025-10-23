@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import {FiChevronLeft, FiChevronRight, FiStar, FiMessageCircle} from 'react-icons/fi';
 import { Button } from '@/components/ui/button';
 
 const TestimonialCarousel = () => {
@@ -53,12 +53,12 @@ const TestimonialCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const nextTestimonial = () => {
+  const nextTestimonial = useCallback(() => {
     if (isAnimating) return;
     setIsAnimating(true);
     setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
     setTimeout(() => setIsAnimating(false), 500);
-  };
+  }, [isAnimating, testimonials.length]);
 
   const prevTestimonial = () => {
     if (isAnimating) return;
@@ -73,7 +73,7 @@ const TestimonialCarousel = () => {
       nextTestimonial();
     }, 8000);
     return () => clearInterval(interval);
-  }, [activeIndex]);
+  }, [nextTestimonial]);
 
   return (
     <section className="py-16 bg-gray-50 overflow-hidden">
@@ -90,7 +90,7 @@ const TestimonialCarousel = () => {
         <div className="relative">
           {/* Large Quote Icon */}
           <div className="absolute -top-10 -left-10 text-primary/10">
-            <Quote className="w-32 h-32" />
+            <FiMessageCircle  className="w-32 h-32" />
           </div>
 
           {/* Testimonial Cards */}
@@ -117,7 +117,7 @@ const TestimonialCarousel = () => {
                             </div>
                           </div>
                           <div className="absolute -bottom-2 -right-2 bg-primary text-white rounded-full p-1">
-                            <Quote className="w-4 h-4" />
+                            <FiMessageCircle  className="w-4 h-4" />
                           </div>
                         </div>
                         
@@ -126,7 +126,7 @@ const TestimonialCarousel = () => {
                         
                         <div className="flex items-center space-x-1 mb-4">
                           {Array.from({ length: 5 }).map((_, i) => (
-                            <Star 
+                            <FiStar  
                               key={i} 
                               className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} 
                             />
@@ -190,14 +190,14 @@ const TestimonialCarousel = () => {
             className="absolute top-1/2 -translate-y-1/2 -left-4 md:left-0 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-700 hover:text-primary transition-colors z-20"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <FiChevronLeft  className="w-6 h-6" />
           </button>
           <button
             onClick={nextTestimonial}
             className="absolute top-1/2 -translate-y-1/2 -right-4 md:right-0 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-700 hover:text-primary transition-colors z-20"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="w-6 h-6" />
+            <FiChevronRight  className="w-6 h-6" />
           </button>
         </div>
 

@@ -5,7 +5,7 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select";
 import { Badge } from "../../components/ui/badge";
-import { Download, FileText, Calendar, Filter, CheckCircle } from "lucide-react";
+import { FiDownload, FiFileText, FiCalendar, FiFilter, FiCheckCircle } from "react-icons/fi";
 import { useToast } from "../../components/ui/use-toast";
 // import { useToast } from "../../hooks/use-toast";
 
@@ -15,28 +15,28 @@ const exportTypes = [
     name: "Store List",
     description: "Complete list of all stores with basic information",
     format: "CSV",
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FiFileText className="w-5 h-5" />,
   },
   {
     id: "store-status",
     name: "Store Status Summary",
     description: "Summary of store statuses and registration dates",
     format: "Excel",
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FiFileText className="w-5 h-5" />,
   },
   {
     id: "commission-report",
     name: "Commission Report",
     description: "Detailed commission earnings and rates for all stores",
     format: "Excel",
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FiFileText className="w-5 h-5" />,
   },
   {
     id: "pending-requests",
     name: "Pending Requests",
     description: "List of all pending store registration requests",
     format: "CSV",
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FiFileText className="w-5 h-5" />,
   },
 ];
 
@@ -98,7 +98,7 @@ export default function ExportsPage() {
     }, 2000);
   };
 
-  const handleDownload = (exportId) => {
+  const handleDownload = () => {
     toast({
       title: "Download Started",
       description: "Your file download has begun.",
@@ -119,7 +119,7 @@ export default function ExportsPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Download className="w-5 h-5" />
+              <FiDownload className="w-5 h-5" />
               Create New Export
             </CardTitle>
           </CardHeader>
@@ -181,7 +181,7 @@ export default function ExportsPage() {
                 </>
               ) : (
                 <>
-                  <Download className="w-4 h-4 mr-2" />
+                  <FiDownload className="w-4 h-4 mr-2" />
                   Generate Export
                 </>
               )}
@@ -236,13 +236,13 @@ export default function ExportsPage() {
               >
                 <div className="flex items-center gap-3">
                   <div className="text-muted-foreground">
-                    <FileText className="w-5 h-5" />
+                    <FiFileText className="w-5 h-5" />
                   </div>
                   <div>
                     <h4 className="font-medium">{exportItem.type}</h4>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
+                        <FiCalendar className="w-3 h-3" />
                         {exportItem.date}
                       </span>
                       <span>{exportItem.size}</span>
@@ -255,7 +255,7 @@ export default function ExportsPage() {
                     variant={exportItem.status === "completed" ? "default" : "secondary"}
                     className="flex items-center gap-1"
                   >
-                    <CheckCircle className="w-3 h-3" />
+                    <FiCheckCircle className="w-3 h-3" />
                     {exportItem.status}
                   </Badge>
                   <Button
@@ -263,7 +263,7 @@ export default function ExportsPage() {
                     size="sm"
                     onClick={() => handleDownload(exportItem.id)}
                   >
-                    <Download className="w-4 h-4 mr-1" />
+                    <FiDownload className="w-4 h-4 mr-1" />
                     Download
                   </Button>
                 </div>

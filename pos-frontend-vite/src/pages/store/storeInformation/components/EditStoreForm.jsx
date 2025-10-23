@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Loader2 } from "lucide-react";
+import { FiLoader } from "react-icons/fi";
 import { 
   Select,
   SelectContent,
@@ -137,7 +137,7 @@ const EditStoreForm = ({ initialValues, onSubmit, onCancel, isSubmitting }) => {
             <Button type="submit" disabled={formikSubmitting || isSubmitting}>
               {formikSubmitting || isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <FiLoader className="mr-2 h-4 w-4 animate-spin" />
                   Updating...
                 </>
               ) : (

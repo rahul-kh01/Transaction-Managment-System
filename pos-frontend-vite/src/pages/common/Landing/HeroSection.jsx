@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../../../components/ui/button";
-import { Play, ArrowRight, X, CheckCircle, ShoppingCart, BarChart3, Shield } from "lucide-react";
+import { FiPlay, FiArrowRight, FiX, FiCheckCircle, FiShoppingCart, FiBarChart2, FiShield } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { TypewriterText } from "./components";
 
@@ -63,10 +63,10 @@ const HeroSection = () => {
             style={{ animationDelay: '1.6s' }}
           >
             {[
-              { icon: <ShoppingCart className="w-4 h-4" />, text: "Fast Checkout" },
-              { icon: <BarChart3 className="w-4 h-4" />, text: "Real-time Analytics" },
-              { icon: <Shield className="w-4 h-4" />, text: "Secure Access" },
-              { icon: <CheckCircle className="w-4 h-4" />, text: "GST Ready" }
+              { icon: <FiShoppingCart className="w-4 h-4" />, text: "Fast Checkout" },
+              { icon: <FiBarChart2 className="w-4 h-4" />, text: "Real-time Analytics" },
+              { icon: <FiShield className="w-4 h-4" />, text: "Secure Access" },
+              { icon: <FiCheckCircle className="w-4 h-4" />, text: "GST Ready" }
             ].map((feature, index) => (
               <div 
                 key={index} 
@@ -89,7 +89,7 @@ const HeroSection = () => {
               className="text-lg px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-bounce-subtle"
             >
               Get Started
-              <ArrowRight className="w-5 h-5 ml-2"/>
+              <FiArrowRight className="w-5 h-5 ml-2"/>
             </Button>
             <Button 
               variant="outline" 
@@ -98,7 +98,7 @@ const HeroSection = () => {
               onClick={handleWatchDemo}
             >
               Watch Demo Video
-              <Play className="w-5 h-5 ml-2" />
+              <FiPlay className="w-5 h-5 ml-2" />
             </Button>
           </div>
         </div>
@@ -115,7 +115,7 @@ const HeroSection = () => {
                   onClick={() => setShowVideo(false)}
                   className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors"
                 >
-                  <X className="w-5 h-5" />
+                  <FiX className="w-5 h-5" />
                 </button>
                 <div className="bg-black rounded-lg">
                   <video
@@ -130,7 +130,7 @@ const HeroSection = () => {
               <div className="relative group cursor-pointer" onClick={handleWatchDemo}>
                 <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
                   <div className="bg-card/90 rounded-full p-4 shadow-lg transform transition-transform group-hover:scale-110 border">
-                    <Play className="w-8 h-8 text-primary" fill="currentColor" />
+                    <FiPlay className="w-8 h-8 text-primary" fill="currentColor" />
                   </div>
                 </div>
                 <img 

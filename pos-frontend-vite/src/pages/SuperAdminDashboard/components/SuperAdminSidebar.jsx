@@ -2,44 +2,36 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../Redux Toolkit/features/user/userThunks";
-import {
-  LayoutDashboard,
-  Store,
-  Download,
-  Settings,
-  FileText,
-  DollarSign,
-  Clock,
-} from "lucide-react";
+import { FiLayout, FiHome, FiDownload, FiSettings, FiFileText, FiDollarSign, FiClock,  } from "react-icons/fi";
 import { Button } from "../../../components/ui/button";
 
 const navLinks = [
   {
     name: "Dashboard",
     path: "/super-admin/dashboard",
-    icon: <LayoutDashboard className="w-5 h-5" />,
+    icon: <FiLayout className="w-5 h-5" />,
   },
   {
     name: "Stores",
     path: "/super-admin/stores",
-    icon: <Store className="w-5 h-5" />,
+    icon: <FiHome className="w-5 h-5" />,
   },
   {
     name: "Subscription Plans",
     path: "/super-admin/subscriptions",
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FiFileText className="w-5 h-5" />,
   },
   {
     name: "Pending Requests",
     path: "/super-admin/requests",
-    icon: <Clock className="w-5 h-5" />,
+    icon: <FiClock className="w-5 h-5" />,
   },
  
 
   {
     name: "Settings",
     path: "/super-admin/settings",
-    icon: <Settings className="w-5 h-5" />,
+    icon: <FiSettings className="w-5 h-5" />,
   },
 ];
 
@@ -56,7 +48,7 @@ export default function SuperAdminSidebar() {
   return (
     <aside className="h-screen w-64 bg-sidebar border-r border-sidebar-border flex flex-col py-6 px-4 shadow-lg">
       <div className="mb-8 text-2xl font-extrabold text-primary tracking-tight flex items-center gap-2">
-        <Store className="w-7 h-7 text-primary" />
+        <FiHome className="w-7 h-7 text-primary" />
         Super Admin
       </div>
       <nav className="flex-1 overflow-y-auto">

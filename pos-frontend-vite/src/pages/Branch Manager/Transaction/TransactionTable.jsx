@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Card, CardContent } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
-import { Eye } from 'lucide-react';
+import {FiEye} from 'react-icons/fi';
 
 const TransactionTable = ({filteredTransactions,handleViewTransaction}) => {
   return (
@@ -46,7 +46,7 @@ const TransactionTable = ({filteredTransactions,handleViewTransaction}) => {
                           size="sm"
                           onClick={() => handleViewTransaction(transaction)}
                         >
-                          <Eye className="h-4 w-4" />
+                          <FiEye  className="h-4 w-4" />
                         </Button>
                       </TableCell>
                     </TableRow>

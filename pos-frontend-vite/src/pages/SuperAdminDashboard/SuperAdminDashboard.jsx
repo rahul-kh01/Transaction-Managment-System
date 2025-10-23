@@ -1,11 +1,11 @@
 import { Outlet } from "react-router";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import SuperAdminSidebar from "./components/SuperAdminSidebar";
 import SuperAdminTopbar from "./components/SuperAdminTopbar";
 
 export default function SuperAdminDashboard({ children }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
   useEffect(() => {
     // Initialize SuperAdmin data if needed

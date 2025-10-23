@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit } from "lucide-react";
+import { FiEdit } from "react-icons/fi";
 
 const InventoryTable = ({ rows, onEdit }) => (
   <Table>
@@ -24,7 +24,7 @@ const InventoryTable = ({ rows, onEdit }) => (
             <TableCell>{row.category}</TableCell>
             <TableCell>
               <Button size="sm" variant="outline" onClick={() => onEdit(row)}>
-                <Edit className="h-4 w-4" />
+                <FiEdit className="h-4 w-4" />
               </Button>
             </TableCell>
           </TableRow>

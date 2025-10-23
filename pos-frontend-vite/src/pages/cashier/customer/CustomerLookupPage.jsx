@@ -117,7 +117,7 @@ const CustomerLookupPage = () => {
     if (selectedCustomer) {
       dispatch(getOrdersByCustomer(selectedCustomer.id));
     }
-  }, [selectedCustomer]);
+  }, [selectedCustomer, dispatch]);
 
   // Calculate customer stats from orders
   const customerStats = selectedCustomer

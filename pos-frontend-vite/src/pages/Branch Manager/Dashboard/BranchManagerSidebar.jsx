@@ -3,64 +3,64 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/Redux Toolkit/features/user/userThunks";
 import {
-  LayoutDashboard,
-  ShoppingBag,
-  CreditCard,
-  Package,
-  Users,
-  UserCircle,
-  FileText,
-  Settings,
-  LogOut
-} from "lucide-react";
+  FiUser,
+  FiLayout,
+  FiShoppingBag,
+  FiCreditCard,
+  FiPackage,
+  FiUsers,
+  FiFileText,
+  FiSettings,
+  FiLogOut,
+  FiRefreshCw
+} from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import { RefreshCw } from "lucide-react";
 
 const navLinks = [
   {
     name: "Dashboard",
     path: "/branch/dashboard",
-    icon: <LayoutDashboard className="w-5 h-5" />,
+    icon: <FiLayout className="w-5 h-5" />,
   },
   {
     name: "Orders",
     path: "/branch/orders",
-    icon: <ShoppingBag className="w-5 h-5" />,
+    icon: <FiShoppingBag className="w-5 h-5" />,
   },
   {
     name: "Refunds",
     path: "/branch/refunds",
-    icon: <RefreshCw className="w-5 h-5" />,
+    icon: <FiRefreshCw className="w-5 h-5" />,
   },
   {
     name: "Transactions",
     path: "/branch/transactions",
-    icon: <CreditCard className="w-5 h-5" />,
+    icon: <FiCreditCard className="w-5 h-5" />,
   },
   {
     name: "Inventory",
     path: "/branch/inventory",
-    icon: <Package className="w-5 h-5" />,
+    icon: <FiPackage className="w-5 h-5" />,
   },
   {
     name: "Employees",
     path: "/branch/employees",
-    icon: <Users className="w-5 h-5" />,
+    icon: <FiUsers className="w-5 h-5" />,
   },
   {
     name: "Customers",
     path: "/branch/customers",
-    icon: <UserCircle className="w-5 h-5" />,
+    icon: <FiUser className="w-5 h-5" />,
   },
   {
     name: "Reports",
     path: "/branch/reports",
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FiFileText className="w-5 h-5" />,
   },
   {
     name: "Settings",
     path: "/branch/settings",
-    icon: <Settings className="w-5 h-5" />,
+    icon: <FiSettings className="w-5 h-5" />,
   },
 ];
 
@@ -78,7 +78,7 @@ export default function BranchManagerSidebar() {
   return (
     <aside className="h-screen w-64 bg-sidebar border-r border-sidebar-border flex flex-col py-6 px-4 shadow-lg">
       <div className="mb-8 text-2xl font-extrabold text-primary tracking-tight flex items-center gap-2">
-        <Package className="w-7 h-7 text-primary" />
+        <FiPackage className="w-7 h-7 text-primary" />
         Branch Manager
       </div>
       {branch && (
@@ -120,7 +120,7 @@ export default function BranchManagerSidebar() {
           variant=""
           className="flex items-center gap-3 rounded-lg transition-colors text-base font-medium w-full text-left "
         >
-          <LogOut className="w-5 h-5" />
+          <FiLogOut className="w-5 h-5" />
           Logout
         </Button>
       </div>

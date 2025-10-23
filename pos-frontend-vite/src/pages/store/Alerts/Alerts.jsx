@@ -11,7 +11,7 @@ import RefundSpikeTable from './RefundSpikeTable'
 
 const Alerts = () => {
      const dispatch = useDispatch();
-      const storeAnalytics = useSelector((state) => state.storeAnalytics);
+      // const storeAnalytics = useSelector((state) => state.storeAnalytics);
       const user=useSelector((state) => state.user.userProfile);
     
       useEffect(() => {

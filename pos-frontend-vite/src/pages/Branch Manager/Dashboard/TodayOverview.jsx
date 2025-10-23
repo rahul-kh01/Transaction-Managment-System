@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { getChangeType } from '../data';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DollarSign, ShoppingBag, Users, Package, CreditCard } from "lucide-react";
+import { FiDollarSign, FiShoppingBag, FiUsers, FiPackage, FiCreditCard } from "react-icons/fi";
 
 const TodayOverview = () => {
       const { todayOverview, loading } = useSelector((state) => state.branchAnalytics);
@@ -11,28 +11,28 @@ const TodayOverview = () => {
         {
           title: "Today's Sales",
           value: `₹${todayOverview.totalSales?.toLocaleString() ?? "-"}`,
-          icon: <DollarSign className="w-8 h-8 text-primary" />,
+          icon: <FiDollarSign className="w-8 h-8 text-primary" />,
           change: todayOverview.salesGrowth !== undefined ? `${todayOverview.salesGrowth > 0 ? "+" : ""}${todayOverview.salesGrowth.toFixed(2)}%` : "-",
           changeType: getChangeType(todayOverview.salesGrowth)
         },
         {
           title: "Orders Today",
           value: todayOverview.ordersToday ?? "-",
-          icon: <ShoppingBag className="w-8 h-8 text-primary" />,
+          icon: <FiShoppingBag className="w-8 h-8 text-primary" />,
           change: todayOverview.orderGrowth !== undefined ? `${todayOverview.orderGrowth > 0 ? "+" : ""}${todayOverview.orderGrowth.toFixed(2)}%` : "-",
           changeType: getChangeType(todayOverview.orderGrowth)
         },
         {
           title: "Active Cashiers",
           value: todayOverview.activeCashiers ?? "-",
-          icon: <Users className="w-8 h-8 text-primary" />,
+          icon: <FiUsers className="w-8 h-8 text-primary" />,
           change: todayOverview.cashierGrowth !== undefined ? `${todayOverview.cashierGrowth > 0 ? "+" : ""}${todayOverview.cashierGrowth.toFixed(2)}%` : "-",
           changeType: getChangeType(todayOverview.cashierGrowth)
         },
         {
           title: "Low Stock Items",
           value: todayOverview.lowStockItems ?? "-",
-          icon: <Package className="w-8 h-8 text-primary" />,
+          icon: <FiPackage className="w-8 h-8 text-primary" />,
           change: todayOverview.lowStockGrowth !== undefined ? `${todayOverview.lowStockGrowth > 0 ? "+" : ""}${todayOverview.lowStockGrowth.toFixed(2)}%` : "-",
           changeType: getChangeType(todayOverview.lowStockGrowth)
         },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { PrinterIcon, ArrowRightIcon } from 'lucide-react';
+import {FiPrinter, FiArrowRight} from 'react-icons/fi';
 
 const ShiftHeader = ({ onPrintClick, onEndShiftClick }) => {
 
@@ -11,11 +11,11 @@ const ShiftHeader = ({ onPrintClick, onEndShiftClick }) => {
         <h1 className="text-2xl font-bold">Shift Summary</h1>
         <div className="flex gap-2">
           <Button variant="outline" onClick={onPrintClick}>
-            <PrinterIcon className="h-4 w-4 mr-2" />
+            <FiPrinter  className="h-4 w-4 mr-2" />
             Print Summary
           </Button>
           <Button variant="destructive" onClick={onEndShiftClick}>
-            <ArrowRightIcon className="h-4 w-4 mr-2" />
+            <FiArrowRight className="h-4 w-4 mr-2" />
             End Shift & Logout
           </Button>
         </div>

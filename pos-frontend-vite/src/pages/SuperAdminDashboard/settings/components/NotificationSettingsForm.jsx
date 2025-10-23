@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
-import { Bell } from "lucide-react";
+import { FiBell } from "react-icons/fi";
 
 const NotificationItem = ({ id, title, description, checked, onToggle }) => (
   <>
@@ -50,7 +50,7 @@ const NotificationSettingsForm = ({ notifications, onToggle }) => {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Bell className="w-5 h-5" />
+          <FiBell className="w-5 h-5" />
           Notification Preferences
         </CardTitle>
       </CardHeader>

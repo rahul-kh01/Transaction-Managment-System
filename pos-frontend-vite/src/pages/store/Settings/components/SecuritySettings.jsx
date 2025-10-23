@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Shield } from "lucide-react";
+import { FiShield } from "react-icons/fi";
 import ToggleSwitch from "./ToggleSwitch";
 
 const SecuritySettings = ({ settings, onChange }) => {
@@ -32,7 +32,7 @@ const SecuritySettings = ({ settings, onChange }) => {
     <Card id="security-settings">
       <CardHeader>
         <CardTitle className="flex items-center">
-          <Shield className="mr-2 h-5 w-5 text-emerald-500" />
+          <FiShield className="mr-2 h-5 w-5 text-emerald-500" />
           Security Settings
         </CardTitle>
         <CardDescription>

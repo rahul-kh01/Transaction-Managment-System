@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2, Mail, Phone, MapPin } from "lucide-react";
+import { FiEdit, FiTrash2, FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { toast } from "sonner";
 
 const EmployeeTable = ({ employees, onEdit, onDelete }) => {
@@ -30,18 +30,18 @@ const EmployeeTable = ({ employees, onEdit, onDelete }) => {
               <TableCell className="font-medium">{employee.fullName}</TableCell>
               <TableCell>
                 <div className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4 text-gray-500" />
+                  <FiMail className="h-4 w-4 text-gray-500" />
                   <span>{employee.email}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4 text-gray-500" />
+                  <FiPhone className="h-4 w-4 text-gray-500" />
                   <span>{employee.phone}</span>
                 </div>
               </TableCell>
               <TableCell>{employee.role}</TableCell>
               <TableCell>
                 <div className="flex items-center space-x-2">
-                  <MapPin className="h-4 w-4 text-gray-500" />
+                  <FiMapPin className="h-4 w-4 text-gray-500" />
                   <span>{employee.branch?.name}</span>
                 </div>
               </TableCell>
@@ -51,7 +51,7 @@ const EmployeeTable = ({ employees, onEdit, onDelete }) => {
                   size="sm"
                   onClick={() => onEdit(employee)}
                 >
-                  <Edit className="h-4 w-4" />
+                  <FiEdit className="h-4 w-4" />
                 </Button>
                 <Button
                   variant="ghost"
@@ -62,7 +62,7 @@ const EmployeeTable = ({ employees, onEdit, onDelete }) => {
                   }}
                   className="text-red-600 hover:text-red-800"
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <FiTrash2 className="h-4 w-4" />
                 </Button>
               </TableCell>
             </TableRow>

@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { SearchIcon } from "lucide-react";
+import { FiSearch } from "react-icons/fi";
 import { formatDate } from "../../order/data";
 import { useSelector } from "react-redux";
 
@@ -61,7 +61,7 @@ const OrderTable = ({ handleSelectOrder }) => {
           </Table>
         ) : (
           <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
-            <SearchIcon size={48} strokeWidth={1} />
+            <FiSearch size={48} strokeWidth={1} />
             <p className="mt-4">No orders found</p>
             <p className="text-sm">
               Try searching by order ID or customer name

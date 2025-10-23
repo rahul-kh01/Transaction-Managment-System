@@ -1,4 +1,4 @@
-import { StarIcon } from 'lucide-react'
+import {FiStar} from 'react-icons/fi'
 import { Badge } from '../../../../components/ui/badge'
 
 const CustomerCard = ({customer, onSelectCustomer, selectedCustomer}) => {
@@ -15,7 +15,7 @@ const CustomerCard = ({customer, onSelectCustomer, selectedCustomer}) => {
                 <p className="text-sm text-muted-foreground">{customer.email || 'N/A'}</p>
               </div>
               <Badge variant="outline" className="flex items-center gap-1">
-                <StarIcon className="h-3 w-3" />
+                <FiStar className="h-3 w-3" />
                 {customer.loyaltyPoints || 0} pts
               </Badge>
             </div>

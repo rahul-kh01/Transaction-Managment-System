@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Mail, Phone, HelpCircle, ChevronRight } from 'lucide-react';
+import {FiMessageCircle, FiMail, FiPhone, FiHelpCircle, FiChevronRight} from 'react-icons/fi';
 
 const FAQSection = () => {
   const faqs = [
@@ -46,28 +46,28 @@ const FAQSection = () => {
 
   const supportOptions = [
     {
-      icon: <Phone className="w-5 h-5" />,
+      icon: <FiPhone  className="w-5 h-5" />,
       title: "Phone Support",
       description: "Talk to our experts",
       action: "+91 98765 43210",
       buttonText: "Call Now"
     },
     {
-      icon: <Mail className="w-5 h-5" />,
+      icon: <FiMail  className="w-5 h-5" />,
       title: "Email Support",
       description: "Get answers by email",
       action: "support@pospro.com",
       buttonText: "Send Email"
     },
     {
-      icon: <MessageCircle className="w-5 h-5" />,
+      icon: <FiMessageCircle  className="w-5 h-5" />,
       title: "Live Chat",
       description: "Chat with our team",
       action: "Available 24/7",
       buttonText: "Start Chat"
     },
     {
-      icon: <HelpCircle className="w-5 h-5" />,
+      icon: <FiHelpCircle  className="w-5 h-5" />,
       title: "Help Center",
       description: "Browse our resources",
       action: "Guides & Tutorials",
@@ -110,7 +110,7 @@ const FAQSection = () => {
               <p className="text-gray-600 mb-4">Still have questions?</p>
               <Button variant="outline" className="group">
                 Contact Our Support Team
-                <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <FiChevronRight  className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </div>

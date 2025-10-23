@@ -20,7 +20,7 @@ import {
   DialogTitle,
 } from "../../components/ui/dialog";
 import { Label } from "../../components/ui/label";
-import { DollarSign, Edit, TrendingUp, TrendingDown } from "lucide-react";
+import { FiDollarSign, FiEdit, FiTrendingUp, FiTrendingDown } from "react-icons/fi";
 import { useToast } from "../../components/ui/use-toast";
 // import { useToast } from "../../hooks/use-toast";
 
@@ -100,9 +100,9 @@ export default function CommissionsPage() {
   const getRateChange = (current, previous) => {
     const change = current - previous;
     if (change > 0) {
-      return { value: `+${change}%`, className: "text-green-600", icon: <TrendingUp className="w-3 h-3" /> };
+      return { value: `+${change}%`, className: "text-green-600", icon: <FiTrendingUp className="w-3 h-3" /> };
     } else if (change < 0) {
-      return { value: `${change}%`, className: "text-red-600", icon: <TrendingDown className="w-3 h-3" /> };
+      return { value: `${change}%`, className: "text-red-600", icon: <FiTrendingDown className="w-3 h-3" /> };
     } else {
       return { value: "0%", className: "text-gray-600", icon: null };
     }
@@ -122,7 +122,7 @@ export default function CommissionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Earnings</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <FiDollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">₹37,000</div>
@@ -134,7 +134,7 @@ export default function CommissionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Average Rate</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <FiTrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">2.5%</div>
@@ -146,7 +146,7 @@ export default function CommissionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Stores</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <FiDollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{commissions.length}</div>
@@ -200,7 +200,7 @@ export default function CommissionsPage() {
                           size="sm"
                           onClick={() => handleEditCommission(commission)}
                         >
-                          <Edit className="w-4 h-4 mr-1" />
+                          <FiEdit className="w-4 h-4 mr-1" />
                           Edit Rate
                         </Button>
                       </TableCell>
@@ -251,7 +251,7 @@ export default function CommissionsPage() {
               Cancel
             </Button>
             <Button onClick={confirmEditCommission}>
-              <Edit className="w-4 h-4 mr-2" />
+              <FiEdit className="w-4 h-4 mr-2" />
               Update Rate
             </Button>
           </DialogFooter>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Shield, Bell, Settings as SettingsIcon } from "lucide-react";
+import { FiUser, FiShield, FiBell, FiSettings } from "react-icons/fi";
 import ProfileSettingsForm from "./components/ProfileSettingsForm";
 import SecuritySettingsForm from "./components/SecuritySettingsForm";
 import NotificationSettingsForm from "./components/NotificationSettingsForm";
@@ -42,19 +42,19 @@ export default function SettingsPage() {
       <Tabs defaultValue="profile" className="space-y-6">
         <TabsList className="grid w-full grid-cols-4">
           <SettingsTabTrigger value="profile">
-            <User className="w-4 h-4" />
+            <FiUser className="w-4 h-4" />
             Profile
           </SettingsTabTrigger>
           <SettingsTabTrigger value="security">
-            <Shield className="w-4 h-4" />
+            <FiShield className="w-4 h-4" />
             Security
           </SettingsTabTrigger>
           <SettingsTabTrigger value="notifications">
-            <Bell className="w-4 h-4" />
+            <FiBell className="w-4 h-4" />
             Notifications
           </SettingsTabTrigger>
           <SettingsTabTrigger value="system">
-            <SettingsIcon className="w-4 h-4" />
+            <FiSettings className="w-4 h-4" />
             System
           </SettingsTabTrigger>
         </TabsList>

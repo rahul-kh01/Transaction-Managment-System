@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TrendingUp, Calendar } from "lucide-react";
+import { FiTrendingUp, FiCalendar } from "react-icons/fi";
 import {
   getSalesTrends,
   getDailySales,
@@ -36,9 +36,9 @@ const SalesTrend = () => {
     if (userProfile?.id) {
       fetchSalesData();
     }
-  }, [userProfile, period]);
+  }, [userProfile, period, fetchSalesData]);
 
-  const fetchSalesData = async () => {
+  const fetchSalesData = React.useCallback(async () => {
     try {
       if (period === "daily") {
         await dispatch(getDailySales(userProfile.id)).unwrap();
@@ -54,7 +54,7 @@ const SalesTrend = () => {
         variant: "destructive",
       });
     }
-  };
+  }, [dispatch, userProfile.id, period, toast]);
 
   // Format currency for tooltip
   const formatCurrency = (value) => {
@@ -146,7 +146,7 @@ const SalesTrend = () => {
         ) : (
           <div className="flex items-center justify-center h-64">
             <div className="text-center">
-              <TrendingUp className="w-16 h-16 text-emerald-500 mx-auto" />
+              <FiTrendingUp className="w-16 h-16 text-emerald-500 mx-auto" />
               <p className="mt-2 text-gray-500">No sales data available</p>
             </div>
           </div>

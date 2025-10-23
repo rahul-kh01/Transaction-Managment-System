@@ -15,15 +15,15 @@ import {
 } from "@/components/ui/dialog";
 
 import {
-  SearchIcon,
-  PrinterIcon,
-  EyeIcon,
-  RotateCcwIcon,
-  CalendarIcon,
-  Loader2,
-  RefreshCw,
-  Download,
-} from "lucide-react";
+  FiSearch,
+  FiPrinter,
+  FiEye,
+  FiRotateCcw,
+  FiCalendar,
+  FiLoader,
+  FiRefreshCw,
+  FiDownload,
+} from "react-icons/fi";
 import { getOrdersByCashier } from "@/Redux Toolkit/features/order/orderThunks";
 import OrderDetails from "./OrderDetails/OrderDetails";
 
@@ -114,7 +114,7 @@ const OrderHistoryPage = () => {
           onClick={handleRefreshOrders}
           disabled={loading}
         >
-          <RefreshCw
+          <FiRefreshCw
             className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`}
           />
           Refresh
@@ -125,7 +125,7 @@ const OrderHistoryPage = () => {
         <div className="flex flex-wrap gap-4">
           <div className="flex-1 min-w-[300px]">
             <div className="relative">
-              <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="text"
                 placeholder="Search by order ID or customer..."
@@ -159,7 +159,7 @@ const OrderHistoryPage = () => {
               variant={dateFilter === "custom" ? "default" : "outline"}
               onClick={() => setDateFilter("custom")}
             >
-              <CalendarIcon className="h-4 w-4 mr-2" />
+              <FiCalendar className="h-4 w-4 mr-2" />
               Custom
             </Button>
           </div>
@@ -208,7 +208,7 @@ const OrderHistoryPage = () => {
       <div className="flex-1 p-4 overflow-auto">
         {loading ? (
           <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
-            <Loader2 className="animate-spin h-16 w-16 text-primary" />
+            <FiLoader className="animate-spin h-16 w-16 text-primary" />
             <p className="mt-4">Loading orders...</p>
           </div>
         ) : orders.length > 0 ? (
@@ -220,7 +220,7 @@ const OrderHistoryPage = () => {
           />
         ) : (
           <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
-            <SearchIcon size={48} strokeWidth={1} />
+            <FiSearch size={48} strokeWidth={1} />
             <p className="mt-4">No orders found</p>
             <p className="text-sm">Try adjusting your search or date filters</p>
           </div>
@@ -241,14 +241,14 @@ const OrderHistoryPage = () => {
 
             <DialogFooter className="gap-2 sm:gap-0 space-x-3">
               <Button variant="outline" onClick={handleDownloadPDF}>
-                <Download className="h-4 w-4 mr-2" />
+                <FiDownload className="h-4 w-4 mr-2" />
                 Download PDF
               </Button>
               <Button
                 variant=""
                 onClick={() => handlePrintInvoice(selectedOrder)}
               >
-                <PrinterIcon className="h-4 w-4 mr-2" />
+                <FiPrinter className="h-4 w-4 mr-2" />
                 Print Invoice
               </Button>
              

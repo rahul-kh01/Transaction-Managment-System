@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardContent } from '../../../../components/ui/card'
-import { formatDate, getPaymentModeLabel, getStatusBadgeVariant } from '../data'
+import { formatDate, getPaymentModeLabel } from '../data'
 import { Badge } from '../../../../components/ui/badge'
 
 const OrderInformation = ({selectedOrder}) => {

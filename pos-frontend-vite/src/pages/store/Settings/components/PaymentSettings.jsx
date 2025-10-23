@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { CreditCard } from "lucide-react";
+import { FiCreditCard } from "react-icons/fi";
 import ToggleSwitch from "./ToggleSwitch";
 
 const PaymentSettings = ({ settings, onChange }) => {
@@ -46,7 +46,7 @@ const PaymentSettings = ({ settings, onChange }) => {
     <Card id="payment-settings">
       <CardHeader>
         <CardTitle className="flex items-center">
-          <CreditCard className="mr-2 h-5 w-5 text-emerald-500" />
+          <FiCreditCard className="mr-2 h-5 w-5 text-emerald-500" />
           Payment Settings
         </CardTitle>
         <CardDescription>

@@ -1,6 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Bell, User } from "lucide-react";
+import {
+  FiLayout,
+  FiShoppingBag,
+  FiCreditCard,
+  FiPackage,
+  FiUsers,
+  FiUser,
+  FiFileText,
+  FiSettings,
+  FiLogOut,
+  FiRefreshCw,
+  FiBell
+} from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -29,7 +41,7 @@ export default function BranchManagerTopbar() {
         <ThemeToggle />
         
         <Button variant="ghost" size="icon" className="relative">
-          <Bell className="h-5 w-5" />
+          <FiBell className="h-5 w-5" />
           <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs">
             3
           </Badge>
@@ -37,7 +49,7 @@ export default function BranchManagerTopbar() {
 
         <div className="flex items-center gap-3">
           <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center">
-            <User className="h-5 w-5 text-primary" />
+            <FiUser className="h-5 w-5 text-primary" />
           </div>
           <div className="hidden md:block">
             <p className="text-sm font-medium text-foreground">{userProfile?.name || "Branch Manager"}</p>

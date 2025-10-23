@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
-import { Settings } from "lucide-react";
+import { FiSettings } from "react-icons/fi";
 
 const SystemSettingItem = ({ id, title, description, checked, onToggle }) => (
   <>
@@ -44,7 +44,7 @@ const SystemSettingsForm = ({ systemSettings, onToggle }) => {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Settings className="w-5 h-5" />
+          <FiSettings className="w-5 h-5" />
           System Settings
         </CardTitle>
       </CardHeader>

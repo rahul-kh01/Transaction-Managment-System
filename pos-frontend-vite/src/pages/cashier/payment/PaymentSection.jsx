@@ -9,8 +9,8 @@ import {
   selectTotal,
 } from "../../../Redux Toolkit/features/cart/cartSlice";
 import { Button } from "../../../components/ui/button";
-import { CreditCard } from "lucide-react";
-import { Pause } from "lucide-react";
+import { FiCreditCard, FiPause } from "react-icons/fi";
+
 
 const PaymentSection = ({ setShowPaymentDialog }) => {
   const cartItems = useSelector(selectCartItems);
@@ -77,7 +77,7 @@ const PaymentSection = ({ setShowPaymentDialog }) => {
             onClick={handlePayment}
             disabled={cartItems.length === 0}
           >
-            <CreditCard className="w-5 h-5 mr-2" />
+            <FiCreditCard className="w-5 h-5 mr-2" />
             Process Payment
           </Button>
 
@@ -87,7 +87,7 @@ const PaymentSection = ({ setShowPaymentDialog }) => {
             onClick={handleHoldOrder}
             disabled={cartItems.length === 0}
           >
-            <Pause className="w-4 h-4 mr-2" />
+            <FiPause className="w-4 h-4 mr-2" />
             Hold Order
           </Button>
         </div>

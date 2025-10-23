@@ -3,7 +3,7 @@ import StoreSettings from "./StoreSettings";
 import NotificationSettings from "./NotificationSettings";
 import SecuritySettings from "./SecuritySettings";
 import PaymentSettings from "./PaymentSettings";
-import { Save } from "lucide-react";
+import { FiSave } from "react-icons/fi";
 import { Button } from "../../../../components/ui/button";
 
 const SettingsContent = ({
@@ -43,7 +43,7 @@ const SettingsContent = ({
       />
 
       <Button className="" variant={"outline"} onClick={onSave}>
-        <Save className="mr-2 h-4 w-4" /> Save All Settings
+        <FiSave className="mr-2 h-4 w-4" /> Save All Settings
       </Button>
     </div>
   );

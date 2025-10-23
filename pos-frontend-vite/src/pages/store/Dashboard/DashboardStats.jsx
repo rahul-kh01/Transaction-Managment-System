@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardContent } from "@/components/ui/card";
-import { DollarSign, Store, ShoppingCart, Users } from "lucide-react";
+import { FiDollarSign, FiHome, FiShoppingCart, FiUsers } from "react-icons/fi";
 import { getStoreOverview } from "@/Redux Toolkit/features/storeAnalytics/storeAnalyticsThunks";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -15,9 +15,9 @@ const DashboardStats = () => {
     if (userProfile?.id) {
       fetchStoreOverview();
     }
-  }, [userProfile]);
+  }, [userProfile, fetchStoreOverview]);
 
-  const fetchStoreOverview = async () => {
+  const fetchStoreOverview = React.useCallback(async () => {
     try {
       await dispatch(getStoreOverview(userProfile.id)).unwrap();
     } catch (err) {
@@ -27,7 +27,7 @@ const DashboardStats = () => {
         variant: "destructive",
       });
     }
-  };
+  }, [dispatch, userProfile.id, toast]);
 
   // Format currency
   const formatCurrency = (amount) => {
@@ -51,28 +51,28 @@ const DashboardStats = () => {
     { 
       title: "Total Sales", 
       value: formatCurrency(storeOverview?.totalSales || 0), 
-      icon: <DollarSign className="w-8 h-8 text-emerald-500" />, 
+      icon: <FiDollarSign className="w-8 h-8 text-emerald-500" />, 
       change: formatChange(storeOverview?.totalSales, storeOverview?.previousPeriodSales),
       loading: loading
     },
     { 
       title: "Total Branches", 
       value: storeOverview?.totalBranches || 0, 
-      icon: <Store className="w-8 h-8 text-emerald-500" />, 
+      icon: <FiHome className="w-8 h-8 text-emerald-500" />, 
       change: formatChange(storeOverview?.totalBranches, storeOverview?.previousPeriodBranches),
       loading: loading
     },
     { 
       title: "Total Products", 
       value: storeOverview?.totalProducts || 0, 
-      icon: <ShoppingCart className="w-8 h-8 text-emerald-500" />, 
+      icon: <FiShoppingCart className="w-8 h-8 text-emerald-500" />, 
       change: formatChange(storeOverview?.totalProducts, storeOverview?.previousPeriodProducts),
       loading: loading
     },
     { 
       title: "Total Employees", 
       value: storeOverview?.totalEmployees || 0, 
-      icon: <Users className="w-8 h-8 text-emerald-500" />, 
+      icon: <FiUsers className="w-8 h-8 text-emerald-500" />, 
       change: formatChange(storeOverview?.totalEmployees, storeOverview?.previousPeriodEmployees),
       loading: loading
     },

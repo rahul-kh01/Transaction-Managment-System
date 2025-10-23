@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router';
 const Onboarding = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, isCompleted } = useSelector((state) => state.onboarding);
+  const { error, isCompleted } = useSelector((state) => state.onboarding);
   
   const [step, setStep] = useState(1);
   const [fadeIn, setFadeIn] = useState(true);
@@ -51,12 +51,12 @@ const Onboarding = () => {
                 // No store, skip to store details
                 setStep(2);
               }
-            } catch (err) {
+            } catch {
               // No store found, skip to store details
               setStep(2);
             }
           }
-        } catch (err) {
+        } catch {
           // Invalid jwt or error, clear jwt and stay on step 1
           localStorage.removeItem('jwt');
         }
@@ -89,8 +89,8 @@ const Onboarding = () => {
           setStep(2);
           setFadeIn(true);
         }, 150);
-      } catch (err) {
-        setLocalError(err || 'Signup failed');
+      } catch (error) {
+        setLocalError(error || 'Signup failed');
       }
       setLocalLoading(false);
     } else if (step === 2) {
@@ -106,8 +106,8 @@ const Onboarding = () => {
         })).unwrap();
         // On success, redirect or show success
         navigate('/store');
-      } catch (err) {
-        setLocalError(err || 'Store creation failed');
+      } catch (error) {
+        setLocalError(error || 'Store creation failed');
       }
       setLocalLoading(false);
     }

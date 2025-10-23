@@ -9,8 +9,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
-import { PrinterIcon } from "lucide-react";
+import { FiDownload } from "react-icons/fi";
+import { FiPrinter } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import OrderDetails from "./OrderDetails";
 import { useDispatch } from "react-redux";
@@ -52,14 +52,14 @@ const InvoiceDialog = ({ showInvoiceDialog, setShowInvoiceDialog }) => {
 
           <DialogFooter className="gap-2 sm:gap-0 space-x-3">
             <Button variant="outline" onClick={handleDownloadPDF}>
-              <Download className="h-4 w-4 mr-2" />
+              <FiDownload className="h-4 w-4 mr-2" />
               Download PDF
             </Button>
             <Button
               variant="outline"
               onClick={() => handlePrintInvoice(selectedOrder)}
             >
-              <PrinterIcon className="h-4 w-4 mr-2" />
+              <FiPrinter className="h-4 w-4 mr-2" />
               Print Invoice
             </Button>
 

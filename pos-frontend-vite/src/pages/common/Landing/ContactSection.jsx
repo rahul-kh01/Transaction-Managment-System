@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle } from 'lucide-react';
+import {FiPhone, FiMail, FiMapPin, FiClock, FiArrowRight, FiCheckCircle} from 'react-icons/fi';
 
 const ContactSection = () => {
   return (
@@ -97,7 +97,7 @@ const ContactSection = () => {
                 
                 <Button className="w-full py-3 text-lg group">
                   Send Message
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <FiArrowRight  className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>
             </div>
@@ -111,7 +111,7 @@ const ContactSection = () => {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5" />
+                    <FiPhone  className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="font-medium mb-1">Phone</p>
@@ -122,7 +122,7 @@ const ContactSection = () => {
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5" />
+                    <FiMail  className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="font-medium mb-1">Email</p>
@@ -133,7 +133,7 @@ const ContactSection = () => {
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5" />
+                    <FiMapPin  className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="font-medium mb-1">Office Address</p>
@@ -144,7 +144,7 @@ const ContactSection = () => {
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5" />
+                    <FiClock  className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="font-medium mb-1">Business Hours</p>
@@ -157,19 +157,19 @@ const ContactSection = () => {
             
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-white flex-shrink-0" />
+                <FiCheckCircle  className="w-6 h-6 text-white flex-shrink-0" />
                 <span>Free personalized demo</span>
               </div>
               <div className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-white flex-shrink-0" />
+                <FiCheckCircle  className="w-6 h-6 text-white flex-shrink-0" />
                 <span>14-day free trial with full features</span>
               </div>
               <div className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-white flex-shrink-0" />
+                <FiCheckCircle  className="w-6 h-6 text-white flex-shrink-0" />
                 <span>Dedicated onboarding specialist</span>
               </div>
               <div className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-white flex-shrink-0" />
+                <FiCheckCircle  className="w-6 h-6 text-white flex-shrink-0" />
                 <span>24/7 customer support</span>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { ShoppingCart, Menu, X, ChevronDown } from 'lucide-react'
+import {FiShoppingCart, FiMenu, FiX, FiChevronDown} from 'react-icons/fi'
 import React, { useState, useEffect } from 'react'
 import { Button } from '../../../components/ui/button'
 import { useNavigate } from 'react-router'
@@ -57,7 +57,7 @@ const Header = () => {
             <div className="flex items-center">
               <div className="flex items-center space-x-2 group cursor-pointer" onClick={() => navigate('/')}>
                 <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:scale-105">
-                  <ShoppingCart className="w-6 h-6 text-primary-foreground" />
+                  <FiShoppingCart  className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">POS Pro</span>
               </div>
@@ -72,7 +72,7 @@ const Header = () => {
                   className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors py-2"
                 >
                   <span>Features</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'features' ? 'rotate-180' : ''}`} />
+                  <FiChevronDown  className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'features' ? 'rotate-180' : ''}`} />
                 </button>
                 {activeDropdown === 'features' && (
                   <div className="absolute left-0 mt-2 w-48 bg-popover rounded-lg shadow-lg border border-border py-2 z-50">
@@ -94,7 +94,7 @@ const Header = () => {
                   className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors py-2"
                 >
                   <span>Resources</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'resources' ? 'rotate-180' : ''}`} />
+                  <FiChevronDown  className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'resources' ? 'rotate-180' : ''}`} />
                 </button>
                 {activeDropdown === 'resources' && (
                   <div className="absolute left-0 mt-2 w-48 bg-popover rounded-lg shadow-lg border border-border py-2 z-50">
@@ -141,7 +141,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-muted-foreground hover:text-primary p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20"
               >
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isMenuOpen ? <FiX  className="w-6 h-6" /> : <FiMenu  className="w-6 h-6" />}
               </button>
             </div>
           </div>
@@ -157,7 +157,7 @@ const Header = () => {
                     className="flex items-center justify-between w-full px-4 py-2 text-muted-foreground hover:text-primary"
                   >
                     <span>Features</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'mobile-features' ? 'rotate-180' : ''}`} />
+                    <FiChevronDown  className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'mobile-features' ? 'rotate-180' : ''}`} />
                   </button>
                   {activeDropdown === 'mobile-features' && (
                     <div className="mt-2 pl-8 space-y-2">
@@ -179,7 +179,7 @@ const Header = () => {
                     className="flex items-center justify-between w-full px-4 py-2 text-muted-foreground hover:text-primary"
                   >
                     <span>Resources</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'mobile-resources' ? 'rotate-180' : ''}`} />
+                    <FiChevronDown  className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'mobile-resources' ? 'rotate-180' : ''}`} />
                   </button>
                   {activeDropdown === 'mobile-resources' && (
                     <div className="mt-2 pl-8 space-y-2">

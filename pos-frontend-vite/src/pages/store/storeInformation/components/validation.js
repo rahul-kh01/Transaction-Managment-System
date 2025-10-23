@@ -16,7 +16,7 @@ export const StoreValidationSchema = Yup.object().shape({
       .max(200, "Address must be less than 200 characters")
       .required("Address is required"),
     phone: Yup.string()
-      .matches(/^[\+]?[1-9][\d]{0,15}$/, "Please enter a valid phone number")
+      .matches(/^[+]?[1-9][\d]{0,15}$/, "Please enter a valid phone number")
       .required("Phone number is required"),
     email: Yup.string()
       .email("Please enter a valid email address")

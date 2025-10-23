@@ -2,13 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2, MapPin, Phone, Users, Loader2 } from "lucide-react";
-import { toast } from "@/components/ui/use-toast";
+import { FiEdit, FiTrash2, FiMapPin, FiPhone, FiUsers } from "react-icons/fi";
+import { FiLoader } from "react-icons/fi"; // ✅ Replaces invalid LuLoader2
+import { useToast } from "@/components/ui/use-toast"; // ✅ Correct import
 import { deleteBranch, getAllBranchesByStore } from "@/Redux Toolkit/features/branch/branchThunks";
 
 const BranchTable = ({ branches, loading, onEdit }) => {
   const dispatch = useDispatch();
   const { store } = useSelector((state) => state.store);
+  const { toast } = useToast();
 
   const handleDeleteBranch = async (id) => {
     try {
@@ -55,7 +57,7 @@ const BranchTable = ({ branches, loading, onEdit }) => {
         {loading ? (
           <TableRow>
             <TableCell colSpan={5} className="text-center py-8">
-              <Loader2 className="h-6 w-6 animate-spin inline-block mr-2" />
+              <FiLoader className="h-6 w-6 animate-spin inline-block mr-2" />
               Loading branches...
             </TableCell>
           </TableRow>
@@ -75,19 +77,19 @@ const BranchTable = ({ branches, loading, onEdit }) => {
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-gray-500" />
+                  <FiMapPin className="h-4 w-4 text-gray-500" />
                   {branch.address}
                 </div>
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-gray-500" />
+                  <FiUsers className="h-4 w-4 text-gray-500" />
                   {branch.manager || "Not Assigned"}
                 </div>
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-gray-500" />
+                  <FiPhone className="h-4 w-4 text-gray-500" />
                   {branch.phone}
                 </div>
               </TableCell>
@@ -98,7 +100,7 @@ const BranchTable = ({ branches, loading, onEdit }) => {
                     size="sm"
                     onClick={() => onEdit(branch)}
                   >
-                    <Edit className="h-4 w-4" />
+                    <FiEdit className="h-4 w-4" />
                   </Button>
                   <Button
                     variant="outline"
@@ -107,7 +109,7 @@ const BranchTable = ({ branches, loading, onEdit }) => {
                     onClick={() => handleDeleteBranch(branch.id)}
                     disabled={loading}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <FiTrash2 className="h-4 w-4" />
                   </Button>
                 </div>
               </TableCell>

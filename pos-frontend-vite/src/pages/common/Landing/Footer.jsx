@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, ArrowRight } from 'lucide-react';
+import {FiFacebook, FiTwitter, FiInstagram, FiLinkedin, FiYoutube, FiMail, FiArrowRight} from 'react-icons/fi';
 import { Button } from '@/components/ui/button';
 
 const Footer = () => {
@@ -24,19 +24,19 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4 mb-6">
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Facebook className="h-5 w-5" />
+                <FiFacebook  className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Twitter className="h-5 w-5" />
+                <FiTwitter  className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Instagram className="h-5 w-5" />
+                <FiInstagram  className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Linkedin className="h-5 w-5" />
+                <FiLinkedin  className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Youtube className="h-5 w-5" />
+                <FiYoutube  className="h-5 w-5" />
               </a>
             </div>
             
@@ -50,7 +50,7 @@ const Footer = () => {
                   className="bg-background text-foreground px-4 py-2 rounded-l-md focus:outline-none focus:ring-1 focus:ring-primary flex-grow border border-input"
                 />
                 <Button className="rounded-l-none">
-                  <ArrowRight className="h-4 w-4" />
+                  <FiArrowRight  className="h-4 w-4" />
                 </Button>
               </div>
             </div>
@@ -87,7 +87,7 @@ const Footer = () => {
             <h4 className="text-foreground font-medium text-lg mb-4">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <Mail className="h-5 w-5 mr-2 mt-0.5 text-muted-foreground" />
+                <FiMail  className="h-5 w-5 mr-2 mt-0.5 text-muted-foreground" />
                 <span className="text-muted-foreground">support@pospro.com</span>
               </li>
               <li className="text-muted-foreground">

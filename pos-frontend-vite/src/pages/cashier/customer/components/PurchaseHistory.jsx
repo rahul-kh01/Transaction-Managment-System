@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, ShoppingBagIcon, CalendarIcon, DollarSignIcon } from 'lucide-react';
+import {FiLoader, FiShoppingBag, FiCalendar, FiDollarSign} from 'react-icons/fi';
 import { formatDate, getStatusColor } from '../../order/data';
 
 const PurchaseHistory = ({ orders, loading = false }) => {
@@ -10,7 +10,7 @@ const PurchaseHistory = ({ orders, loading = false }) => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center p-4 text-center text-muted-foreground">
-        <Loader2 className="animate-spin h-8 w-8 mb-4" />
+        <FiLoader  className="animate-spin h-8 w-8 mb-4" />
         <p>Loading purchase history...</p>
       </div>
     );
@@ -19,7 +19,7 @@ const PurchaseHistory = ({ orders, loading = false }) => {
   if (!orders || orders.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center p-4 text-center text-muted-foreground">
-        <ShoppingBagIcon size={48} strokeWidth={1} />
+        <FiShoppingBag size={48} strokeWidth={1} />
         <p className="mt-4">No purchase history found</p>
         <p className="text-sm">This customer hasn't made any orders yet</p>
       </div>
@@ -34,7 +34,7 @@ const PurchaseHistory = ({ orders, loading = false }) => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <ShoppingBagIcon className="h-5 w-5" />
+            <FiShoppingBag className="h-5 w-5" />
             Purchase History
           </CardTitle>
         </CardHeader>
@@ -46,13 +46,13 @@ const PurchaseHistory = ({ orders, loading = false }) => {
                   <div>
                     <h3 className="font-medium">Order #{order.id}</h3>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                      <CalendarIcon className="h-4 w-4" />
+                      <FiCalendar className="h-4 w-4" />
                       {formatDate(order.createdAt)}
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="flex items-center gap-2 mb-1">
-                      <DollarSignIcon className="h-4 w-4" />
+                      <FiDollarSign  className="h-4 w-4" />
                       <span className="font-bold">₹{order.totalAmount?.toFixed(2) || '0.00'}</span>
                     </div>
                     {order.status && (

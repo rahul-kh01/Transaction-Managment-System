@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Key, Eye, EyeOff } from "lucide-react";
+import { FiKey, FiEye, FiEyeOff } from "react-icons/fi";
 
 const PasswordInput = ({ id, label, value, onChange, show, onToggle }) => (
   <div className="space-y-2">
@@ -17,7 +17,7 @@ const PasswordInput = ({ id, label, value, onChange, show, onToggle }) => (
         className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
         onClick={onToggle}
       >
-        {show ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+        {show ? <FiEyeOff className="w-4 h-4" /> : <FiEye className="w-4 h-4" />}
       </Button>
     </div>
   </div>
@@ -34,7 +34,7 @@ const SecuritySettingsForm = ({
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Key className="w-5 h-5" />
+          <FiKey className="w-5 h-5" />
           Change Password
         </CardTitle>
       </CardHeader>
@@ -64,7 +64,7 @@ const SecuritySettingsForm = ({
           onToggle={() => onShowPasswordToggle("confirm")}
         />
         <Button onClick={onUpdate} className="flex items-center gap-2">
-          <Key className="w-4 h-4" />
+          <FiKey className="w-4 h-4" />
           Change Password
         </Button>
       </CardContent>

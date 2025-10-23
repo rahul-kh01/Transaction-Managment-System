@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,7 +8,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { BarChart, Bar, XAxis, YAxis, LineChart, Line } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Search, Filter, Calendar, Download, Plus, Edit, Trash2, CreditCard, DollarSign, User, Store } from "lucide-react";
+import { FiSearch, FiFilter, FiCalendar, FiDownload, FiPlus, FiEdit, FiTrash2, FiCreditCard, FiDollarSign, FiUser, FiHome } from "react-icons/fi";
 import { 
   getStoreOverview, 
   getDailySales, 
@@ -32,9 +32,9 @@ export default function Sales() {
     if (userProfile?.id) {
       fetchSalesData();
     }
-  }, [userProfile?.id]);
+  }, [userProfile?.id, fetchSalesData]);
 
-  const fetchSalesData = async () => {
+  const fetchSalesData = useCallback(async () => {
     try {
       await Promise.all([
         dispatch(getStoreOverview(userProfile.id)).unwrap(),
@@ -48,7 +48,7 @@ export default function Sales() {
         variant: "destructive",
       });
     }
-  };
+  }, [dispatch, userProfile.id, toast]);
 
   // Format currency
   const formatCurrency = (amount) => {
@@ -98,7 +98,7 @@ export default function Sales() {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold tracking-tight">Sales Management</h1>
         <Button className="bg-emerald-600 hover:bg-emerald-700">
-          <Plus className="mr-2 h-4 w-4" /> New Sale
+          <FiPlus className="mr-2 h-4 w-4" /> New Sale
         </Button>
       </div>
 
@@ -125,7 +125,7 @@ export default function Sales() {
                 </div>
               </div>
               <div className="p-3 bg-emerald-100 rounded-full">
-                <DollarSign className="w-8 h-8 text-emerald-600" />
+                <FiDollarSign className="w-8 h-8 text-emerald-600" />
               </div>
             </div>
           </CardContent>
@@ -152,7 +152,7 @@ export default function Sales() {
                 </div>
               </div>
               <div className="p-3 bg-blue-100 rounded-full">
-                <Store className="w-8 h-8 text-blue-600" />
+                <FiHome className="w-8 h-8 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -179,7 +179,7 @@ export default function Sales() {
                 </div>
               </div>
               <div className="p-3 bg-purple-100 rounded-full">
-                <User className="w-8 h-8 text-purple-600" />
+                <FiUser className="w-8 h-8 text-purple-600" />
               </div>
             </div>
           </CardContent>
@@ -206,7 +206,7 @@ export default function Sales() {
                 </div>
               </div>
               <div className="p-3 bg-orange-100 rounded-full">
-                <CreditCard className="w-8 h-8 text-orange-600" />
+                <FiCreditCard className="w-8 h-8 text-orange-600" />
               </div>
             </div>
           </CardContent>

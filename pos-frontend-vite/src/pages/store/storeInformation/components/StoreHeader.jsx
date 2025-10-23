@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { RefreshCw } from "lucide-react";
+import { FiRefreshCw } from "react-icons/fi";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const StoreHeader = ({ onRefresh, refreshing, loading }) => {
@@ -16,7 +16,7 @@ const StoreHeader = ({ onRefresh, refreshing, loading }) => {
               onClick={onRefresh} 
               disabled={refreshing || loading}
             >
-              <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+              <FiRefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
             </Button>
           </TooltipTrigger>
           <TooltipContent>

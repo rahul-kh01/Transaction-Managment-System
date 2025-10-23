@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { toast } from "@/components/ui/use-toast";
@@ -25,15 +25,15 @@ export default function Stores() {
     if (store?.id) {
       fetchStoreData();
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, fetchStoreData, store?.id]);
   
   useEffect(() => {
     if (store) {
       setStoreData(store);
     }
-  }, [store]);
+  }, [store, store?.id]);
   
-  const fetchStoreData = async () => {
+  const fetchStoreData = useCallback(async () => {
     setRefreshing(true);
     try {
       await dispatch(getStoreByAdmin()).unwrap();
@@ -46,7 +46,7 @@ export default function Stores() {
     } finally {
       setRefreshing(false);
     }
-  };
+  }, [dispatch]);
 
   const handleEditStore = async (values, { setSubmitting, resetForm }) => {
     try {

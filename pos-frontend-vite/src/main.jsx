@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router";
 import { Provider } from "react-redux";
 import globleState from "./Redux Toolkit/globleState.js";
-import { Toaster } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { suppressDevToolsWarnings } from "@/utils/suppressDevToolsWarnings";

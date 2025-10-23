@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Receipt } from "lucide-react";
+import { FiFileText } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import {
   resetOrder,
@@ -43,7 +43,7 @@ const ReceiptDialog = ({ showReceiptDialog, setShowReceiptDialog }) => {
 
         <div className="space-y-4">
           <div className="text-center">
-            <Receipt className="w-16 h-16 mx-auto text-green-600 mb-4" />
+            <FiFileText className="w-16 h-16 mx-auto text-green-600 mb-4" />
             <h3 className="text-lg font-semibold">Payment Successful!</h3>
             <p className="text-sm text-gray-600">Receipt has been printed</p>
           </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Bell } from "lucide-react";
+import { FiBell } from "react-icons/fi";
 import ToggleSwitch from "./ToggleSwitch";
 
 const NotificationSettings = ({ settings, onChange }) => {
@@ -41,7 +41,7 @@ const NotificationSettings = ({ settings, onChange }) => {
     <Card id="notification-settings">
       <CardHeader>
         <CardTitle className="flex items-center">
-          <Bell className="mr-2 h-5 w-5 text-emerald-500" />
+          <FiBell className="mr-2 h-5 w-5 text-emerald-500" />
           Notification Settings
         </CardTitle>
         <CardDescription>

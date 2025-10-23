@@ -1,9 +1,9 @@
-import { BarChart3 } from 'lucide-react'
-import { Shield } from 'lucide-react'
-import { Store } from 'lucide-react'
-import { FileText } from 'lucide-react'
-import { Users } from 'lucide-react'
-import { ShoppingCart } from 'lucide-react'
+import {FiBarChart3} from 'react-icons/fi'
+import {FiShield} from 'react-icons/fi'
+import {FiHome} from 'react-icons/fi'
+import {FiFileText} from 'react-icons/fi'
+import {FiUsers} from 'react-icons/fi'
+import {FiShoppingCart} from 'react-icons/fi'
 import React from 'react'
 
 const FetureSection = () => {
@@ -22,32 +22,32 @@ const FetureSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <ShoppingCart className="w-8 h-8" />,
+                icon: <FiShoppingCart  className="w-8 h-8" />,
                 title: "Barcode Scanning & Billing",
                 description: "Lightning-fast barcode scanning with instant product lookup and billing"
               },
               {
-                icon: <BarChart3 className="w-8 h-8" />,
+                icon: <FiBarChart3  className="w-8 h-8" />,
                 title: "Inventory & Stock Management",
                 description: "Real-time inventory tracking with low stock alerts and automated reordering"
               },
               {
-                icon: <Users className="w-8 h-8" />,
+                icon: <FiUsers className="w-8 h-8" />,
                 title: "Customer & Employee Profiles",
                 description: "Comprehensive profiles for customers and role-based employee management"
               },
               {
-                icon: <Shield className="w-8 h-8" />,
+                icon: <FiShield  className="w-8 h-8" />,
                 title: "Role-Based Access Control",
                 description: "Secure access control with customizable permissions for different staff roles"
               },
               {
-                icon: <FileText className="w-8 h-8" />,
+                icon: <FiFileText  className="w-8 h-8" />,
                 title: "Sales Reporting",
                 description: "Detailed analytics and reports to track performance and growth"
               },
               {
-                icon: <Store className="w-8 h-8" />,
+                icon: <FiHome  className="w-8 h-8" />,
                 title: "Multi-store Management",
                 description: "Manage multiple locations from a single dashboard with centralized control"
               }

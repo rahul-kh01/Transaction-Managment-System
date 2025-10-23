@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Pause, Trash2 } from "lucide-react";
+import { FiShoppingCart, FiPause, FiTrash2 } from "react-icons/fi";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ const CartSection = ({setShowHeldOrdersDialog}) => {
       <div className="p-4 border-b bg-muted">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold flex items-center">
-            <ShoppingCart className="w-5 h-5 mr-2" />
+            <FiShoppingCart className="w-5 h-5 mr-2" />
             Cart ({cartItems.length} items)
           </h2>
           <div className="flex space-x-2">
@@ -53,11 +53,11 @@ const CartSection = ({setShowHeldOrdersDialog}) => {
               size="sm"
               onClick={() => setShowHeldOrdersDialog(true)}
             >
-              <Pause className="w-4 h-4 mr-1" />
+              <FiPause className="w-4 h-4 mr-1" />
               Held ({heldOrders.length})
             </Button>
             <Button variant="outline" size="sm" onClick={handleClearCart}>
-              <Trash2 className="w-4 h-4 mr-1" />
+              <FiTrash2 className="w-4 h-4 mr-1" />
               Clear
             </Button>
           </div>
@@ -68,7 +68,7 @@ const CartSection = ({setShowHeldOrdersDialog}) => {
       <div className="flex-1 overflow-y-auto">
         {cartItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-muted-foreground">
-            <ShoppingCart className="w-16 h-16 mb-4 opacity-50" />
+            <FiShoppingCart className="w-16 h-16 mb-4 opacity-50" />
             <p className="text-lg font-medium">Cart is empty</p>
             <p className="text-sm">Add products to start an order</p>
           </div>

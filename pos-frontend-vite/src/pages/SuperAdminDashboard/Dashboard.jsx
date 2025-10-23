@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Store, Clock, TrendingUp, AlertTriangle } from "lucide-react";
+import { FiHome, FiClock, FiTrendingUp, FiAlertTriangle } from "react-icons/fi";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import {
   getDashboardSummary,
@@ -80,28 +80,28 @@ export default function Dashboard() {
         <StatCard
           title="Total Stores"
           value={dashboardSummary?.totalStores ?? "-"}
-          icon={<Store className="h-4 w-4 text-muted-foreground" />}
+          icon={<FiHome className="h-4 w-4 text-muted-foreground" />}
           description="from last month"
           trend={undefined}
         />
         <StatCard
           title="Active Stores"
           value={dashboardSummary?.activeStores ?? "-"}
-          icon={<TrendingUp className="h-4 w-4 text-muted-foreground" />}
+          icon={<FiTrendingUp className="h-4 w-4 text-muted-foreground" />}
           description="currently operational"
           trend={undefined}
         />
         <StatCard
           title="Blocked Stores"
           value={dashboardSummary?.blockedStores ?? "-"}
-          icon={<AlertTriangle className="h-4 w-4 text-muted-foreground" />}
+          icon={<FiAlertTriangle className="h-4 w-4 text-muted-foreground" />}
           description="suspended accounts"
           trend={undefined}
         />
         <StatCard
           title="Pending Requests"
           value={dashboardSummary?.pendingStores ?? "-"}
-          icon={<Clock className="h-4 w-4 text-muted-foreground" />}
+          icon={<FiClock className="h-4 w-4 text-muted-foreground" />}
           description="awaiting approval"
           trend={undefined}
         />

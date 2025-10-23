@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { selectSelectedCustomer } from '../../../Redux Toolkit/features/cart/cartSlice';
-import { User } from 'lucide-react';
+import { FiUser } from 'react-icons/fi';
 import { Card, CardContent } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
 
@@ -10,7 +10,7 @@ const CustomerSection = ({setShowCustomerDialog}) => {
   return (
          <div className="p-4 border-b">
         <h2 className="text-lg font-semibold mb-3 flex items-center">
-          <User className="w-5 h-5 mr-2" />
+          <FiUser className="w-5 h-5 mr-2" />
           Customer
         </h2>
         {selectedCustomer ? (

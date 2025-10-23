@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Search, Filter } from "lucide-react";
+import { FiSearch, FiFilter } from "react-icons/fi";
 import { Card, CardContent } from "@/components/ui/card";
 
 const InventoryFilters = ({
@@ -34,7 +34,7 @@ const InventoryFilters = ({
         <div className="relative">
           <Select value={category} onValueChange={onCategoryChange}>
             <SelectTrigger
-              startIcon={<Filter className="h-4 w-4 text-gray-500" />}
+              startIcon={<FiFilter className="h-4 w-4 text-gray-500" />}
               className="w-full"
             >
               <SelectValue placeholder="All Categories" />

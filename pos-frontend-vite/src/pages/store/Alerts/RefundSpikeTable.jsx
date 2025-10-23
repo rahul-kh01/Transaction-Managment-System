@@ -8,7 +8,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { DollarSign } from "lucide-react";
+import { FiDollarSign } from "react-icons/fi";
 
 const RefundSpikeTable = () => {
   const { storeAlerts } = useSelector((state) => state.storeAnalytics);
@@ -32,7 +32,7 @@ const RefundSpikeTable = () => {
             </TableCell>
             <TableCell>
               <div className="flex items-center gap-1">
-                <DollarSign className="h-4 w-4 text-gray-400" />
+                <FiDollarSign className="h-4 w-4 text-gray-400" />
                 {branch.amount}
               </div>
             </TableCell>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { selectDiscount, setDiscount } from '../../../Redux Toolkit/features/cart/cartSlice';
-import { Tag } from 'lucide-react';
+import { FiTag } from 'react-icons/fi';
 import { Button } from '../../../components/ui/button';
 import { Input } from "@/components/ui/input";
 
@@ -19,7 +19,7 @@ const DiscountSection = () => {
   return (
      <div className="p-4 border-b">
         <h2 className="text-lg font-semibold mb-3 flex items-center">
-          <Tag className="w-5 h-5 mr-2" />
+          <FiTag className="w-5 h-5 mr-2" />
           Discount
         </h2>
         <div className="space-y-3">

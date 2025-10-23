@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tag, DollarSign, Package, Calendar, Barcode, Palette, Image as ImageIcon } from "lucide-react";
+import { FiTag, FiDollarSign, FiPackage, FiCalendar, FiHash, FiEdit, FiImage as ImageIcon } from "react-icons/fi";
 
 const ProductDetails = ({ product }) => {
   if (!product) return null;
@@ -38,7 +38,7 @@ const ProductDetails = ({ product }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Barcode className="h-5 w-5 text-gray-500" />
+              <FiHash className="h-5 w-5 text-gray-500" />
               <div>
                 <div className="text-sm text-gray-500">SKU</div>
                 <div className="font-medium">{product.sku || 'N/A'}</div>
@@ -46,7 +46,7 @@ const ProductDetails = ({ product }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <Tag className="h-5 w-5 text-gray-500" />
+              <FiTag className="h-5 w-5 text-gray-500" />
               <div>
                 <div className="text-sm text-gray-500">Category</div>
                 <div className="font-medium">{product.category || 'Uncategorized'}</div>
@@ -54,7 +54,7 @@ const ProductDetails = ({ product }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <Palette className="h-5 w-5 text-gray-500" />
+              <FiEdit className="h-5 w-5 text-gray-500" />
               <div>
                 <div className="text-sm text-gray-500">Color</div>
                 <div className="font-medium">{product.color || 'N/A'}</div>
@@ -64,7 +64,7 @@ const ProductDetails = ({ product }) => {
 
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <DollarSign className="h-5 w-5 text-gray-500" />
+              <FiDollarSign className="h-5 w-5 text-gray-500" />
               <div>
                 <div className="text-sm text-gray-500">Price</div>
                 <div className="font-medium">
@@ -81,7 +81,7 @@ const ProductDetails = ({ product }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <Package className="h-5 w-5 text-gray-500" />
+              <FiPackage className="h-5 w-5 text-gray-500" />
               <div>
                 <div className="text-sm text-gray-500">Stock</div>
                 <div className="font-medium">
@@ -95,7 +95,7 @@ const ProductDetails = ({ product }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <Calendar className="h-5 w-5 text-gray-500" />
+              <FiCalendar className="h-5 w-5 text-gray-500" />
               <div>
                 <div className="text-sm text-gray-500">Last Updated</div>
                 <div className="font-medium">

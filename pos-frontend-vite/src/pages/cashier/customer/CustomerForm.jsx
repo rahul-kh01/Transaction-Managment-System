@@ -30,7 +30,7 @@ const CustomerForm = ({
       .max(50, "Full name must be less than 50 characters"),
     phone: Yup.string()
       .required("Phone number is required")
-      .matches(/^[\+]?[1-9][\d]{0,15}$/, "Please enter a valid phone number"),
+      .matches(/^[+]?[1-9][\d]{0,15}$/, "Please enter a valid phone number"),
     email: Yup.string().email("Please enter a valid email address").optional(),
   });
 

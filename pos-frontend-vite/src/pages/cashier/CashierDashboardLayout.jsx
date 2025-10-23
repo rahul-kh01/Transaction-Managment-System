@@ -2,13 +2,12 @@ import { Outlet, useNavigate } from "react-router";
 
 import { useToast } from "@/components/ui/use-toast";
 import {
- 
-  ShoppingCartIcon,
-  ClockIcon,
-  RotateCcwIcon,
-  UsersIcon,
-  ReceiptIcon,
-} from "lucide-react";
+  FiShoppingCart,
+  FiClock,
+  FiRotateCcw,
+  FiUsers,
+  FiFileText,
+} from "react-icons/fi";
 import CashierSideBar from "./Sidebar/CashierSideBar";
 import { SidebarProvider } from "../../context/SidebarProvider";
 import { useSidebar } from "../../context/hooks/useSidebar";
@@ -16,27 +15,27 @@ import { useSidebar } from "../../context/hooks/useSidebar";
 const navItems = [
   {
     path: "/cashier",
-    icon: <ShoppingCartIcon size={20} />,
+    icon: <FiShoppingCart size={20} />,
     label: "POS Terminal",
   },
   {
     path: "/cashier/orders",
-    icon: <ClockIcon size={20} />,
+    icon: <FiClock size={20} />,
     label: "Order History",
   },
   {
     path: "/cashier/returns",
-    icon: <RotateCcwIcon size={20} />,
+    icon: <FiRotateCcw size={20} />,
     label: "Returns/Refunds",
   },
   {
     path: "/cashier/customers",
-    icon: <UsersIcon size={20} />,
+    icon: <FiUsers size={20} />,
     label: "Customers",
   },
   {
     path: "/cashier/shift-summary",
-    icon: <ReceiptIcon size={20} />,
+    icon: <FiFileText size={20} />,
     label: "Shift Summary",
   },
 ];

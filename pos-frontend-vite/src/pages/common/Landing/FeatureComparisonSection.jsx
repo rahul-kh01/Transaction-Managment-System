@@ -1,6 +1,6 @@
 import React from 'react'
 import FeatureComparisonTable from './FeatureComparisonTable'
-import { ArrowDown } from 'lucide-react'
+import {FiArrowDown} from 'react-icons/fi'
 import { Button } from '../../../components/ui/button'
 
 const FeatureComparisonSection = () => {
@@ -23,7 +23,7 @@ const FeatureComparisonSection = () => {
           <div className="mt-10 text-center">
             <Button variant="outline" className="group">
               View All Features
-              <ArrowDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              <FiArrowDown  className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
             </Button>
           </div>
         </div>

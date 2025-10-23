@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { User, Save } from "lucide-react";
+import { FiUser, FiSave } from "react-icons/fi";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const ProfileInput = ({ id, label, value, onChange, disabled }) => (
@@ -28,7 +28,7 @@ const ProfileSettingsForm = ({
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <User className="w-5 h-5" />
+          <FiUser className="w-5 h-5" />
           Profile Information
         </CardTitle>
       </CardHeader>
@@ -62,7 +62,7 @@ const ProfileSettingsForm = ({
           className="flex items-center gap-2"
           disabled={loading}
         >
-          {loading ? "Updating..." : <><Save className="w-4 h-4" /> Update Profile</>}
+          {loading ? "Updating..." : <><FiSave className="w-4 h-4" /> Update Profile</>}
         </Button>
       </CardContent>
     </Card>

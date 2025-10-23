@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Edit } from "lucide-react";
+import { FiEdit } from "react-icons/fi";
 import BasicInformation from "./BasicInformation";
 import ContactInformation from "./ContactInformation";
 
@@ -17,7 +17,7 @@ const StoreInfoCard = ({ storeData, onEditClick }) => {
             onClick={onEditClick}
             className="flex items-center gap-2"
           >
-            <Edit className="h-4 w-4" /> Edit Details
+            <FiEdit className="h-4 w-4" /> Edit Details
           </Button>
         </div>
       </CardHeader>

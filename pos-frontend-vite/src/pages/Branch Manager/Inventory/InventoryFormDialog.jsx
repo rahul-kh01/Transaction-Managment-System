@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Filter } from "lucide-react";
+import { FiFilter } from "react-icons/fi";
 import { useSelector } from "react-redux";
 
 const InventoryFormDialog = ({
@@ -75,7 +75,7 @@ const InventoryFormDialog = ({
                   onValueChange={(value) => setSelectedProductId(value)}
                 >
                   <SelectTrigger
-                    startIcon={<Filter className="h-4 w-4 text-gray-500" />}
+                    startIcon={<FiFilter className="h-4 w-4 text-gray-500" />}
                     className="w-full col-span-3"
                   >
                     <SelectValue placeholder="Select a Product" />

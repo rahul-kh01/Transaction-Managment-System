@@ -1,42 +1,42 @@
 import React from "react";
-import { Store, Bell, Shield, CreditCard, Database, HelpCircle } from "lucide-react";
+import { FiHome, FiBell, FiShield, FiCreditCard, FiDatabase, FiHelpCircle } from "react-icons/fi";
 
 const SettingsNavigation = ({ activeSection }) => {
   const navItems = [
     {
       id: "store-settings",
       label: "Store Settings",
-      icon: Store,
+      icon: FiHome,
       href: "#store-settings"
     },
     {
       id: "notification-settings",
       label: "Notification Settings",
-      icon: Bell,
+      icon: FiBell,
       href: "#notification-settings"
     },
     {
       id: "security-settings",
       label: "Security Settings",
-      icon: Shield,
+      icon: FiShield,
       href: "#security-settings"
     },
     {
       id: "payment-settings",
       label: "Payment Settings",
-      icon: CreditCard,
+      icon: FiCreditCard,
       href: "#payment-settings"
     },
     {
       id: "system-settings",
       label: "System Settings",
-      icon: Database,
+      icon: FiDatabase,
       href: "#system-settings"
     },
     {
       id: "help",
       label: "Help & Support",
-      icon: HelpCircle,
+      icon: FiHelpCircle,
       href: "#help"
     }
   ];

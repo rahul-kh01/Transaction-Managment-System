@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { FiPlus } from "react-icons/fi";
 import {
   Dialog,
   DialogContent,
@@ -94,7 +94,7 @@ export default function StoreEmployees() {
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger asChild>
             <Button className="bg-emerald-600 hover:bg-emerald-700">
-              <Plus className="mr-2 h-4 w-4" /> Add Employee
+              <FiPlus className="mr-2 h-4 w-4" /> Add Employee
             </Button>
           </DialogTrigger>
           <DialogContent className="max-h-[80vh] overflow-y-auto">

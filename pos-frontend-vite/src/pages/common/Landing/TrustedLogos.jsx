@@ -1,4 +1,4 @@
-import { ShoppingBag, Building2, Carrot, Zap, Store, ShoppingCart, Briefcase, Coffee } from 'lucide-react'
+import {FiShoppingBag, FiHome, FiCircle, FiZap, FiShoppingCart, FiBriefcase, FiCoffee} from 'react-icons/fi'
 import React from 'react'
 
 const TrustedLogos = () => {
@@ -17,7 +17,7 @@ const TrustedLogos = () => {
             {[
               { 
                 name: 'SuperMart', 
-                icon: <Building2 className="w-6 h-6" />,
+                icon: <FiHome  className="w-6 h-6" />,
                 bgColor: 'bg-gradient-to-br from-emerald-500 to-emerald-600',
                 textColor: 'text-emerald-600',
                 borderColor: 'border-emerald-200',
@@ -25,7 +25,7 @@ const TrustedLogos = () => {
               },
               { 
                 name: 'Fresh Grocery', 
-                icon: <Carrot className="w-6 h-6" />,
+                icon: <FiCircle  className="w-6 h-6" />,
                 bgColor: 'bg-gradient-to-br from-orange-500 to-orange-600',
                 textColor: 'text-orange-600',
                 borderColor: 'border-orange-200',
@@ -33,7 +33,7 @@ const TrustedLogos = () => {
               },
               { 
                 name: 'City Mall', 
-                icon: <ShoppingBag className="w-6 h-6" />,
+                icon: <FiShoppingBag  className="w-6 h-6" />,
                 bgColor: 'bg-gradient-to-br from-blue-500 to-blue-600',
                 textColor: 'text-blue-600',
                 borderColor: 'border-blue-200',
@@ -41,7 +41,7 @@ const TrustedLogos = () => {
               },
               { 
                 name: 'Express Retail', 
-                icon: <Zap className="w-6 h-6" />,
+                icon: <FiZap  className="w-6 h-6" />,
                 bgColor: 'bg-gradient-to-br from-purple-500 to-purple-600',
                 textColor: 'text-purple-600',
                 borderColor: 'border-purple-200',
@@ -49,7 +49,7 @@ const TrustedLogos = () => {
               },
               { 
                 name: 'Metro Stores', 
-                icon: <Store className="w-6 h-6" />,
+                icon: <FiHome  className="w-6 h-6" />,
                 bgColor: 'bg-gradient-to-br from-pink-500 to-pink-600',
                 textColor: 'text-pink-600',
                 borderColor: 'border-pink-200',
@@ -57,7 +57,7 @@ const TrustedLogos = () => {
               },
               { 
                 name: 'Quick Mart', 
-                icon: <ShoppingCart className="w-6 h-6" />,
+                icon: <FiShoppingCart  className="w-6 h-6" />,
                 bgColor: 'bg-gradient-to-br from-amber-500 to-amber-600',
                 textColor: 'text-amber-600',
                 borderColor: 'border-amber-200',
@@ -65,7 +65,7 @@ const TrustedLogos = () => {
               },
               { 
                 name: 'Business Hub', 
-                icon: <Briefcase className="w-6 h-6" />,
+                icon: <FiBriefcase  className="w-6 h-6" />,
                 bgColor: 'bg-gradient-to-br from-indigo-500 to-indigo-600',
                 textColor: 'text-indigo-600',
                 borderColor: 'border-indigo-200',
@@ -73,7 +73,7 @@ const TrustedLogos = () => {
               },
               { 
                 name: 'Café Chain', 
-                icon: <Coffee className="w-6 h-6" />,
+                icon: <FiCoffee  className="w-6 h-6" />,
                 bgColor: 'bg-gradient-to-br from-teal-500 to-teal-600',
                 textColor: 'text-teal-600',
                 borderColor: 'border-teal-200',

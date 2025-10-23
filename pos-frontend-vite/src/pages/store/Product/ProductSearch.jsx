@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, X } from "lucide-react";
+import { FiSearch, FiX } from "react-icons/fi";
 import { searchProducts } from "@/Redux Toolkit/features/product/productThunks";
 import { useSelector } from "react-redux";
 
@@ -45,7 +45,7 @@ const ProductSearch = ({ onSearch }) => {
       className="flex w-full max-w-sm items-center space-x-2"
     >
       <div className="relative flex-1">
-        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
+        <FiSearch className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
         <Input
           type="text"
           placeholder="Search products..."
@@ -59,7 +59,7 @@ const ProductSearch = ({ onSearch }) => {
             onClick={clearSearch}
             className="absolute right-2.5 top-2.5 h-4 w-4 text-gray-500 hover:text-gray-700"
           >
-            <X className="h-4 w-4" />
+            <FiX className="h-4 w-4" />
           </button>
         )}
       </div>

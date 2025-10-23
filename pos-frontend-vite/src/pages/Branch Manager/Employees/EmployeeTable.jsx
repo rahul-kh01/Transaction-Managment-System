@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Edit, UserX, Key, BarChart } from "lucide-react";
+import { FiEdit, FiUserX, FiKey, FiBarChart } from "react-icons/fi";
 
 const loginAccess=true
 
@@ -66,7 +66,7 @@ const EmployeeTable = ({
                         : "Enable Access"
                     }
                   >
-                    <UserX className="h-4 w-4" />
+                    <FiUserX className="h-4 w-4" />
                   </Button>
                   <Button
                     variant="ghost"
@@ -74,7 +74,7 @@ const EmployeeTable = ({
                     onClick={() => openResetPasswordDialog(employee)}
                     title="Reset Password"
                   >
-                    <Key className="h-4 w-4" />
+                    <FiKey className="h-4 w-4" />
                   </Button>
                   <Button
                     variant="ghost"
@@ -82,7 +82,7 @@ const EmployeeTable = ({
                     onClick={() => openPerformanceDialog(employee)}
                     title="View Performance"
                   >
-                    <BarChart className="h-4 w-4" />
+                    <FiBarChart className="h-4 w-4" />
                   </Button>
                   <Button
                     variant="ghost"
@@ -90,7 +90,7 @@ const EmployeeTable = ({
                     onClick={() => openEditDialog(employee)}
                     title="Edit Employee"
                   >
-                    <Edit className="h-4 w-4" />
+                    <FiEdit className="h-4 w-4" />
                   </Button>
                 </div>
               </TableCell>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { SearchIcon, PlusIcon } from 'lucide-react';
+import {FiSearch, FiPlus} from 'react-icons/fi';
 
 const CustomerSearch = ({ 
   searchTerm, 
@@ -12,7 +12,7 @@ const CustomerSearch = ({
     <div className="p-4 border-b">
       <div className="flex gap-2">
         <div className="relative flex-1">
-          <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+          <FiSearch  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
           <Input
             type="text"
             placeholder="Search customers..."
@@ -22,7 +22,7 @@ const CustomerSearch = ({
           />
         </div>
         <Button onClick={onAddCustomer}>
-          <PlusIcon className="h-4 w-4 mr-2" />
+          <FiPlus  className="h-4 w-4 mr-2" />
           Add New
         </Button>
       </div>

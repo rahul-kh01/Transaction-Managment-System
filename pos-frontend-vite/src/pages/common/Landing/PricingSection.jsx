@@ -1,6 +1,6 @@
 import React from "react";
 import PricingCalculator from "./PricingCalculator";
-import { CheckCircle } from "lucide-react";
+import { FiCheckCircle } from "react-icons/fi";
 import { Button } from "../../../components/ui/button";
 
 const pricingPlans = [
@@ -94,7 +94,7 @@ const PricingSection = () => {
                   <ul className="space-y-4 mb-8">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                        <FiCheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                         <span className="text-muted-foreground">{feature}</span>
                       </li>
                     ))}
@@ -121,7 +121,7 @@ const PricingSection = () => {
             All plans include a 14-day free trial. No credit card required.
           </p>
           <div className="inline-flex items-center space-x-2 bg-primary/5 rounded-full px-4 py-2">
-            <CheckCircle className="w-5 h-5 text-primary" />
+            <FiCheckCircle className="w-5 h-5 text-primary" />
             <span className="text-muted-foreground">
               100% money-back guarantee for 30 days
             </span>

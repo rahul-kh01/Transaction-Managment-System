@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/button";
 import {
-  ShoppingCart,
-  BarChart3,
-  Users,
-  Shield,
-  FileText,
-  Store,
-  CheckCircle,
-  Play,
-  Star,
-  ArrowDown,
-} from "lucide-react";
+  FiShoppingCart,
+  FiBarChart2,
+  FiUsers,
+  FiShield,
+  FiFileText,
+  FiHome,
+  FiCheckCircle,
+  FiPlay,
+  FiStar,
+  FiArrowDown,
+} from "react-icons/fi";
 import Header from "./Header";
 import HeroSection from "./HeroSection";
 import TrustedLogos from "./TrustedLogos";

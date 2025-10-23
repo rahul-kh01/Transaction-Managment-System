@@ -2,8 +2,7 @@
 import { useSelector } from 'react-redux';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 
-import { Tag, DollarSign, Package} from "lucide-react";
-import { LocationEdit } from 'lucide-react';
+import { FiTag, FiDollarSign, FiPackage, FiMapPin} from "react-icons/fi";
 
 const NoSaleTodayBranchTable = () => {
 
@@ -65,7 +64,7 @@ const NoSaleTodayBranchTable = () => {
             </TableCell>
             <TableCell>
               <div className="flex items-center gap-1">
-                <LocationEdit className="h-4 w-4 text-gray-400" />
+                <FiMapPin className="h-4 w-4 text-gray-400" />
                 {branch.address}
               </div>
             </TableCell>

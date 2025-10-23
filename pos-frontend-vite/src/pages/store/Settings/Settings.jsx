@@ -53,7 +53,7 @@ export default function Settings() {
     paypalEnabled: false,
   });
 
-  const [activeSection, setActiveSection] = useState("store-settings");
+  const [activeSection] = useState("store-settings");
 
   // Fetch store data on component mount
   useEffect(() => {

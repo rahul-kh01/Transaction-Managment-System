@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Filter } from "lucide-react";
+import { FiFilter } from "react-icons/fi";
 import { useSelector } from "react-redux";
 
 const ProductSelect = () => {
@@ -26,7 +26,7 @@ const ProductSelect = () => {
       onValueChange={(value) => setSelectedProductId(value)}
     >
       <SelectTrigger
-        startIcon={<Filter className="h-4 w-4 text-gray-500" />}
+        startIcon={<FiFilter className="h-4 w-4 text-gray-500" />}
         className="w-full"
       >
         <SelectValue placeholder="Select a Product" />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
-import { Upload, Plus } from "lucide-react";
+import { FiUpload, FiPlus } from "react-icons/fi";
 import { getInventoryByBranch, createInventory, updateInventory } from "@/Redux Toolkit/features/inventory/inventoryThunks";
 import { getProductsByStore } from "@/Redux Toolkit/features/product/productThunks";
 import InventoryTable from "./InventoryTable";
@@ -101,11 +101,11 @@ const Inventory = () => {
         <h1 className="text-3xl font-bold tracking-tight">Inventory Management</h1>
         <div className="flex gap-2">
           <Button className="gap-2" onClick={() => setIsAddDialogOpen(true)}>
-            <Plus className="h-4 w-4" />
+            <FiPlus className="h-4 w-4" />
             Add Inventory
           </Button>
           <Button variant="outline" className="gap-2">
-            <Upload className="h-4 w-4" />
+            <FiUpload className="h-4 w-4" />
             Import CSV
           </Button>
         </div>

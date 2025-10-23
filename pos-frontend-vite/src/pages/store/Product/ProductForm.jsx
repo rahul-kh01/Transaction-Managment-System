@@ -18,8 +18,8 @@ import {
 } from "@/Redux Toolkit/features/product/productThunks";
 import { toast } from "@/components/ui/use-toast";
 import { getCategoriesByStore } from "../../../Redux Toolkit/features/category/categoryThunks";
-import { PhoneOutgoing } from "lucide-react";
-import { X } from "lucide-react";
+import { FiPhoneOutgoing } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import { useState } from "react";
 import { uploadToCloudinary } from "../../../utils/uploadToCloudinary";
 
@@ -139,7 +139,7 @@ const ProductForm = ({
                 />
                 <label className="relative" htmlFor="fileInput">
                   <span className="w-24 h-24 cursor-pointer flex items-center justify-center p-3 border rounded-md border-gray-400">
-                    <PhoneOutgoing className="text-gray-700" />
+                    <FiPhoneOutgoing className="text-gray-700" />
                   </span>
                   {uploadImage && (
                     <div className="absolute left-0 right-0 top-0 bottom-0 w-24 h-24 flex justify-center items-center">
@@ -165,7 +165,7 @@ const ProductForm = ({
                     size="icon"
                     variant="ghost"
                   >
-                    <X />
+                    <FiX />
                   </Button>
                 </div>
               </div>

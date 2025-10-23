@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, FileText, ArrowUpDown } from "lucide-react";
+import { FiSearch, FiFileText, FiChevronUp } from "react-icons/fi";
 
 const OrdersTable = ({ orders, loading, onViewDetails, onPrintInvoice, getStatusColor, getPaymentIcon }) => {
   return (
@@ -19,7 +19,7 @@ const OrdersTable = ({ orders, loading, onViewDetails, onPrintInvoice, getStatus
           <TableHead className="w-[100px]">
             <div className="flex items-center gap-1">
               Order ID
-              <ArrowUpDown className="h-3 w-3" />
+              <FiChevronUp className="h-3 w-3" />
             </div>
           </TableHead>
           <TableHead>Customer</TableHead>
@@ -27,13 +27,13 @@ const OrdersTable = ({ orders, loading, onViewDetails, onPrintInvoice, getStatus
           <TableHead>
             <div className="flex items-center gap-1">
               Date
-              <ArrowUpDown className="h-3 w-3" />
+              <FiChevronUp className="h-3 w-3" />
             </div>
           </TableHead>
           <TableHead>
             <div className="flex items-center gap-1">
               Amount
-              <ArrowUpDown className="h-3 w-3" />
+              <FiChevronUp className="h-3 w-3" />
             </div>
           </TableHead>
           <TableHead>Payment Mode</TableHead>
@@ -74,7 +74,7 @@ const OrdersTable = ({ orders, loading, onViewDetails, onPrintInvoice, getStatus
                     onClick={() => onViewDetails(order.id)}
                     title="View Details"
                   >
-                    <Search className="h-4 w-4" />
+                    <FiSearch className="h-4 w-4" />
                   </Button>
                   <Button
                     variant="ghost"
@@ -82,7 +82,7 @@ const OrdersTable = ({ orders, loading, onViewDetails, onPrintInvoice, getStatus
                     onClick={() => onPrintInvoice(order.id)}
                     title="Print Invoice"
                   >
-                    <FileText className="h-4 w-4" />
+                    <FiFileText className="h-4 w-4" />
                   </Button>
                 </div>
               </TableCell>

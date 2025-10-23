@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Search, Filter } from "lucide-react";
+import { FiSearch, FiFilter } from "react-icons/fi";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -53,7 +53,7 @@ const OrdersFilters = () => {
           }
         >
           <SelectTrigger
-            startIcon={<Filter className="h-4 w-4 text-gray-500" />}
+            startIcon={<FiFilter className="h-4 w-4 text-gray-500" />}
             className="w-full"
           >
             <SelectValue placeholder="All Payment Modes" />
@@ -75,7 +75,7 @@ const OrdersFilters = () => {
           }
         >
           <SelectTrigger
-            startIcon={<Filter className="h-4 w-4 text-gray-500" />}
+            startIcon={<FiFilter className="h-4 w-4 text-gray-500" />}
             className="w-full"
           >
             <SelectValue placeholder="All Cashiers" />
@@ -98,7 +98,7 @@ const OrdersFilters = () => {
           onValueChange={(value) => setFilters({ ...filters, status: value })}
         >
           <SelectTrigger
-            startIcon={<Filter className="h-4 w-4 text-gray-500" />}
+            startIcon={<FiFilter className="h-4 w-4 text-gray-500" />}
             className="w-full"
           >
             <SelectValue placeholder="All Status" />

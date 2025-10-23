@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Button } from "@/components/ui/button";
 
-import { RefreshCw, ArrowUpDown } from "lucide-react";
+import { FiRefreshCw, FiArrowUp } from "react-icons/fi";
 import {
   getOrdersByBranch,
   getOrderById,
@@ -73,7 +73,7 @@ const Orders = () => {
           onClick={handleRefresh}
           disabled={loading}
         >
-          <RefreshCw className="h-4 w-4" />
+          <FiRefreshCw className="h-4 w-4" />
           Refresh
         </Button>
       </div>

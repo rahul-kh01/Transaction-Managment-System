@@ -10,23 +10,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Search,
-  Filter,
-  Calendar,
-  Download,
-  Eye,
-  CreditCard,
-  DollarSign,
-  ArrowUpRight,
-  ArrowDownLeft,
-} from "lucide-react";
+import { FiSearch, FiFilter, FiCalendar, FiDownload, FiEye, FiCreditCard, FiDollarSign, FiArrowUpRight, FiArrowDownLeft,  } from "react-icons/fi";
 import TransactionTable from "./TransactionTable";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getOrdersByBranch } from "../../../Redux Toolkit/features/order/orderThunks";
-import { Printer } from "lucide-react";
+import { FiPrinter } from "react-icons/fi";
 
 
 
@@ -41,7 +31,7 @@ export default function Transactions() {
     if (branch) {
       dispatch(getOrdersByBranch({branchId:branch?.id}));
     }
-  }, [branch]);
+  }, [branch, dispatch]);
 
   // Calculate totals
   const totalIncome = orders
@@ -65,7 +55,7 @@ export default function Transactions() {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold tracking-tight">Transactions</h1>
         <Button className="bg-emerald-600 hover:bg-emerald-700">
-          <Download className="mr-2 h-4 w-4" /> Export Transactions
+          <FiDownload className="mr-2 h-4 w-4" /> Export Transactions
         </Button>
       </div>
 
@@ -83,7 +73,7 @@ export default function Transactions() {
                 </h3>
               </div>
               <div className="p-3 bg-green-100 rounded-full">
-                <ArrowUpRight className="h-6 w-6 text-green-600" />
+                <FiArrowUpRight className="h-6 w-6 text-green-600" />
               </div>
             </div>
           </CardContent>
@@ -101,7 +91,7 @@ export default function Transactions() {
                 </h3>
               </div>
               <div className="p-3 bg-red-100 rounded-full">
-                <ArrowDownLeft className="h-6 w-6 text-red-600" />
+                <FiArrowDownLeft className="h-6 w-6 text-red-600" />
               </div>
             </div>
           </CardContent>
@@ -117,7 +107,7 @@ export default function Transactions() {
                 </h3>
               </div>
               <div className="p-3 bg-blue-100 rounded-full">
-                <DollarSign className="h-6 w-6 text-blue-600" />
+                <FiDollarSign className="h-6 w-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -258,7 +248,7 @@ export default function Transactions() {
 
               <div className="flex justify-end gap-2 pt-4 border-t">
                 <Button variant="outline">
-                  <Printer className="h-4 w-4 mr-1" /> Print Receipt
+                  <FiPrinter className="h-4 w-4 mr-1" /> Print Receipt
                 </Button>
               </div>
             </div>

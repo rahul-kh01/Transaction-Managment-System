@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { PrinterIcon } from 'lucide-react';
+import {FiPrinter} from 'react-icons/fi';
 
 const PrintDialog = ({ isOpen, onClose, onConfirm }) => {
   return (
@@ -18,7 +18,7 @@ const PrintDialog = ({ isOpen, onClose, onConfirm }) => {
         <DialogFooter>
           <Button variant="outline" onClick={onClose}>Cancel</Button>
           <Button onClick={onConfirm}>
-            <PrinterIcon className="h-4 w-4 mr-2" />
+            <FiPrinter  className="h-4 w-4 mr-2" />
             Print Summary
           </Button>
         </DialogFooter>

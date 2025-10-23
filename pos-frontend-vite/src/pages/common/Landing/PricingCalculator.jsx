@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Calculator, Store, Users, ShoppingCart, ArrowRight } from 'lucide-react';
+import { FiTool, FiHome, FiUsers, FiShoppingCart, FiArrowRight } from 'react-icons/fi';
 
 const PricingCalculator = () => {
   const [storeCount, setStoreCount] = useState(1);
@@ -50,7 +50,7 @@ const PricingCalculator = () => {
        <div className=" dark:bg-[#303030] rounded-2xl shadow-xl overflow-hidden ">
       <div className="bg-primary/10 p-6">
         <div className="flex items-center space-x-3 mb-2">
-          <Calculator className="w-6 h-6 text-primary" />
+          <FiTool className="w-6 h-6 text-primary" />
           <h3 className="text-xl font-bold text-gray-900">Pricing Calculator</h3>
         </div>
         <p className="text-gray-600">Estimate your monthly subscription based on your business needs</p>
@@ -61,7 +61,7 @@ const PricingCalculator = () => {
         <div>
           <div className="flex justify-between items-center mb-2">
             <label className="text-sm font-medium text-gray-700 flex items-center">
-              <Store className="w-4 h-4 mr-2" /> Number of Stores
+              <FiHome className="w-4 h-4 mr-2" /> Number of Stores
             </label>
             <span className="bg-primary/10 text-primary text-sm font-medium px-2 py-1 rounded">
               {storeCount} {storeCount === 1 ? 'store' : 'stores'}
@@ -88,7 +88,7 @@ const PricingCalculator = () => {
         <div>
           <div className="flex justify-between items-center mb-2">
             <label className="text-sm font-medium text-gray-700 flex items-center">
-              <Users className="w-4 h-4 mr-2" /> Number of Employees
+              <FiUsers className="w-4 h-4 mr-2" /> Number of Employees
             </label>
             <span className="bg-primary/10 text-primary text-sm font-medium px-2 py-1 rounded">
               {employeeCount} {employeeCount === 1 ? 'employee' : 'employees'}
@@ -114,7 +114,7 @@ const PricingCalculator = () => {
         {/* Transaction Volume */}
         <div>
           <label className="text-sm font-medium text-gray-700 flex items-center mb-2">
-            <ShoppingCart className="w-4 h-4 mr-2" /> Transaction Volume
+            <FiShoppingCart className="w-4 h-4 mr-2" /> Transaction Volume
           </label>
           <div className="grid grid-cols-4 gap-2">
             {[
@@ -157,7 +157,7 @@ const PricingCalculator = () => {
           
           <Button className="w-full group">
             Get Custom Quote
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <FiArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>

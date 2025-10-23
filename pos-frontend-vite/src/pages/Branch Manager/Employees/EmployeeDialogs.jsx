@@ -10,8 +10,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EmployeeForm } from "../../store/Employee";
-import { Plus } from "lucide-react";
-import { branchAdminRole } from "../../../utils/userRole";
+import { FiPlus } from "react-icons/fi";
+// import { branchAdminRole } from "../../../utils/userRole";
 
 export const AddEmployeeDialog = ({
   isAddDialogOpen,
@@ -22,7 +22,7 @@ export const AddEmployeeDialog = ({
   <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
     <DialogTrigger asChild>
       <Button className="bg-emerald-600 hover:bg-emerald-700">
-        <Plus className="mr-2 h-4 w-4" /> Add Employee
+        <FiPlus className="mr-2 h-4 w-4" /> Add Employee
       </Button>
     </DialogTrigger>
     <DialogContent>

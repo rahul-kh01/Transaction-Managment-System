@@ -11,7 +11,7 @@ import {
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../components/ui/select";
-import { Eye, MoreHorizontal, Ban, CheckCircle } from "lucide-react";
+import { FiEye, FiMoreHorizontal, FiXCircle, FiCheckCircle } from "react-icons/fi";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -48,7 +48,7 @@ export default function StoreTable({ onViewDetails, onBlockStore, onActivateStor
     try {
       await dispatch(moderateStore({ storeId, action: newStatus })).unwrap();
       // Optionally, you can show a toast here for success
-    } catch (e) {
+    } catch {
       // Optionally, you can show a toast here for error
     } finally {
       setUpdatingId(null);
@@ -134,34 +134,34 @@ export default function StoreTable({ onViewDetails, onBlockStore, onActivateStor
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="h-8 w-8 p-0">
-                          <MoreHorizontal className="h-4 w-4" />
+                          <FiMoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem onClick={() => onViewDetails?.(store)}>
-                          <Eye className="mr-2 h-4 w-4" />
+                          <FiEye className="mr-2 h-4 w-4" />
                           View Details
                         </DropdownMenuItem>
                         {store.status === "active" && (
                           <DropdownMenuItem onClick={() => onBlockStore?.(store.id)}>
-                            <Ban className="mr-2 h-4 w-4" />
+                            <FiXCircle className="mr-2 h-4 w-4" />
                             Block Store
                           </DropdownMenuItem>
                         )}
                         {store.status === "blocked" && (
                           <DropdownMenuItem onClick={() => onActivateStore?.(store.id)}>
-                            <CheckCircle className="mr-2 h-4 w-4" />
+                            <FiCheckCircle className="mr-2 h-4 w-4" />
                             Activate Store
                           </DropdownMenuItem>
                         )}
                         {store.status === "pending" && (
                           <>
                             <DropdownMenuItem onClick={() => onActivateStore?.(store.id)}>
-                              <CheckCircle className="mr-2 h-4 w-4" />
+                              <FiCheckCircle className="mr-2 h-4 w-4" />
                               Approve Store
                             </DropdownMenuItem>
                             <DropdownMenuItem onClick={() => onBlockStore?.(store.id)}>
-                              <Ban className="mr-2 h-4 w-4" />
+                              <FiXCircle className="mr-2 h-4 w-4" />
                               Reject Store
                             </DropdownMenuItem>
                           </>

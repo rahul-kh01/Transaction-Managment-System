@@ -121,12 +121,22 @@ services:
         value: false
 
   # ======================================================
-  # FRONTEND STATIC SITE (React + Vite)
+  # FRONTEND STATIC SITE (React + Vite + pnpm)
   # ======================================================
   - type: web
     name: pos-frontend
     runtime: static
-    buildCommand: npm install -g pnpm && cd pos-frontend-vite && pnpm install --frozen-lockfile && pnpm build
+    buildCommand: |
+      # Install pnpm globally
+      npm install -g pnpm@9.0.0
+      # Navigate to frontend directory
+      cd pos-frontend-vite
+      # Install dependencies with pnpm
+      pnpm install --frozen-lockfile
+      # Run prebuild cleanup
+      pnpm run clean
+      # Build the application
+      pnpm run build
     staticPublishPath: pos-frontend-vite/dist
     pullRequestPreviewsEnabled: true  # Enable PR previews
     plan: free  # Static sites are free on Render
@@ -139,10 +149,23 @@ services:
       paths:
         - pos-frontend-vite/**
     
+    # Node.js version (aligned with .nvmrc)
+    nodeVersion: 20.19.5
+    
     # Frontend environment variables
     envVars:
       # ===== Package Manager Configuration =====
       - key: SKIP_INSTALL_DEPS
+        value: true
+      - key: NODE_ENV
+        value: production
+      
+      # ===== Vite Configuration =====
+      - key: VITE_BUILD_TARGET
+        value: es2020
+      - key: VITE_BUILD_MINIFY
+        value: esbuild
+      - key: VITE_BUILD_SOURCEMAP
         value: true
       
       # ===== API Configuration =====
@@ -159,6 +182,24 @@ services:
       - key: VITE_ENABLE_ANALYTICS
         value: false
       - key: VITE_ENABLE_DEBUG
+        value: false
+      
+      # ===== React Configuration =====
+      - key: REACT_APP_NAME
+        value: Transaction Management System
+      - key: REACT_APP_VERSION
+        value: 1.0.0
+      
+      # ===== Build Optimization =====
+      - key: VITE_CHUNK_SIZE_WARNING_LIMIT
+        value: 1000
+      - key: VITE_BUILD_OUTPUT_DIR
+        value: dist
+      
+      # ===== Development Tools (Disabled for Production) =====
+      - key: VITE_DEVTOOLS_ENABLED
+        value: false
+      - key: VITE_FAST_REFRESH
         value: false
     
     # Headers for security and SPA routing
@@ -209,6 +250,9 @@ services:
 # - Updated Dockerfile for Render (PORT 10000)
 # - Configured external Neon database support
 # - Added health check for faster startup
+# - Aligned with Vite 7.1.12 + pnpm 9.0.0 + Node 20.19.5
+# - Optimized build process with proper chunking
+# - Added comprehensive environment variables
 #
 # 📋 CHECKLIST AFTER DEPLOYMENT:
 #
@@ -294,6 +338,15 @@ services:
 #     - Neon database is accessible
 #     - Check deployment logs for specific errors
 #     - See RENDER_DEPLOYMENT_FIX.md for detailed troubleshooting
+#
+# 11. 🎯 FRONTEND-SPECIFIC TROUBLESHOOTING:
+#     If frontend build fails, check:
+#     - Node.js version is 20.19.5 (matches .nvmrc)
+#     - pnpm version is 9.0.0
+#     - All dependencies are properly installed
+#     - Vite build configuration is correct
+#     - Check for missing react-icons imports
+#     - Verify all environment variables are set
 #
 # ======================================================
 # COST ESTIMATION (as of 2025)

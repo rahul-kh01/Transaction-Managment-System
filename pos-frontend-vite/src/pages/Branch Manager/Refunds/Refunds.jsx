@@ -8,12 +8,12 @@ import {
   TableRow,
 } from "../../../components/ui/table";
 import { Button } from "../../../components/ui/button";
-import { Edit } from "lucide-react";
+import { FiEdit } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
-  getAllRefunds,
+  // getAllRefunds,
   getRefundsByBranch,
 } from "../../../Redux Toolkit/features/refund/refundThunks";
 
@@ -25,7 +25,7 @@ const Refunds = () => {
 
   useEffect(() => {
     if (branch) dispatch(getRefundsByBranch(branch?.id));
-  }, [branch]);
+  }, [branch, dispatch]);
 
   console.log("refund s", refunds)
   return (

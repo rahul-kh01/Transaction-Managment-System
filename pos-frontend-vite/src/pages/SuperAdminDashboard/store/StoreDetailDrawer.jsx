@@ -10,20 +10,7 @@ import { Button } from "../../../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
 import { Badge } from "../../../components/ui/badge";
 import { Separator } from "../../../components/ui/separator";
-import { 
-  Store, 
-  User, 
-  Phone, 
-  Mail, 
-  Calendar, 
-  FileText, 
-  MapPin,
-  Building,
-  X,
-  Edit,
-  Ban,
-  CheckCircle
-} from "lucide-react";
+import { FiHome, FiUser, FiPhone, FiMail, FiCalendar, FiFileText, FiMapPin, FiEdit, FiXCircle, FiCheckCircle } from "react-icons/fi";
 import StoreStatusBadge from "./StoreStatusBadge";
 import { formatDateTime } from "../../../utils/formateDate";
 
@@ -63,7 +50,7 @@ export default function StoreDetailDrawer({
                   onClick={() => onBlockStore?.(store.id)}
                   className="text-red-600 border-red-200 hover:bg-red-50"
                 >
-                  <Ban className="w-4 h-4 mr-1" />
+                  <FiXCircle className="w-4 h-4 mr-1" />
                   Block
                 </Button>
               )}
@@ -74,7 +61,7 @@ export default function StoreDetailDrawer({
                   onClick={() => onActivateStore?.(store.id)}
                   className="text-green-600 border-green-200 hover:bg-green-50"
                 >
-                  <CheckCircle className="w-4 h-4 mr-1" />
+                  <FiCheckCircle className="w-4 h-4 mr-1" />
                   Activate
                 </Button>
               )}
@@ -83,7 +70,7 @@ export default function StoreDetailDrawer({
                 size="sm"
                 onClick={() => onEditStore?.(store)}
               >
-                <Edit className="w-4 h-4 mr-1" />
+                <FiEdit className="w-4 h-4 mr-1" />
                 Edit
               </Button>
             </div>
@@ -95,21 +82,21 @@ export default function StoreDetailDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
-                <User className="w-5 h-5" />
+                <FiUser className="w-5 h-5" />
                 Owner Information
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="flex items-center gap-3">
-                <User className="w-4 h-4 text-muted-foreground" />
+                <FiUser className="w-4 h-4 text-muted-foreground" />
                 <span className="font-medium">{store.storeAdmin?.fullName}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-muted-foreground" />
+                <FiPhone className="w-4 h-4 text-muted-foreground" />
                 <span>{store.contact?.phone}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-muted-foreground" />
+                <FiMail className="w-4 h-4 text-muted-foreground" />
                 <span>{store.contact?.email}</span>
               </div>
             </CardContent>
@@ -119,21 +106,21 @@ export default function StoreDetailDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
-                <Store className="w-5 h-5" />
+                <FiHome className="w-5 h-5" />
                 Store Information
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="flex items-center gap-3">
-                <Building className="w-4 h-4 text-muted-foreground" />
+                <FiHome className="w-4 h-4 text-muted-foreground" />
                 <span className="font-medium">{store.brand}</span>
               </div>
               <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-muted-foreground" />
+                <FiMapPin className="w-4 h-4 text-muted-foreground" />
                 <span>{store.address || "Address not provided"}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Calendar className="w-4 h-4 text-muted-foreground" />
+                <FiCalendar className="w-4 h-4 text-muted-foreground" />
                 <span>Registered on {formatDateTime(store.createdAt)}</span>
               </div>
             </CardContent>
@@ -143,7 +130,7 @@ export default function StoreDetailDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
-                <FileText className="w-5 h-5" />
+                <FiFileText className="w-5 h-5" />
                 Business Documents
               </CardTitle>
             </CardHeader>
@@ -171,7 +158,7 @@ export default function StoreDetailDrawer({
                         key={index}
                         className="border rounded-lg p-2 text-center cursor-pointer hover:bg-muted/50"
                       >
-                        <FileText className="w-8 h-8 mx-auto mb-1 text-muted-foreground" />
+                        <FiFileText className="w-8 h-8 mx-auto mb-1 text-muted-foreground" />
                         <p className="text-xs">{doc.name}</p>
                       </div>
                     ))}

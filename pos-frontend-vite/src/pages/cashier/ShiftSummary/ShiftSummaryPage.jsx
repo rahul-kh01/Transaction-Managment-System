@@ -39,7 +39,7 @@ const ShiftSummaryPage = () => {
 
   const handleEndShift = async () => {
     setShowLogoutConfirmDialog(false);
-    if (true) {
+    if (currentShift) {
        dispatch(endShift());
        dispatch(logout())
        navigate("/")

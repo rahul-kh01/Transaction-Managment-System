@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Save } from "lucide-react";
+import { FiSave } from "react-icons/fi";
 
 const SettingsHeader = () => {
   return (

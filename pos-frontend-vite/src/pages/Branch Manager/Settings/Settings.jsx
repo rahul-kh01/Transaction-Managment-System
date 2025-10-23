@@ -18,13 +18,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  Building,
-
-  Printer,
-  Receipt,
-  CreditCard,
-  Save,
-} from "lucide-react";
+  FiHome,
+  FiPrinter,
+  FiFileText,
+  FiCreditCard,
+  FiSave,
+} from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getBranchById } from "@/Redux Toolkit/features/branch/branchThunks";
@@ -133,23 +132,23 @@ const Settings = () => {
       <Tabs defaultValue="branch-info">
         <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="branch-info" className="flex items-center gap-2">
-            <Building className="h-4 w-4" />
+            <FiHome className="h-4 w-4" />
             Branch Info
           </TabsTrigger>
           <TabsTrigger value="printer" className="flex items-center gap-2">
-            <Printer className="h-4 w-4" />
+            <FiPrinter className="h-4 w-4" />
             Printer
           </TabsTrigger>
           <TabsTrigger value="tax" className="flex items-center gap-2">
-            <Receipt className="h-4 w-4" />
+            <FiFileText className="h-4 w-4" />
             Tax
           </TabsTrigger>
           <TabsTrigger value="payment" className="flex items-center gap-2">
-            <CreditCard className="h-4 w-4" />
+            <FiCreditCard className="h-4 w-4" />
             Payment
           </TabsTrigger>
           <TabsTrigger value="discount" className="flex items-center gap-2">
-            <CreditCard className="h-4 w-4" />
+            <FiCreditCard className="h-4 w-4" />
             Discount
           </TabsTrigger>
         </TabsList>
@@ -277,7 +276,7 @@ const Settings = () => {
                   className="gap-2"
                   onClick={() => handleSaveSettings("printer")}
                 >
-                  <Save className="h-4 w-4" />
+                  <FiSave className="h-4 w-4" />
                   Save Changes
                 </Button>
               </div>
@@ -373,7 +372,7 @@ const Settings = () => {
                   className="gap-2"
                   onClick={() => handleSaveSettings("tax")}
                 >
-                  <Save className="h-4 w-4" />
+                  <FiSave className="h-4 w-4" />
                   Save Changes
                 </Button>
               </div>
@@ -473,7 +472,7 @@ const Settings = () => {
                   className="gap-2"
                   onClick={() => handleSaveSettings("payment")}
                 >
-                  <Save className="h-4 w-4" />
+                  <FiSave className="h-4 w-4" />
                   Save Changes
                 </Button>
               </div>
@@ -617,7 +616,7 @@ const Settings = () => {
                   className="gap-2"
                   onClick={() => handleSaveSettings("discount")}
                 >
-                  <Save className="h-4 w-4" />
+                  <FiSave className="h-4 w-4" />
                   Save Changes
                 </Button>
               </div>

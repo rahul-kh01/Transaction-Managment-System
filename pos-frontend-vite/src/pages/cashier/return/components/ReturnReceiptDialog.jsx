@@ -7,7 +7,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { PrinterIcon } from "lucide-react";
+import { FiPrinter } from "react-icons/fi";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 
 const ReturnReceiptDialog = ({
@@ -104,7 +104,7 @@ const ReturnReceiptDialog = ({
       </div>
       <DialogFooter>
         <Button variant="outline" className="gap-2" >
-          <PrinterIcon className="h-4 w-4" />
+          <FiPrinter className="h-4 w-4" />
           Print & Complete
         </Button>
       </DialogFooter>

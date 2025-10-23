@@ -12,10 +12,10 @@ import { useSelector } from "react-redux";
 import { updateBranch } from "../../../Redux Toolkit/features/branch/branchThunks";
 import { useDispatch } from "react-redux";
 import { Input } from "@/components/ui/input";
-import { Phone } from "lucide-react";
-import { Mail } from "lucide-react";
-import { Clock } from "lucide-react";
-import { Save } from "lucide-react";
+import { FiPhone } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
+import { FiClock } from "react-icons/fi";
+import { FiSave } from "react-icons/fi";
 import { Button } from "../../../components/ui/button";
 import { Separator } from "../../../components/ui/separator";
 import { Checkbox } from "../../../components/ui/checkbox";
@@ -107,7 +107,7 @@ const BranchInfo = () => {
                 Phone Number
               </label>
               <div className="flex items-center">
-                <Phone className="mr-2 h-4 w-4 text-gray-500" />
+                <FiPhone className="mr-2 h-4 w-4 text-gray-500" />
                 <Input
                   id="branch-phone"
                   value={branchInfo.phone}
@@ -122,7 +122,7 @@ const BranchInfo = () => {
                 Email Address
               </label>
               <div className="flex items-center">
-                <Mail className="mr-2 h-4 w-4 text-gray-500" />
+                <FiMail className="mr-2 h-4 w-4 text-gray-500" />
                 <Input
                   id="branch-email"
                   type="email"
@@ -146,7 +146,7 @@ const BranchInfo = () => {
                 Opening Time
               </label>
               <div className="flex items-center">
-                <Clock className="mr-2 h-4 w-4 text-gray-500" />
+                <FiClock className="mr-2 h-4 w-4 text-gray-500" />
                 <Input
                   id="opening-time"
                   type="time"
@@ -162,7 +162,7 @@ const BranchInfo = () => {
                 Closing Time
               </label>
               <div className="flex items-center">
-                <Clock className="mr-2 h-4 w-4 text-gray-500" />
+                <FiClock className="mr-2 h-4 w-4 text-gray-500" />
                 <Input
                   id="closing-time"
                   type="time"
@@ -222,7 +222,7 @@ const BranchInfo = () => {
             className="gap-2"
             onClick={() => handleSaveSettings("branch-info")}
           >
-            <Save className="h-4 w-4" />
+            <FiSave className="h-4 w-4" />
             Save Changes
           </Button>
         </div>

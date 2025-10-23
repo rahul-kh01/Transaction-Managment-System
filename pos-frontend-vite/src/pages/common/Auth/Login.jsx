@@ -2,15 +2,7 @@ import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
-import { 
-  Eye, 
-  EyeOff, 
-  Mail, 
-  Lock, 
-  ShoppingCart, 
-  ArrowLeft,
-  CheckCircle
-} from 'lucide-react'
+import {FiEye, FiEyeOff, FiMail, FiLock, FiShoppingCart, FiArrowLeft, FiCheckCircle} from 'react-icons/fi'
 import { Link, useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '@/Redux Toolkit/features/auth/authThunk'
@@ -145,7 +137,7 @@ const Login = () => {
          
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <ShoppingCart className="w-6 h-6 text-primary-foreground" />
+              <FiShoppingCart  className="w-6 h-6 text-primary-foreground" />
             </div>
             <span className="text-2xl font-bold text-foreground">Transaction Management System Pro</span>
           </div>
@@ -171,7 +163,7 @@ const Login = () => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
-                    <Mail className="h-5 w-5 text-muted-foreground" />
+                    <FiMail  className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <Input
                     type="email"
@@ -193,7 +185,7 @@ const Login = () => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
-                    <Lock className="h-5 w-5 text-muted-foreground" />
+                    <FiLock  className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <Input
                     type={showPassword ? "text" : "password"}
@@ -211,9 +203,9 @@ const Login = () => {
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-5 w-5 text-muted-foreground hover:text-foreground" />
+                      <FiEyeOff className="h-5 w-5 text-muted-foreground hover:text-foreground" />
                     ) : (
-                      <Eye className="h-5 w-5 text-muted-foreground hover:text-foreground" />
+                      <FiEye  className="h-5 w-5 text-muted-foreground hover:text-foreground" />
                     )}
                   </button>
                 </div>
@@ -291,7 +283,7 @@ const Login = () => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
-                    <Mail className="h-5 w-5 text-muted-foreground" />
+                    <FiMail  className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <Input
                     type="email"
@@ -337,7 +329,7 @@ const Login = () => {
         {emailSent && (
           <div className="bg-card rounded-2xl shadow-xl p-8 text-center">
             <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-8 h-8 text-green-600" />
+              <FiCheckCircle  className="w-8 h-8 text-green-600" />
             </div>
             <h3 className="text-xl font-semibold text-foreground mb-2">
               Check Your Email
