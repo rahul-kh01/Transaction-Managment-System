@@ -49,7 +49,7 @@ spring:
       enabled: ${DEVTOOLS_ENABLED:false}
 
 server:
-  port: ${PORT:${SERVER_PORT:5000}}
+  port: ${PORT:5000}
   error:
     include-message: always
     include-binding-errors: always
